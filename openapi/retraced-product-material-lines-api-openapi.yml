@@ -1,0 +1,799 @@
+openapi: 3.0.3
+info:
+  title: Public API Reference Certificates Product / Material Lines API
+  description: 'The retraced API comprises all publicly enabled options to make
+
+    machine-to-machine changes in the retraced platform. The retraced dashboard uses the
+
+    same endpoints, but also in addition more. If you wish to use the API of the dashboard,
+
+    it is possible but not versioned cleanly like the public API.
+
+
+    ## Authentication
+
+
+    The authentication procedure is passwordless and uses an API key in the header. To get
+
+    an API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**
+
+    then click **Create**. Be sure to copy the key somewhere safe, as you won''t be able to
+
+    view it again. If you don''t see Developers HQ in the sidebar contact your Customer
+
+    Success Manager to enable this for you. You can now set the key directly in request
+
+    headers. To authenticate using an API key, set the header key `companyapikey` to the
+
+    value of your API key.
+
+
+    ## Getting Started
+
+
+    Retraced has 2 environments against which you can send your requests and receive the
+
+    expected response: staging (for development and testing) and production. Your API key
+
+    is scoped for both environments. The staging Base URL is
+
+    https://publicapi.staging.retraced.com. Staging copies production data once daily, and
+
+    all changes made on staging will be deleted.
+
+
+    Find detailed guides on how to use the endpoints and how we recommend building an
+
+    integration given your use case in our
+
+    [guides](https://publicapi.retraced.com/api/v2/guides). A history of public API
+
+    changes is available in the
+
+    [release notes](https://publicapi.retraced.com/api/v2/release-notes).'
+  version: 2.938.1
+servers: []
+tags:
+- name: Product / Material Lines
+paths:
+  /api/v2/material-lines/:
+    post:
+      tags:
+      - Product / Material Lines
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                styleId:
+                  type: string
+                  minLength: 1
+                materialHeaderId:
+                  type: string
+                  minLength: 1
+                parentId:
+                  anyOf:
+                  - type: string
+                  - type: 'null'
+                percentage:
+                  type: number
+                  minimum: 0
+                  maximum: 100
+                rawMaterialId:
+                  type: string
+                  minLength: 1
+                weights:
+                  type: number
+                  minimum: 0
+                weightUnit:
+                  type: string
+                  maxLength: 255
+                level:
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                position:
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                countriesOfOrigin:
+                  type: array
+                  items:
+                    type: string
+                    minLength: 2
+                    maxLength: 2
+                forCompanyId:
+                  type: string
+                  minLength: 1
+              required:
+              - styleId
+              - materialHeaderId
+              - parentId
+              - percentage
+              - rawMaterialId
+      responses:
+        '201':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                      pagination:
+                        type: object
+                        properties:
+                          page:
+                            default: 1
+                            type: number
+                          limit:
+                            default: 10
+                            type: number
+                          total:
+                            default: 0
+                            type: number
+                          totalPages:
+                            default: 0
+                            type: number
+                        required:
+                        - page
+                        - limit
+                        - total
+                        - totalPages
+                        additionalProperties: false
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      materialHeaderId:
+                        type: string
+                      rawMaterialId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      percentage:
+                        anyOf:
+                        - type: number
+                        - type: 'null'
+                      weights:
+                        anyOf:
+                        - type: number
+                        - type: 'null'
+                      weightUnit:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      parentId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      hierarchy:
+                        anyOf:
+                        - type: number
+                        - type: 'null'
+                      position:
+                        anyOf:
+                        - type: number
+                        - type: 'null'
+                      countriesOfOrigin:
+                        anyOf:
+                        - type: array
+                          items:
+                            type: string
+                        - type: 'null'
+                      createdAt:
+                        type: string
+                        format: date-time
+                      createdByUserId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedAt:
+                        type: string
+                        format: date-time
+                      updatedByUserId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                    required:
+                    - id
+                    - materialHeaderId
+                    - rawMaterialId
+                    - percentage
+                    - weights
+                    - weightUnit
+                    - parentId
+                    - hierarchy
+                    - position
+                    - countriesOfOrigin
+                    - createdAt
+                    - createdByUserId
+                    - createdByCompanyId
+                    - updatedAt
+                    - updatedByUserId
+                    - updatedByCompanyId
+                    additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+    get:
+      tags:
+      - Product / Material Lines
+      parameters:
+      - schema:
+          default: 1
+          type: integer
+          minimum: 1
+          maximum: 9007199254740991
+        in: query
+        name: page
+        required: false
+      - schema:
+          default: 20
+          type: integer
+          minimum: 1
+          maximum: 100
+        in: query
+        name: limit
+        required: false
+      - schema:
+          default: desc
+          type: string
+          enum:
+          - asc
+          - desc
+          - ASC
+          - DESC
+        in: query
+        name: order
+        required: false
+      - schema:
+          default: materialHeaderId
+          type: string
+          enum:
+          - materialHeaderId
+          - rawMaterialId
+          - percentage
+          - hierarchy
+          - position
+          - createdAt
+          - updatedAt
+        in: query
+        name: sort
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: materialHeaderId
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: rawMaterialId
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: parentId
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: countriesOfOrigin
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: include
+        required: false
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                      pagination:
+                        type: object
+                        properties:
+                          page:
+                            default: 1
+                            type: number
+                          limit:
+                            default: 10
+                            type: number
+                          total:
+                            default: 0
+                            type: number
+                          totalPages:
+                            default: 0
+                            type: number
+                        required:
+                        - page
+                        - limit
+                        - total
+                        - totalPages
+                        additionalProperties: false
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        materialHeaderId:
+                          type: string
+                        rawMaterialId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        percentage:
+                          anyOf:
+                          - type: number
+                          - type: 'null'
+                        weights:
+                          anyOf:
+                          - type: number
+                          - type: 'null'
+                        weightUnit:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        parentId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        hierarchy:
+                          anyOf:
+                          - type: number
+                          - type: 'null'
+                        position:
+                          anyOf:
+                          - type: number
+                          - type: 'null'
+                        countriesOfOrigin:
+                          anyOf:
+                          - type: array
+                            items:
+                              type: string
+                          - type: 'null'
+                        createdAt:
+                          type: string
+                          format: date-time
+                        createdByUserId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByCompanyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedAt:
+                          type: string
+                          format: date-time
+                        updatedByUserId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByCompanyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        rawMaterial:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            name:
+                              type: string
+                            description:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            category:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            isRecycled:
+                              anyOf:
+                              - type: boolean
+                              - type: 'null'
+                            isSynthetic:
+                              anyOf:
+                              - type: boolean
+                              - type: 'null'
+                          required:
+                          - id
+                          - name
+                          - description
+                          - category
+                          - isRecycled
+                          - isSynthetic
+                          additionalProperties: false
+                        countries:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              countryCode:
+                                type: string
+                              countryName:
+                                type: string
+                              countryNameLocale:
+                                type: string
+                              region:
+                                type: string
+                              currencyCode:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              currencyName:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                            required:
+                            - countryCode
+                            - countryName
+                            - countryNameLocale
+                            - region
+                            - currencyCode
+                            - currencyName
+                            additionalProperties: false
+                      required:
+                      - id
+                      - materialHeaderId
+                      - rawMaterialId
+                      - percentage
+                      - weights
+                      - weightUnit
+                      - parentId
+                      - hierarchy
+                      - position
+                      - countriesOfOrigin
+                      - createdAt
+                      - createdByUserId
+                      - createdByCompanyId
+                      - updatedAt
+                      - updatedByUserId
+                      - updatedByCompanyId
+                      additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+  /api/v2/material-lines/delete:
+    post:
+      tags:
+      - Product / Material Lines
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                materialLineIds:
+                  minItems: 1
+                  maxItems: 100
+                  type: array
+                  items:
+                    type: string
+                    minLength: 1
+                styleId:
+                  type: string
+                  minLength: 1
+              required:
+              - materialLineIds
+              - styleId
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                      pagination:
+                        type: object
+                        properties:
+                          page:
+                            default: 1
+                            type: number
+                          limit:
+                            default: 10
+                            type: number
+                          total:
+                            default: 0
+                            type: number
+                          totalPages:
+                            default: 0
+                            type: number
+                        required:
+                        - page
+                        - limit
+                        - total
+                        - totalPages
+                        additionalProperties: false
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties:
+                      deletedLines:
+                        description: IDs of successfully deleted material lines
+                        type: array
+                        items:
+                          type: string
+                      duplicatedHeaders:
+                        description: Details of headers that were duplicated for child entities
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            originalHeaderId:
+                              type: string
+                            newHeaderId:
+                              type: string
+                            forEntityId:
+                              type: string
+                            entityType:
+                              type: string
+                              enum:
+                              - style
+                              - variant
+                              - sku
+                          required:
+                          - originalHeaderId
+                          - newHeaderId
+                          - forEntityId
+                          - entityType
+                          additionalProperties: false
+                      orphanedHeaders:
+                        description: IDs of headers that were cleaned up
+                        type: array
+                        items:
+                          type: string
+                      errors:
+                        description: Errors encountered during deletion process
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            materialLineId:
+                              type: string
+                            message:
+                              type: string
+                          required:
+                          - materialLineId
+                          - message
+                          additionalProperties: false
+                    required:
+                    - deletedLines
+                    - duplicatedHeaders
+                    - orphanedHeaders
+                    - errors
+                    additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+  /api/v2/material-lines/{id}:
+    put:
+      tags:
+      - Product / Material Lines
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                styleId:
+                  type: string
+                  minLength: 1
+                materialHeaderId:
+                  type: string
+                  minLength: 1
+                parentId:
+                  anyOf:
+                  - type: string
+                  - type: 'null'
+                percentage:
+                  type: number
+                  minimum: 0
+                  maximum: 100
+                rawMaterialId:
+                  type: string
+                  minLength: 1
+                weights:
+                  type: number
+                  minimum: 0
+                weightUnit:
+                  type: string
+                  maxLength: 255
+                level:
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                position:
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                countriesOfOrigin:
+                  type: array
+                  items:
+                    type: string
+                    minLength: 2
+                    maxLength: 2
+              required:
+              - styleId
+              - materialHeaderId
+              - percentage
+              - rawMaterialId
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+        in: path
+        name: id
+        required: true
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                      pagination:
+                        type: object
+                        properties:
+                          page:
+                            default: 1
+                            type: number
+                          limit:
+                            default: 10
+                            type: number
+                          total:
+                            default: 0
+                            type: number
+                          totalPages:
+                            default: 0
+                            type: number
+                        required:
+                        - page
+                        - limit
+                        - total
+                        - totalPages
+                        additionalProperties: false
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      materialHeaderId:
+                        type: string
+                      rawMaterialId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      percentage:
+                        anyOf:
+                        - type: number
+                        - type: 'null'
+                      weights:
+                        anyOf:
+                        - type: number
+                        - type: 'null'
+                      weightUnit:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      parentId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      hierarchy:
+                        anyOf:
+                        - type: number
+                        - type: 'null'
+                      position:
+                        anyOf:
+                        - type: number
+                        - type: 'null'
+                      countriesOfOrigin:
+                        anyOf:
+                        - type: array
+                          items:
+                            type: string
+                        - type: 'null'
+                      createdAt:
+                        type: string
+                        format: date-time
+                      createdByUserId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedAt:
+                        type: string
+                        format: date-time
+                      updatedByUserId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                    required:
+                    - id
+                    - materialHeaderId
+                    - rawMaterialId
+                    - percentage
+                    - weights
+                    - weightUnit
+                    - parentId
+                    - hierarchy
+                    - position
+                    - countriesOfOrigin
+                    - createdAt
+                    - createdByUserId
+                    - createdByCompanyId
+                    - updatedAt
+                    - updatedByUserId
+                    - updatedByCompanyId
+                    additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false

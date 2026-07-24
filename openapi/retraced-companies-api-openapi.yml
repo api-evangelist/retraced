@@ -1,0 +1,2263 @@
+openapi: 3.0.3
+info:
+  title: Public API Reference Certificates Companies API
+  description: 'The retraced API comprises all publicly enabled options to make
+
+    machine-to-machine changes in the retraced platform. The retraced dashboard uses the
+
+    same endpoints, but also in addition more. If you wish to use the API of the dashboard,
+
+    it is possible but not versioned cleanly like the public API.
+
+
+    ## Authentication
+
+
+    The authentication procedure is passwordless and uses an API key in the header. To get
+
+    an API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**
+
+    then click **Create**. Be sure to copy the key somewhere safe, as you won''t be able to
+
+    view it again. If you don''t see Developers HQ in the sidebar contact your Customer
+
+    Success Manager to enable this for you. You can now set the key directly in request
+
+    headers. To authenticate using an API key, set the header key `companyapikey` to the
+
+    value of your API key.
+
+
+    ## Getting Started
+
+
+    Retraced has 2 environments against which you can send your requests and receive the
+
+    expected response: staging (for development and testing) and production. Your API key
+
+    is scoped for both environments. The staging Base URL is
+
+    https://publicapi.staging.retraced.com. Staging copies production data once daily, and
+
+    all changes made on staging will be deleted.
+
+
+    Find detailed guides on how to use the endpoints and how we recommend building an
+
+    integration given your use case in our
+
+    [guides](https://publicapi.retraced.com/api/v2/guides). A history of public API
+
+    changes is available in the
+
+    [release notes](https://publicapi.retraced.com/api/v2/release-notes).'
+  version: 2.938.1
+servers: []
+tags:
+- name: Companies
+paths:
+  /api/v2/companies/:
+    get:
+      tags:
+      - Companies
+      description: List companies in your network
+      parameters:
+      - schema:
+          type: integer
+          minimum: 1
+          maximum: 500
+        in: query
+        name: limit
+        required: false
+      - schema:
+          type: integer
+          minimum: 1
+          maximum: 9007199254740991
+        in: query
+        name: page
+        required: false
+      - schema:
+          default: desc
+          type: string
+          enum:
+          - asc
+          - desc
+          - ASC
+          - DESC
+        in: query
+        name: order
+        required: false
+      - schema:
+          default: name
+          type: string
+          enum:
+          - name
+          - createdAt
+          - updatedAt
+        in: query
+        name: sort
+        required: false
+      - schema:
+          type: string
+          maxLength: 512
+        in: query
+        name: filter
+        required: false
+      - schema:
+          default: 'false'
+          anyOf:
+          - type: string
+          - type: boolean
+        in: query
+        name: isSupplierNetwork
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: companyIds
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: excludeCompanyIds
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: findSimilar
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: name
+        required: false
+      - schema:
+          default: 'false'
+          anyOf:
+          - type: string
+          - type: boolean
+        in: query
+        name: includeOwnCompany
+        required: false
+      - schema:
+          default: 'false'
+          anyOf:
+          - type: string
+          - type: boolean
+        in: query
+        name: isDropDown
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: hasFeature
+        required: false
+      - schema:
+          default: 'false'
+          anyOf:
+          - type: string
+          - type: boolean
+        in: query
+        name: hasGeojson
+        required: false
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                      pagination:
+                        type: object
+                        properties:
+                          page:
+                            default: 1
+                            type: number
+                          limit:
+                            default: 10
+                            type: number
+                          total:
+                            default: 0
+                            type: number
+                          totalPages:
+                            default: 0
+                            type: number
+                        required:
+                        - page
+                        - limit
+                        - total
+                        - totalPages
+                        additionalProperties: false
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        officialName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        name:
+                          type: string
+                        updatedAt:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        key:
+                          type: string
+                        byCompanyId:
+                          type: string
+                        onBehalfOfCompanyId:
+                          type: string
+                        profileType:
+                          type: string
+                        count:
+                          type: number
+                        creationDate:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        connectionDate:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdAt:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByImpersonateId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByUserId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByCompanyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByApiKeyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByImpersonateId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByUserId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByCompanyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByApiKeyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        facilityProcesses:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        relationshipType:
+                          anyOf:
+                          - type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                key:
+                                  type: string
+                                text:
+                                  type: string
+                              required:
+                              - id
+                              additionalProperties: false
+                          - type: 'null'
+                        imageList:
+                          anyOf:
+                          - type: array
+                            items:
+                              anyOf:
+                              - type: object
+                                properties:
+                                  id:
+                                    type: string
+                                  url:
+                                    type: string
+                                  fileType:
+                                    type: string
+                                required:
+                                - id
+                                - url
+                                additionalProperties: false
+                              - type: 'null'
+                          - type: 'null'
+                        connectionType:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        supplyChainTier:
+                          anyOf:
+                          - type: array
+                            items:
+                              type: string
+                          - type: 'null'
+                        responsiblePerson:
+                          anyOf:
+                          - type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                key:
+                                  type: string
+                                text:
+                                  type: string
+                              required:
+                              - id
+                              additionalProperties: false
+                          - type: 'null'
+                        vendors:
+                          anyOf:
+                          - type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                key:
+                                  type: string
+                                text:
+                                  type: string
+                              required:
+                              - id
+                              additionalProperties: false
+                          - type: 'null'
+                        agents:
+                          anyOf:
+                          - type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                key:
+                                  type: string
+                                text:
+                                  type: string
+                              required:
+                              - id
+                              additionalProperties: false
+                          - type: 'null'
+                        geojson:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        displayName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        transliteratedDisplayName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        transliteratedOfficialName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        description:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        country:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        countryName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        addressLine1:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        addressLine2:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        county:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        zipCode:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        website:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        phone:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        facEmail:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        companySize:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        companyType:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        founded:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        videoFile:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        collaborationStatus:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        collaborationStartDate:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        retracedRiskScore:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        city:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        collaborationEndDate:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        internalCompanyCode:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        totalUsersCount:
+                          type: number
+                        activeUsersCount:
+                          type: number
+                        invitedUsersCount:
+                          type: number
+                        featuredImageFileUrl:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        originalFeaturedImageFileUrl:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        originalVideoFileUrl:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        connectionTypeId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                      required:
+                      - id
+                      - officialName
+                      - name
+                      - updatedAt
+                      - key
+                      - byCompanyId
+                      - onBehalfOfCompanyId
+                      - profileType
+                      - creationDate
+                      - connectionDate
+                      - createdAt
+                      - createdByImpersonateId
+                      - createdByUserId
+                      - createdByCompanyId
+                      - createdByApiKeyId
+                      - updatedByImpersonateId
+                      - updatedByUserId
+                      - updatedByCompanyId
+                      - updatedByApiKeyId
+                      - facilityProcesses
+                      - relationshipType
+                      - imageList
+                      - connectionType
+                      - supplyChainTier
+                      - responsiblePerson
+                      - vendors
+                      - agents
+                      - geojson
+                      - displayName
+                      - transliteratedDisplayName
+                      - transliteratedOfficialName
+                      - description
+                      - country
+                      - countryName
+                      - addressLine1
+                      - addressLine2
+                      - county
+                      - zipCode
+                      - website
+                      - phone
+                      - facEmail
+                      - companySize
+                      - companyType
+                      - founded
+                      - videoFile
+                      - collaborationStatus
+                      - collaborationStartDate
+                      - city
+                      - collaborationEndDate
+                      - internalCompanyCode
+                      - totalUsersCount
+                      - activeUsersCount
+                      - invitedUsersCount
+                      - originalVideoFileUrl
+                      - connectionTypeId
+                      additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+                example:
+                  metadata:
+                    success: true
+                    pagination:
+                      page: 1
+                      limit: 2
+                      total: 101
+                      totalPages: 51
+                  data:
+                  - id: LD1FQKPIB89
+                    officialName: Zipper Demo Company
+                    name: Zipper Demo Company
+                    updatedAt: '2026-06-11T06:43:02.905Z'
+                    key: LD1FQKPIB89
+                    byCompanyId: M4MRIN4A9JQ
+                    onBehalfOfCompanyId: M4MRIN4A9JQ
+                    profileType: ABOUT
+                    count: 101
+                    creationDate: '2022-05-13T08:26:11.286Z'
+                    connectionDate: '2022-05-13T08:26:11.286Z'
+                    createdAt: '2022-05-13T08:26:11.286Z'
+                    createdByImpersonateId: HM9TRNB5MQ7
+                    createdByUserId: GZXUI1P6Q24
+                    createdByCompanyId: M4MRIN4A9JQ
+                    createdByApiKeyId: null
+                    updatedByImpersonateId: null
+                    updatedByUserId: IXKEIR4YEYF
+                    updatedByCompanyId: M4MRIN4A9JQ
+                    updatedByApiKeyId: null
+                    facilityProcesses: ZIPPER_SUPPLIER
+                    relationshipType:
+                    - id: MV2LA4RK6EKCH5IASD
+                    imageList:
+                    - id: MTZK7H1Q5J4PG3GXK2
+                      url: https://retraced-bucket-production-public.imgix.net/MTZK7H1Q5J4PG3GXK2.png
+                      fileType: IMAGE
+                    connectionType: SUPPLIER
+                    supplyChainTier: null
+                    responsiblePerson: null
+                    vendors: null
+                    agents: null
+                    geojson: '{"type": "Feature", "geometry": {"type": "Point", "coordinates": [9.502744, 40.923266]}}'
+                    displayName: Zipper Demo Company
+                    transliteratedDisplayName: null
+                    transliteratedOfficialName: null
+                    description: Zipper Demo Company was founded in Olbia in 1934 and can be found in 90 companies in over 60 counties/regions with over 42,000 employees globally.
+                    country: IT
+                    countryName: Italy
+                    addressLine1: null
+                    addressLine2: null
+                    county: null
+                    zipCode: '07026'
+                    website: null
+                    phone: null
+                    facEmail: null
+                    companySize: FROM_10001_TO_INFINITE
+                    companyType: null
+                    founded: null
+                    videoFile: null
+                    collaborationStatus: AA92A7ZX519I2DPQSU
+                    collaborationStartDate: null
+                    retracedRiskScore: '2.31'
+                    city: Olbia
+                    collaborationEndDate: null
+                    internalCompanyCode: null
+                    totalUsersCount: 0
+                    activeUsersCount: 0
+                    invitedUsersCount: 0
+                    featuredImageFileUrl: https://retraced-bucket-production-public.imgix.net/MTZK7H1Q5J4PG3GXK2.png
+                    originalVideoFileUrl: null
+                    connectionTypeId: M4MRIN4A9JQ
+                  - id: 9VAK4RL9RJX
+                    officialName: Zhejiang Thermal Drinkware Co., Ltd.
+                    name: Zhejiang Thermal Drinkware Co., Ltd.
+                    updatedAt: '2026-06-11T06:43:03.797Z'
+                    key: 9VAK4RL9RJX
+                    byCompanyId: M4MRIN4A9JQ
+                    onBehalfOfCompanyId: M4MRIN4A9JQ
+                    profileType: ABOUT
+                    count: 101
+                    creationDate: '2026-02-27T08:10:08.090Z'
+                    connectionDate: '2026-02-27T08:10:08.090Z'
+                    createdAt: '2026-02-27T08:10:08.090Z'
+                    createdByImpersonateId: null
+                    createdByUserId: 1MZFVJVYR63
+                    createdByCompanyId: M4MRIN4A9JQ
+                    createdByApiKeyId: null
+                    updatedByImpersonateId: null
+                    updatedByUserId: IXKEIR4YEYF
+                    updatedByCompanyId: M4MRIN4A9JQ
+                    updatedByApiKeyId: null
+                    facilityProcesses: ASSEMBLY
+                    relationshipType: null
+                    imageList:
+                    - id: file_JMKNZB1795XQ6
+                      url: https://retraced-bucket-production-public.imgix.net/file_JMKNZB1795XQ6.png
+                      fileType: IMAGE
+                    connectionType: SUPPLIER
+                    supplyChainTier: null
+                    responsiblePerson: null
+                    vendors: null
+                    agents: null
+                    geojson: '{"type": "Feature", "geometry": {"type": "Point", "coordinates": [105, 35]}}'
+                    displayName: Zhejiang Thermal Drinkware Co., Ltd.
+                    transliteratedDisplayName: null
+                    transliteratedOfficialName: null
+                    description: null
+                    country: CN
+                    countryName: China
+                    addressLine1: null
+                    addressLine2: null
+                    county: null
+                    zipCode: null
+                    website: null
+                    phone: null
+                    facEmail: null
+                    companySize: null
+                    companyType: null
+                    founded: null
+                    videoFile: null
+                    collaborationStatus: null
+                    collaborationStartDate: null
+                    retracedRiskScore: '3.53'
+                    city: null
+                    collaborationEndDate: null
+                    internalCompanyCode: null
+                    totalUsersCount: 0
+                    activeUsersCount: 0
+                    invitedUsersCount: 0
+                    featuredImageFileUrl: https://retraced-bucket-production-public.imgix.net/file_JMKNZB1795XQ6.png
+                    originalVideoFileUrl: null
+                    connectionTypeId: M4MRIN4A9JQ
+  /api/v2/companies/{id}:
+    get:
+      tags:
+      - Companies
+      description: Get company profile by ID. Type can be ABOUT, OTHER_IDS, or OPERATIONAL_METRICS.
+      parameters:
+      - schema:
+          default: ABOUT
+          type: string
+          enum:
+          - ABOUT
+          - OTHER_IDS
+          - OPERATIONAL_METRICS
+        in: query
+        name: type
+        required: false
+      - schema:
+          type: string
+          minLength: 1
+        in: path
+        name: id
+        required: true
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties:
+                      forCompanyId:
+                        type: string
+                      byCompanyId:
+                        type: string
+                      onBehalfOfCompanyId:
+                        type: string
+                      profileType:
+                        type: string
+                      data:
+                        type: object
+                        additionalProperties: {}
+                      isConnected:
+                        type: boolean
+                      isReverseConnected:
+                        type: boolean
+                      createdAt:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByImpersonateId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByUserId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByApiKeyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByApiKeyLabel:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedAt:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByImpersonateId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByUserId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByApiKeyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByApiKeyLabel:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      templateCompletionPercentage:
+                        type: number
+                    required:
+                    - forCompanyId
+                    - byCompanyId
+                    - onBehalfOfCompanyId
+                    - profileType
+                    - data
+                    - isConnected
+                    - isReverseConnected
+                    additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+                example:
+                  metadata:
+                    success: true
+                  data:
+                    forCompanyId: DZLSG27839B
+                    byCompanyId: M4MRIN4A9JQ
+                    onBehalfOfCompanyId: M4MRIN4A9JQ
+                    profileType: ABOUT
+                    data:
+                      official_name:
+                        retracedId: official_name
+                        name: Official Name
+                        description: "Official Name is the name on the business license(s) associated with the address indicated below.\r\r\n\r\r\nType Not Applicable if there is no English language business license facility name and complete the other question below:\r\r\n\"Facility Name (in local language as per business license):\""
+                        meta: {}
+                        fieldTypeId: SHORT_TEXT
+                        type: GLOBAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                              minLength: 1
+                          required:
+                          - value
+                        externalIds:
+                        - id: fp-bi-1
+                          version: 1.4.0
+                          provider: slcp
+                        sortingId: 10
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: official_name
+                        isEditable: false
+                        isVisible: true
+                        value: Developers' Fibre
+                      display_name:
+                        retracedId: display_name
+                        name: Display Name
+                        meta: {}
+                        fieldTypeId: SHORT_TEXT
+                        type: RELATIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                              minLength: 1
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 30
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: display_name
+                        isEditable: true
+                        isVisible: true
+                        value: Developers' Fibre
+                      transliterated_display_name:
+                        retracedId: transliterated_display_name
+                        name: Transliterated Display Name
+                        meta: {}
+                        fieldTypeId: SHORT_TEXT
+                        type: RELATIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 40
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: transliterated_display_name
+                        isEditable: true
+                        isVisible: false
+                        value: null
+                      transliterated_official_name:
+                        retracedId: transliterated_official_name
+                        name: Transliterated Official Name
+                        meta: {}
+                        fieldTypeId: SHORT_TEXT
+                        type: GLOBAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 50
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: transliterated_official_name
+                        isEditable: false
+                        isVisible: false
+                        value: null
+                      official_name_localized:
+                        retracedId: official_name_localized
+                        name: Official Name Localized
+                        description: "Only applicable if your facility has a name/also has a name in a language other than English.\r\r\n\r\r\nFacility Name is the name on the business license(s) associated with the address indicated below."
+                        meta: {}
+                        fieldTypeId: SHORT_TEXT
+                        type: GLOBAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds:
+                        - id: fp-bi-3
+                          version: 1.4.0
+                          provider: slcp
+                        sortingId: 20
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: official_name_localized
+                        isEditable: false
+                        isVisible: true
+                        value: null
+                      internal_company_code:
+                        retracedId: internal_company_code
+                        name: Internal Company Code
+                        description: You can use this field to store the company ID of your internal systems (e.g SAP ID)
+                        meta: {}
+                        fieldTypeId: SHORT_TEXT
+                        type: RELATIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 350
+                        sectionId: '1.2'
+                        impactArea: Other IDs
+                        impactAreaId: OTHER_IDS
+                        id: internal_company_code
+                        isEditable: true
+                        isVisible: true
+                        value: ID-12323423
+                      facility_processes:
+                        retracedId: facility_processes
+                        name: Facility Processes
+                        meta:
+                          asset: FACILITY_PROCESSES
+                          constantsValidation: true
+                        fieldTypeId: MULTI_SELECT
+                        type: RELATIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: array
+                              minItems: 1
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    minLength: 1
+                                required:
+                                - id
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 210
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: facility_processes
+                        isEditable: true
+                        isVisible: true
+                        value:
+                        - id: FARM
+                        - id: RAW_MATERIAL_PRODUCER
+                        - id: GINNING_MILL
+                      product_levels:
+                        retracedId: product_levels
+                        name: Product Levels
+                        description: Select the product levels this company sells
+                        meta:
+                          asset: PRODUCT_LEVELS
+                          constantsValidation: true
+                        fieldTypeId: MULTI_SELECT
+                        type: RELATIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                required:
+                                - id
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 230
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: product_levels
+                        isEditable: true
+                        isVisible: true
+                        value:
+                        - id: FABRICS
+                      product_types:
+                        retracedId: product_types
+                        name: Product Types
+                        description: Select the product types this company sells
+                        meta:
+                          asset: PRODUCT_TYPES
+                          constantsValidation: true
+                        fieldTypeId: MULTI_SELECT
+                        type: RELATIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                required:
+                                - id
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 240
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: product_types
+                        isEditable: true
+                        isVisible: true
+                        value:
+                        - id: WOVEN_FABRIC
+                        - id: NON_WOVEN
+                      image_list:
+                        retracedId: image_list
+                        name: Image List
+                        meta: {}
+                        fieldTypeId: MULTIPLE_PHOTO_UPLOAD
+                        type: RELATIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: array
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 290
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: image_list
+                        isEditable: true
+                        isVisible: true
+                        value:
+                        - id: G5GFQYDHUHFQFJV1NP
+                          url: https://retraced-bucket-production-public.imgix.net/G5GFQYDHUHFQFJV1NP.png
+                          fileType: IMAGE
+                      description:
+                        retracedId: description
+                        name: Description
+                        meta: {}
+                        fieldTypeId: LONG_TEXT
+                        type: RELATIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 60
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: description
+                        isEditable: true
+                        isVisible: true
+                        value: This supplier is an important fiber provider to me
+                      country:
+                        retracedId: country
+                        name: Country
+                        description: Refers to the country or region (e.g. special administrative region) in which the facility is located.
+                        meta:
+                          asset: COUNTRIES
+                          constantsValidation: true
+                        fieldTypeId: SELECT
+                        type: GLOBAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds:
+                        - id: fp-bi-7
+                          version: 1.4.0
+                          provider: slcp
+                        sortingId: 120
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: country
+                        isEditable: false
+                        isVisible: true
+                        value: ES
+                      country_name:
+                        retracedId: country_name
+                        name: Country Name
+                        sortingId: 125
+                        meta: {}
+                        fieldTypeId: SHORT_TEXT
+                        type: GLOBAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds: []
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: country_name
+                        isEditable: false
+                        isVisible: true
+                        value: Spain
+                      city:
+                        retracedId: city
+                        name: City
+                        description: Refers to the city name of the address on the business license(s) associated with the facility name.
+                        meta: {}
+                        fieldTypeId: SHORT_TEXT
+                        type: GLOBAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds:
+                        - id: fp-bas-2
+                          version: 1.4.0
+                          provider: slcp
+                        sortingId: 100
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: city
+                        isEditable: false
+                        isVisible: true
+                        value: null
+                      county:
+                        retracedId: county
+                        name: County
+                        description: "Refers to the state or province name of the address on the business license(s) associated with the facility name.\r\r\n\r\r\nIf not applicable enter N/A. "
+                        meta: {}
+                        fieldTypeId: SHORT_TEXT
+                        type: GLOBAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds:
+                        - id: fp-bas-3
+                          version: 1.4.0
+                          provider: slcp
+                        sortingId: 110
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: county
+                        isEditable: false
+                        isVisible: true
+                        value: null
+                      zip_code:
+                        retracedId: zip_code
+                        name: Zip Code
+                        description: "Refers to the zip code or postal code of the address on the business license(s) associated with the facility name.\r\r\n\r\r\nIf not applicable enter N/A. "
+                        meta: {}
+                        fieldTypeId: SHORT_TEXT
+                        type: GLOBAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds:
+                        - id: fp-bas-4
+                          version: 1.4.0
+                          provider: slcp
+                        sortingId: 90
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: zip_code
+                        isEditable: false
+                        isVisible: true
+                        value: null
+                      full_address_localize:
+                        retracedId: full_address_localize
+                        name: 'Full Address (in local language as per business license):'
+                        description: "Only applicable if your facility has an address/also has an address in a language other than English.\r\r\n\r\r\nFacility Address is the address on the business license(s) associated with the facility name. \r\r\n\r\r\nInsert Street, City, State/Province, Zip Code/Postal Code all in one response field. "
+                        meta: {}
+                        fieldTypeId: LONG_TEXT
+                        type: GLOBAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds:
+                        - id: fp-bi-4
+                          version: 1.4.0
+                          provider: slcp
+                        sortingId: 140
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: full_address_localize
+                        isEditable: false
+                        isVisible: true
+                        value: null
+                      address_line_1:
+                        retracedId: address_line_1
+                        name: Address Line 1
+                        description: Refers to the street address on the business license(s) associated with the facility name.
+                        meta:
+                          slcpMeta:
+                            key: fp-bas-1
+                            number: FP-BAS-1
+                            dataType: string
+                            masterType: Question
+                            versionImported: 1.7.0
+                        fieldTypeId: LONG_TEXT
+                        type: GLOBAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds:
+                        - id: fp-bas-1
+                          version: 1.7.0
+                          provider: slcp
+                        sortingId: 70
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: address_line_1
+                        isEditable: false
+                        isVisible: true
+                        value: null
+                      address_line_2:
+                        retracedId: address_line_2
+                        name: Address Line 2
+                        meta: {}
+                        fieldTypeId: LONG_TEXT
+                        type: GLOBAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 80
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: address_line_2
+                        isEditable: false
+                        isVisible: true
+                        value: null
+                      phone:
+                        retracedId: phone
+                        name: Phone
+                        description: General facility phone number, e.g. phone number for general inquiries or to access the staff at reception desk.
+                        meta: {}
+                        fieldTypeId: SHORT_TEXT
+                        type: RELATIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                              pattern: ^\+[1-9]\d{1,14}$
+                          required:
+                          - value
+                        externalIds:
+                        - id: fp-bi-16
+                          version: 1.4.0
+                          provider: slcp
+                        sortingId: 180
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: phone
+                        isEditable: true
+                        isVisible: true
+                        value: '+3912312312332'
+                      website:
+                        retracedId: website
+                        name: Website
+                        meta: {}
+                        fieldTypeId: LONG_TEXT
+                        type: GLOBAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 200
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: website
+                        isEditable: false
+                        isVisible: true
+                        value: null
+                      connection_type:
+                        retracedId: connection_type
+                        name: Connection Type
+                        description: ''
+                        meta: {}
+                        fieldTypeId: SELECT
+                        type: TRANSACTIONAL
+                        options:
+                        - key: SUPPLIER
+                          text: Supplier
+                        - key: CLIENT
+                          text: Client
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                              enum:
+                              - SUPPLIER
+                              - CLIENT
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 250
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: connection_type
+                        isEditable: true
+                        isVisible: true
+                        value: SUPPLIER
+                      relationship_type:
+                        retracedId: relationship_type
+                        name: Relationship Type
+                        meta:
+                          asset: RELATIONSHIP_TYPES
+                          constantsValidation: true
+                        fieldTypeId: MULTI_SELECT
+                        type: TRANSACTIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                required:
+                                - id
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 260
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: relationship_type
+                        isEditable: true
+                        isVisible: true
+                        value: []
+                      collaboration_status:
+                        retracedId: collaboration_status
+                        name: Collaboration Status
+                        description: ''
+                        meta:
+                          asset: COLLABORATION_STATUSES
+                          constantsValidation: true
+                        fieldTypeId: SELECT
+                        type: TRANSACTIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                              minLength: 1
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 270
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: collaboration_status
+                        isEditable: true
+                        isVisible: true
+                        value: 18XJ0Q9UDGK60SD5BX
+                      collaboration_start_date:
+                        retracedId: collaboration_start_date
+                        name: Collaboration Start Date
+                        meta: {}
+                        fieldTypeId: DATE
+                        type: TRANSACTIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                              format: date-time
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 280
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: collaboration_start_date
+                        isEditable: true
+                        isVisible: true
+                        value: '2026-02-03T23:00:00.000Z'
+                      supply_chain_tier:
+                        retracedId: supply_chain_tier
+                        name: Supply Chain Tier
+                        meta: {}
+                        fieldTypeId: MULTI_SELECT
+                        type: TRANSACTIONAL
+                        options:
+                        - key: TIER_0
+                          text: Tier 0
+                        - key: TIER_1
+                          text: Tier 1
+                        - key: TIER_2
+                          text: Tier 2
+                        - key: TIER_3
+                          text: Tier 3
+                        - key: TIER_4
+                          text: Tier 4
+                        - key: TIER_5
+                          text: Tier 5
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: array
+                              items:
+                                type: string
+                                enum:
+                                - TIER_0
+                                - TIER_1
+                                - TIER_2
+                                - TIER_3
+                                - TIER_4
+                                - TIER_5
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 220
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: supply_chain_tier
+                        isEditable: true
+                        isVisible: true
+                        value:
+                        - TIER_2
+                      geojson:
+                        retracedId: geojson
+                        name: Geojson
+                        meta: {}
+                        fieldTypeId: ADDRESS
+                        type: GLOBAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                geometry:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                    coordinates:
+                                      type: array
+                                      items:
+                                        type: number
+                                  required:
+                                  - type
+                                  - coordinates
+                              required:
+                              - type
+                              - geometry
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 150
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: geojson
+                        isEditable: false
+                        isVisible: true
+                        value:
+                          type: Feature
+                          geometry:
+                            type: Point
+                            coordinates:
+                            - -4
+                            - 40
+                      video_file:
+                        retracedId: video_file
+                        name: Video File
+                        meta: {}
+                        fieldTypeId: VIDEO_UPLOAD
+                        type: RELATIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              anyOf:
+                              - type: object
+                                properties:
+                                  id:
+                                    type: string
+                                  url:
+                                    type: string
+                                required:
+                                - id
+                                - url
+                              - type: object
+                                maxProperties: 0
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 300
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: video_file
+                        isEditable: true
+                        isVisible: true
+                        value: {}
+                      company_size:
+                        retracedId: company_size
+                        name: Company Size
+                        description: ''
+                        meta: {}
+                        fieldTypeId: SELECT
+                        type: RELATIONAL
+                        options:
+                        - key: FROM_0_TO_1
+                          text: From 0 to 1
+                        - key: FROM_2_TO_10
+                          text: From 2 to 10
+                        - key: FROM_11_TO_50
+                          text: From 11 to 50
+                        - key: FROM_51_TO_200
+                          text: From 51 to 200
+                        - key: FROM_201_TO_500
+                          text: From 201 to 500
+                        - key: FROM_501_TO_1000
+                          text: From 501 to 1000
+                        - key: FROM_1001_TO_5000
+                          text: From 1001 to 5000
+                        - key: FROM_5001_TO_10000
+                          text: From 5001 to 10000
+                        - key: FROM_10001_TO_INFINITE
+                          text: From 10001 to infinite
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                              enum:
+                              - FROM_0_TO_1
+                              - FROM_2_TO_10
+                              - FROM_11_TO_50
+                              - FROM_51_TO_200
+                              - FROM_201_TO_500
+                              - FROM_501_TO_1000
+                              - FROM_1001_TO_5000
+                              - FROM_5001_TO_10000
+                              - FROM_10001_TO_INFINITE
+                              maxLength: 255
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 301
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: company_size
+                        isEditable: true
+                        isVisible: true
+                        value: FROM_51_TO_200
+                      retraced_risk_score:
+                        retracedId: retraced_risk_score
+                        name: Retraced Risk Score
+                        description: The Retraced Standard Risk Score is automatically calculated based on the data points that are available to you.
+                        meta:
+                          tooltip: This field is automatically filled with risk score calculated based on the retraced standard assessment. Users cannot change this value.
+                        fieldTypeId: NUMBER
+                        type: RELATIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: number
+                              minimum: 1
+                              maximum: 5
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 55
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: retraced_risk_score
+                        isEditable: true
+                        isVisible: true
+                        value: null
+                      fac_email:
+                        retracedId: fac_email
+                        name: 'Facility Email:'
+                        description: General facility email to reach the facility with general inquiries. Usually these email addresses are info@... type addresses.
+                        meta: {}
+                        fieldTypeId: SHORT_TEXT
+                        type: RELATIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds:
+                        - id: fp-bi-17
+                          version: 1.4.0
+                          provider: slcp
+                        sortingId: 190
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: fac_email
+                        isEditable: true
+                        isVisible: true
+                        value: test@devfibre.com
+                      collaboration_end_date:
+                        retracedId: collaboration_end_date
+                        name: Collaboration End Date
+                        meta: {}
+                        fieldTypeId: DATE
+                        type: TRANSACTIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 281
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: collaboration_end_date
+                        isEditable: true
+                        isVisible: true
+                        value: null
+                      responsible_person:
+                        retracedId: responsible_person
+                        name: Responsible Person
+                        meta:
+                          asset: USERS
+                          constantsValidation: true
+                        fieldTypeId: MULTI_SELECT
+                        type: TRANSACTIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                required:
+                                - id
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 285
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: responsible_person
+                        isEditable: true
+                        isVisible: true
+                        value:
+                        - id: XI9MMYMZK7K
+                      vendors:
+                        retracedId: vendors
+                        name: Vendors
+                        meta:
+                          asset: company_links
+                          constantsValidation: true
+                        fieldTypeId: MULTI_SELECT
+                        type: TRANSACTIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: array
+                              minItems: 1
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    minLength: 1
+                                required:
+                                - id
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 284
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: vendors
+                        isEditable: true
+                        isVisible: true
+                        value:
+                        - id: R49SR1AK9BA
+                      agents:
+                        retracedId: agents
+                        name: Agents
+                        meta:
+                          asset: company_links
+                          constantsValidation: true
+                        fieldTypeId: MULTI_SELECT
+                        type: TRANSACTIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: array
+                              minItems: 1
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    minLength: 1
+                                required:
+                                - id
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 283
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: agents
+                        isEditable: true
+                        isVisible: true
+                        value: []
+                      notes:
+                        retracedId: notes
+                        name: Notes
+                        description: Notes
+                        meta: {}
+                        fieldTypeId: SHORT_TEXT
+                        type: RELATIONAL
+                        options: []
+                        schema:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                        externalIds: []
+                        sortingId: 100
+                        sectionId: '1.1'
+                        impactArea: About
+                        impactAreaId: ABOUT
+                        id: notes
+                        isEditable: true
+                        isVisible: true
+                        value: 'Note to team: testing'
+                    isConnected: true
+                    isReverseConnected: true
+                    createdAt: '2026-06-23T12:13:29.883Z'
+                    createdByImpersonateId: null
+                    createdByUserId: XI9MMYMZK7K
+                    createdByCompanyId: M4MRIN4A9JQ
+                    createdByApiKeyId: null
+                    createdByApiKeyLabel: null
+                    updatedAt: '2026-06-23T15:17:04.383Z'
+                    updatedByImpersonateId: null
+                    updatedByUserId: XI9MMYMZK7K
+                    updatedByCompanyId: M4MRIN4A9JQ
+                    updatedByApiKeyId: null
+                    updatedByApiKeyLabel: null
+                    templateCompletionPercentage: 67
+        '400':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
+        '403':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
+  /api/v2/companies/{id}/esg/:
+    get:
+      tags:
+      - Companies
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: retracedId
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: templateId
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: impactArea
+        required: false
+      - schema:
+          type: string
+          minLength: 1
+        in: path
+        name: id
+        required: true
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties:
+                      companyId:
+                        type: string
+                      environmental:
+                        type: object
+                        properties:
+                          sectionId:
+                            type: string
+                          name:
+                            type: string
+                          totalDataPoints:
+                            type: number
+                          answeredDataPoints:
+                            type: number
+                          dataPoints:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                retracedId:
+                                  type: string
+                                name:
+                                  type: string
+                                description:
+                                  anyOf:
+                                  - type: string
+                                  - type: 'null'
+                                impactArea:
+                                  anyOf:
+                                  - type: string
+                                  - type: 'null'
+                                impactAreaId:
+                                  anyOf:
+                                  - type: string
+                                  - type: 'null'
+                                templateId:
+                                  anyOf:
+                                  - type: string
+                                  - type: 'null'
+                                value:
+                                  anyOf:
+                                  - {}
+                                  - type: 'null'
+                                unit:
+                                  anyOf:
+                                  - type: string
+                                  - type: 'null'
+                                year:
+                                  anyOf:
+                                  - anyOf:
+                                    - type: string
+                                    - type: number
+                                  - type: 'null'
+                              required:
+                              - retracedId
+                              - name
+                              - value
+                              additionalProperties: false
+                        required:
+                        - sectionId
+                        - name
+                        - totalDataPoints
+                        - answeredDataPoints
+                        - dataPoints
+                        additionalProperties: false
+                      social:
+                        type: object
+                        properties:
+                          sectionId:
+                            type: string
+                          name:
+                            type: string
+                          totalDataPoints:
+                            type: number
+                          answeredDataPoints:
+                            type: number
+                          dataPoints:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                retracedId:
+                                  type: string
+                                name:
+                                  type: string
+                                description:
+                                  anyOf:
+                                  - type: string
+                                  - type: 'null'
+                                impactArea:
+                                  anyOf:
+                                  - type: string
+                                  - type: 'null'
+                                impactAreaId:
+                                  anyOf:
+                                  - type: string
+                                  - type: 'null'
+                                templateId:
+                                  anyOf:
+                                  - type: string
+                                  - type: 'null'
+                                value:
+                                  anyOf:
+                                  - {}
+                                  - type: 'null'
+                                unit:
+                                  anyOf:
+                                  - type: string
+                                  - type: 'null'
+                                year:
+                                  anyOf:
+                                  - anyOf:
+                                    - type: string
+                                    - type: number
+                                  - type: 'null'
+                              required:
+                              - retracedId
+                              - name
+                              - value
+                              additionalProperties: false
+                        required:
+                        - sectionId
+                        - name
+                        - totalDataPoints
+                        - answeredDataPoints
+                        - dataPoints
+                        additionalProperties: false
+                      governance:
+                        type: object
+                        properties:
+                          sectionId:
+                            type: string
+                          name:
+                            type: string
+                          totalDataPoints:
+                            type: number
+                          answeredDataPoints:
+                            type: number
+                          dataPoints:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                retracedId:
+                                  type: string
+                                name:
+                                  type: string
+                                description:
+                                  anyOf:
+                                  - type: string
+                                  - type: 'null'
+                                impactArea:
+                                  anyOf:
+                                  - type: string
+                                  - type: 'null'
+                                impactAreaId:
+                                  anyOf:
+                                  - type: string
+                                  - type: 'null'
+                                templateId:
+                                  anyOf:
+                                  - type: string
+                                  - type: 'null'
+                                value:
+                                  anyOf:
+                                  - {}
+                                  - type: 'null'
+                                unit:
+                                  anyOf:
+                                  - type: string
+                                  - type: 'null'
+                                year:
+                                  anyOf:
+                                  - anyOf:
+                                    - type: string
+                                    - type: number
+                                  - type: 'null'
+                              required:
+                              - retracedId
+                              - name
+                              - value
+                              additionalProperties: false
+                        required:
+                        - sectionId
+                        - name
+                        - totalDataPoints
+                        - answeredDataPoints
+                        - dataPoints
+                        additionalProperties: false
+                    required:
+                    - companyId
+                    - environmental
+                    - social
+                    - governance
+                    additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false

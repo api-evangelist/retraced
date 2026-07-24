@@ -1,0 +1,410 @@
+openapi: 3.0.3
+info:
+  title: Public API Reference Certificates Product / Supply Chains API
+  description: 'The retraced API comprises all publicly enabled options to make
+
+    machine-to-machine changes in the retraced platform. The retraced dashboard uses the
+
+    same endpoints, but also in addition more. If you wish to use the API of the dashboard,
+
+    it is possible but not versioned cleanly like the public API.
+
+
+    ## Authentication
+
+
+    The authentication procedure is passwordless and uses an API key in the header. To get
+
+    an API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**
+
+    then click **Create**. Be sure to copy the key somewhere safe, as you won''t be able to
+
+    view it again. If you don''t see Developers HQ in the sidebar contact your Customer
+
+    Success Manager to enable this for you. You can now set the key directly in request
+
+    headers. To authenticate using an API key, set the header key `companyapikey` to the
+
+    value of your API key.
+
+
+    ## Getting Started
+
+
+    Retraced has 2 environments against which you can send your requests and receive the
+
+    expected response: staging (for development and testing) and production. Your API key
+
+    is scoped for both environments. The staging Base URL is
+
+    https://publicapi.staging.retraced.com. Staging copies production data once daily, and
+
+    all changes made on staging will be deleted.
+
+
+    Find detailed guides on how to use the endpoints and how we recommend building an
+
+    integration given your use case in our
+
+    [guides](https://publicapi.retraced.com/api/v2/guides). A history of public API
+
+    changes is available in the
+
+    [release notes](https://publicapi.retraced.com/api/v2/release-notes).'
+  version: 2.938.1
+servers: []
+tags:
+- name: Product / Supply Chains
+paths:
+  /api/v2/supply-chains/{id}:
+    get:
+      tags:
+      - Product / Supply Chains
+      description: Returns the supply chain data for a product with enriched node information.
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+        in: path
+        name: id
+        required: true
+        description: The Retraced product ID of the product to fetch the supply chain for (this is a product ID, not a supply chain ID).
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties:
+                      productId:
+                        type: string
+                      productName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      nodesByProductionProcesses:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            productionProcessId:
+                              type: string
+                            productionProcessName:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            tier:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            nodes:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  tier:
+                                    anyOf:
+                                    - type: string
+                                    - type: 'null'
+                                  companyId:
+                                    anyOf:
+                                    - type: string
+                                    - type: 'null'
+                                  companyName:
+                                    anyOf:
+                                    - type: string
+                                    - type: 'null'
+                                  country:
+                                    anyOf:
+                                    - type: string
+                                    - type: 'null'
+                                  coordinates:
+                                    anyOf:
+                                    - type: object
+                                      properties:
+                                        latitude:
+                                          type: number
+                                        longitude:
+                                          type: number
+                                      required:
+                                      - latitude
+                                      - longitude
+                                      additionalProperties: false
+                                    - type: 'null'
+                                  address:
+                                    anyOf:
+                                    - type: object
+                                      properties:
+                                        line1:
+                                          anyOf:
+                                          - type: string
+                                          - type: 'null'
+                                        line2:
+                                          anyOf:
+                                          - type: string
+                                          - type: 'null'
+                                        city:
+                                          anyOf:
+                                          - type: string
+                                          - type: 'null'
+                                        zipCode:
+                                          anyOf:
+                                          - type: string
+                                          - type: 'null'
+                                        country:
+                                          anyOf:
+                                          - type: string
+                                          - type: 'null'
+                                      required:
+                                      - line1
+                                      - line2
+                                      - city
+                                      - zipCode
+                                      - country
+                                      additionalProperties: false
+                                    - type: 'null'
+                                  facilityProcesses:
+                                    type: array
+                                    items:
+                                      type: string
+                                  productionProcess:
+                                    anyOf:
+                                    - type: string
+                                    - type: 'null'
+                                required:
+                                - tier
+                                - companyId
+                                - companyName
+                                - country
+                                - coordinates
+                                - address
+                                - facilityProcesses
+                                - productionProcess
+                                additionalProperties: false
+                          required:
+                          - productionProcessId
+                          - productionProcessName
+                          - tier
+                          - nodes
+                          additionalProperties: false
+                    required:
+                    - productId
+                    - productName
+                    - nodesByProductionProcesses
+                    additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+                example:
+                  metadata:
+                    success: true
+                  data:
+                    productId: FA5TURRZBA3
+                    productName: Stone-Transparent-001-AW23
+                    nodesByProductionProcesses:
+                    - productionProcessId: RAW_MATERIAL_CREATION
+                      productionProcessName: Raw material creation
+                      tier: T4
+                      nodes:
+                      - tier: T4
+                        companyId: U39Q21S2WUS
+                        companyName: Fabulous Farmers
+                        country: IN
+                        coordinates:
+                          latitude: 19.141567
+                          longitude: 72.83038
+                        address:
+                          line1: Sesamestreet
+                          line2: null
+                          city: null
+                          zipCode: '123456'
+                          country: IN
+                        facilityProcesses:
+                        - Farm
+                        productionProcess: Raw material creation
+                    - productionProcessId: RAW_MATERIAL_PROCESSING
+                      productionProcessName: Raw material processing
+                      tier: T4
+                      nodes:
+                      - tier: T4
+                        companyId: 8JJNQJGUDLB
+                        companyName: COTRA Cotton Trade Demo
+                        country: BD
+                        coordinates:
+                          latitude: 24
+                          longitude: 90
+                        address:
+                          line1: null
+                          line2: null
+                          city: null
+                          zipCode: null
+                          country: BD
+                        facilityProcesses:
+                        - Raw material trader
+                        productionProcess: Raw material processing
+                      - tier: T4
+                        companyId: K7DBMP6YQI2
+                        companyName: Ginny's ginners
+                        country: IN
+                        coordinates:
+                          latitude: 21.616579
+                          longitude: 73.037109
+                        address:
+                          line1: Ground floor, Room No 18 Dhanukar Bldg, Opp Round Bldg
+                          line2: null
+                          city: null
+                          zipCode: '400002'
+                          country: IN
+                        facilityProcesses:
+                        - Ginning mill
+                        productionProcess: Raw material processing
+                    - productionProcessId: YARN_PROCESSING
+                      productionProcessName: Yarn processing
+                      tier: T3
+                      nodes:
+                      - tier: T3
+                        companyId: EJNZSHPSXMA
+                        companyName: Spinning Mills Ltd.
+                        country: CN
+                        coordinates:
+                          latitude: 36.11667
+                          longitude: 120.4
+                        address:
+                          line1: Spinstreet 4
+                          line2: null
+                          city: null
+                          zipCode: null
+                          country: CN
+                        facilityProcesses:
+                        - Spinning
+                        productionProcess: Yarn processing
+                    - productionProcessId: FABRIC_PROCESSING
+                      productionProcessName: Fabric processing
+                      tier: T2
+                      nodes:
+                      - tier: T2
+                        companyId: 29ZRHV5SV6T
+                        companyName: Fabric Demo Company
+                        country: BD
+                        coordinates:
+                          latitude: 23.460998
+                          longitude: 91.179692
+                        address:
+                          line1: null
+                          line2: null
+                          city: null
+                          zipCode: '3560'
+                          country: BD
+                        facilityProcesses:
+                        - Weaving
+                        productionProcess: Fabric processing
+                    - productionProcessId: TRIMS_AND_COMPONENTS
+                      productionProcessName: Trims and components
+                      tier: T2
+                      nodes:
+                      - tier: T2
+                        companyId: 7KBNXEDYEY2
+                        companyName: Zippy zippers
+                        country: US
+                        coordinates:
+                          latitude: 32.113404
+                          longitude: -86.77002
+                        address:
+                          line1: Zipper Road
+                          line2: null
+                          city: null
+                          zipCode: null
+                          country: US
+                        facilityProcesses:
+                        - Zipper supplier
+                        productionProcess: Trims and components
+                    - productionProcessId: PACKAGING
+                      productionProcessName: Packaging
+                      tier: T1
+                      nodes:
+                      - tier: T1
+                        companyId: KYM365DPLCS
+                        companyName: Packing Demo Company
+                        country: HR
+                        coordinates:
+                          latitude: -53.155673
+                          longitude: -70.902387
+                        address:
+                          line1: Av. Pdte. Manuel Bulnes 336
+                          line2: null
+                          city: Punta Arenas
+                          zipCode: '20000'
+                          country: CL
+                        facilityProcesses:
+                        - Packaging supplier
+                        productionProcess: Packaging
+                    - productionProcessId: MANUFACTURING
+                      productionProcessName: Manufacturing
+                      tier: T1
+                      nodes:
+                      - tier: T1
+                        companyId: NHSMV5VCRX1
+                        companyName: Demo Print Company
+                        country: MA
+                        coordinates:
+                          latitude: 33.593151
+                          longitude: -7.631453
+                        address:
+                          line1: null
+                          line2: null
+                          city: null
+                          zipCode: '27182'
+                          country: MA
+                        facilityProcesses:
+                        - Printer
+                        productionProcess: Manufacturing
+                      - tier: T1
+                        companyId: KFIXXMKJT3G
+                        companyName: A. Istanbul Textile A.Ş
+                        country: TR
+                        coordinates:
+                          latitude: 40.971604
+                          longitude: 28.773194
+                        address:
+                          line1: Izmoru Street
+                          line2: null
+                          city: Istanbul
+                          zipCode: '20354'
+                          country: TR
+                        facilityProcesses:
+                        - Cut make trim (CMT)
+                        productionProcess: Manufacturing
+                    - productionProcessId: RETAILER
+                      productionProcessName: Retailer
+                      tier: T0
+                      nodes:
+                      - tier: T0
+                        companyId: M4MRIN4A9JQ
+                        companyName: Blue Sky Company
+                        country: US
+                        coordinates:
+                          latitude: 39.101454
+                          longitude: -84.51246
+                        address:
+                          line1: Main Street 203
+                          line2: null
+                          city: null
+                          zipCode: '45201'
+                          country: US
+                        facilityProcesses:
+                        - Retailer
+                        productionProcess: Retailer

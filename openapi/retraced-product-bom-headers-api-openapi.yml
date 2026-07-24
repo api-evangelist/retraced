@@ -1,0 +1,776 @@
+openapi: 3.0.3
+info:
+  title: Public API Reference Certificates Product / BOM Headers API
+  description: 'The retraced API comprises all publicly enabled options to make
+
+    machine-to-machine changes in the retraced platform. The retraced dashboard uses the
+
+    same endpoints, but also in addition more. If you wish to use the API of the dashboard,
+
+    it is possible but not versioned cleanly like the public API.
+
+
+    ## Authentication
+
+
+    The authentication procedure is passwordless and uses an API key in the header. To get
+
+    an API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**
+
+    then click **Create**. Be sure to copy the key somewhere safe, as you won''t be able to
+
+    view it again. If you don''t see Developers HQ in the sidebar contact your Customer
+
+    Success Manager to enable this for you. You can now set the key directly in request
+
+    headers. To authenticate using an API key, set the header key `companyapikey` to the
+
+    value of your API key.
+
+
+    ## Getting Started
+
+
+    Retraced has 2 environments against which you can send your requests and receive the
+
+    expected response: staging (for development and testing) and production. Your API key
+
+    is scoped for both environments. The staging Base URL is
+
+    https://publicapi.staging.retraced.com. Staging copies production data once daily, and
+
+    all changes made on staging will be deleted.
+
+
+    Find detailed guides on how to use the endpoints and how we recommend building an
+
+    integration given your use case in our
+
+    [guides](https://publicapi.retraced.com/api/v2/guides). A history of public API
+
+    changes is available in the
+
+    [release notes](https://publicapi.retraced.com/api/v2/release-notes).'
+  version: 2.938.1
+servers: []
+tags:
+- name: Product / BOM Headers
+paths:
+  /api/v2/bom-headers/:
+    post:
+      tags:
+      - Product / BOM Headers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                description:
+                  type: string
+                  maxLength: 4000
+                link:
+                  type: object
+                  properties:
+                    styleId:
+                      type: string
+                      minLength: 1
+                    isMainBom:
+                      default: false
+                      type: boolean
+                  required:
+                  - styleId
+              required:
+              - name
+              - link
+      responses:
+        '201':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                      pagination:
+                        type: object
+                        properties:
+                          page:
+                            default: 1
+                            type: number
+                          limit:
+                            default: 10
+                            type: number
+                          total:
+                            default: 0
+                            type: number
+                          totalPages:
+                            default: 0
+                            type: number
+                        required:
+                        - page
+                        - limit
+                        - total
+                        - totalPages
+                        additionalProperties: false
+                    required:
+                    - success
+                    additionalProperties: false
+                  data: {}
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+    get:
+      tags:
+      - Product / BOM Headers
+      parameters:
+      - schema:
+          default: 1
+          type: integer
+          minimum: 1
+          maximum: 9007199254740991
+        in: query
+        name: page
+        required: false
+      - schema:
+          default: 20
+          type: integer
+          minimum: 1
+          maximum: 100
+        in: query
+        name: limit
+        required: false
+      - schema:
+          default: desc
+          type: string
+          enum:
+          - asc
+          - desc
+          - ASC
+          - DESC
+        in: query
+        name: order
+        required: false
+      - schema:
+          default: createdAt
+          type: string
+          enum:
+          - createdAt
+          - updatedAt
+          - name
+          - version
+          - effectiveStartDate
+          - effectiveEndDate
+        in: query
+        name: sort
+        required: false
+      - schema:
+          type: string
+          minLength: 1
+        in: query
+        name: styleId
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: ids
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: name
+        required: false
+      - schema:
+          anyOf:
+          - type: boolean
+          - type: string
+            enum:
+            - 'true'
+          - type: string
+            enum:
+            - 'false'
+        in: query
+        name: isArchived
+        required: false
+      - schema:
+          anyOf:
+          - type: boolean
+          - type: string
+            enum:
+            - 'true'
+          - type: string
+            enum:
+            - 'false'
+        in: query
+        name: isMainBom
+        required: false
+      - schema:
+          type: number
+        in: query
+        name: version
+        required: false
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                      pagination:
+                        type: object
+                        properties:
+                          page:
+                            default: 1
+                            type: number
+                          limit:
+                            default: 10
+                            type: number
+                          total:
+                            default: 0
+                            type: number
+                          totalPages:
+                            default: 0
+                            type: number
+                        required:
+                        - page
+                        - limit
+                        - total
+                        - totalPages
+                        additionalProperties: false
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          minLength: 1
+                        name:
+                          type: string
+                          minLength: 1
+                          maxLength: 255
+                        description:
+                          anyOf:
+                          - type: string
+                            maxLength: 4000
+                          - type: 'null'
+                        forCompanyId:
+                          type: string
+                          minLength: 1
+                        version:
+                          anyOf:
+                          - type: number
+                          - type: 'null'
+                        effectiveStartDate:
+                          anyOf:
+                          - anyOf:
+                            - type: string
+                            - type: string
+                              format: date-time
+                          - type: 'null'
+                        effectiveEndDate:
+                          anyOf:
+                          - anyOf:
+                            - type: string
+                            - type: string
+                              format: date-time
+                          - type: 'null'
+                        isArchived:
+                          type: boolean
+                        link:
+                          anyOf:
+                          - type: object
+                            properties:
+                              styleId:
+                                type: string
+                                minLength: 1
+                              isMainBom:
+                                default: false
+                                type: boolean
+                              isOwner:
+                                default: true
+                                type: boolean
+                            required:
+                            - styleId
+                            - isMainBom
+                            - isOwner
+                            additionalProperties: false
+                          - type: 'null'
+                        createdAt:
+                          anyOf:
+                          - type: string
+                          - type: string
+                            format: date-time
+                        createdByUserId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        createdByCompanyId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        updatedAt:
+                          anyOf:
+                          - type: string
+                          - type: string
+                            format: date-time
+                        updatedByUserId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        updatedByCompanyId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                      required:
+                      - id
+                      - name
+                      - forCompanyId
+                      - isArchived
+                      - link
+                      - createdAt
+                      - updatedAt
+                      additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+  /api/v2/bom-headers/delete:
+    post:
+      tags:
+      - Product / BOM Headers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                styleId:
+                  type: string
+                  minLength: 1
+                bomHeaderIds:
+                  minItems: 1
+                  type: array
+                  items:
+                    type: string
+                    minLength: 1
+              required:
+              - styleId
+              - bomHeaderIds
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                      pagination:
+                        type: object
+                        properties:
+                          page:
+                            default: 1
+                            type: number
+                          limit:
+                            default: 10
+                            type: number
+                          total:
+                            default: 0
+                            type: number
+                          totalPages:
+                            default: 0
+                            type: number
+                        required:
+                        - page
+                        - limit
+                        - total
+                        - totalPages
+                        additionalProperties: false
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties:
+                      deletedHeaders:
+                        type: array
+                        items:
+                          type: string
+                      deletedLinks:
+                        type: array
+                        items:
+                          type: string
+                      errors:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            bomHeaderId:
+                              type: string
+                            message:
+                              type: string
+                          required:
+                          - bomHeaderId
+                          - message
+                          additionalProperties: false
+                    required:
+                    - deletedHeaders
+                    - deletedLinks
+                    - errors
+                    additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+  /api/v2/bom-headers/{id}:
+    put:
+      tags:
+      - Product / BOM Headers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                styleId:
+                  type: string
+                  minLength: 1
+                name:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                description:
+                  type: string
+                  maxLength: 4000
+                isMainBom:
+                  type: boolean
+              required:
+              - styleId
+              - name
+              - isMainBom
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+        in: path
+        name: id
+        required: true
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                      pagination:
+                        type: object
+                        properties:
+                          page:
+                            default: 1
+                            type: number
+                          limit:
+                            default: 10
+                            type: number
+                          total:
+                            default: 0
+                            type: number
+                          totalPages:
+                            default: 0
+                            type: number
+                        required:
+                        - page
+                        - limit
+                        - total
+                        - totalPages
+                        additionalProperties: false
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        minLength: 1
+                      name:
+                        type: string
+                        minLength: 1
+                        maxLength: 255
+                      description:
+                        anyOf:
+                        - type: string
+                          maxLength: 4000
+                        - type: 'null'
+                      forCompanyId:
+                        type: string
+                        minLength: 1
+                      version:
+                        anyOf:
+                        - type: number
+                        - type: 'null'
+                      effectiveStartDate:
+                        anyOf:
+                        - anyOf:
+                          - type: string
+                          - type: string
+                            format: date-time
+                        - type: 'null'
+                      effectiveEndDate:
+                        anyOf:
+                        - anyOf:
+                          - type: string
+                          - type: string
+                            format: date-time
+                        - type: 'null'
+                      isArchived:
+                        type: boolean
+                      link:
+                        anyOf:
+                        - type: object
+                          properties:
+                            styleId:
+                              type: string
+                              minLength: 1
+                            isMainBom:
+                              default: false
+                              type: boolean
+                            isOwner:
+                              default: true
+                              type: boolean
+                          required:
+                          - styleId
+                          - isMainBom
+                          - isOwner
+                          additionalProperties: false
+                        - type: 'null'
+                      createdAt:
+                        anyOf:
+                        - type: string
+                        - type: string
+                          format: date-time
+                      createdByUserId:
+                        anyOf:
+                        - type: string
+                          maxLength: 36
+                        - type: 'null'
+                      createdByCompanyId:
+                        anyOf:
+                        - type: string
+                          maxLength: 36
+                        - type: 'null'
+                      updatedAt:
+                        anyOf:
+                        - type: string
+                        - type: string
+                          format: date-time
+                      updatedByUserId:
+                        anyOf:
+                        - type: string
+                          maxLength: 36
+                        - type: 'null'
+                      updatedByCompanyId:
+                        anyOf:
+                        - type: string
+                          maxLength: 36
+                        - type: 'null'
+                    required:
+                    - id
+                    - name
+                    - forCompanyId
+                    - isArchived
+                    - link
+                    - createdAt
+                    - updatedAt
+                    additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+    get:
+      tags:
+      - Product / BOM Headers
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+        in: path
+        name: id
+        required: true
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                      pagination:
+                        type: object
+                        properties:
+                          page:
+                            default: 1
+                            type: number
+                          limit:
+                            default: 10
+                            type: number
+                          total:
+                            default: 0
+                            type: number
+                          totalPages:
+                            default: 0
+                            type: number
+                        required:
+                        - page
+                        - limit
+                        - total
+                        - totalPages
+                        additionalProperties: false
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        minLength: 1
+                      name:
+                        type: string
+                        minLength: 1
+                        maxLength: 255
+                      description:
+                        anyOf:
+                        - type: string
+                          maxLength: 4000
+                        - type: 'null'
+                      forCompanyId:
+                        type: string
+                        minLength: 1
+                      version:
+                        anyOf:
+                        - type: number
+                        - type: 'null'
+                      effectiveStartDate:
+                        anyOf:
+                        - anyOf:
+                          - type: string
+                          - type: string
+                            format: date-time
+                        - type: 'null'
+                      effectiveEndDate:
+                        anyOf:
+                        - anyOf:
+                          - type: string
+                          - type: string
+                            format: date-time
+                        - type: 'null'
+                      isArchived:
+                        type: boolean
+                      link:
+                        anyOf:
+                        - type: object
+                          properties:
+                            styleId:
+                              type: string
+                              minLength: 1
+                            isMainBom:
+                              default: false
+                              type: boolean
+                            isOwner:
+                              default: true
+                              type: boolean
+                          required:
+                          - styleId
+                          - isMainBom
+                          - isOwner
+                          additionalProperties: false
+                        - type: 'null'
+                      createdAt:
+                        anyOf:
+                        - type: string
+                        - type: string
+                          format: date-time
+                      createdByUserId:
+                        anyOf:
+                        - type: string
+                          maxLength: 36
+                        - type: 'null'
+                      createdByCompanyId:
+                        anyOf:
+                        - type: string
+                          maxLength: 36
+                        - type: 'null'
+                      updatedAt:
+                        anyOf:
+                        - type: string
+                        - type: string
+                          format: date-time
+                      updatedByUserId:
+                        anyOf:
+                        - type: string
+                          maxLength: 36
+                        - type: 'null'
+                      updatedByCompanyId:
+                        anyOf:
+                        - type: string
+                          maxLength: 36
+                        - type: 'null'
+                    required:
+                    - id
+                    - name
+                    - forCompanyId
+                    - isArchived
+                    - link
+                    - createdAt
+                    - updatedAt
+                    additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false

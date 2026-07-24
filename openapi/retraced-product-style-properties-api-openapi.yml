@@ -1,0 +1,405 @@
+openapi: 3.0.3
+info:
+  title: Public API Reference Certificates Product / Style Properties API
+  description: 'The retraced API comprises all publicly enabled options to make
+
+    machine-to-machine changes in the retraced platform. The retraced dashboard uses the
+
+    same endpoints, but also in addition more. If you wish to use the API of the dashboard,
+
+    it is possible but not versioned cleanly like the public API.
+
+
+    ## Authentication
+
+
+    The authentication procedure is passwordless and uses an API key in the header. To get
+
+    an API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**
+
+    then click **Create**. Be sure to copy the key somewhere safe, as you won''t be able to
+
+    view it again. If you don''t see Developers HQ in the sidebar contact your Customer
+
+    Success Manager to enable this for you. You can now set the key directly in request
+
+    headers. To authenticate using an API key, set the header key `companyapikey` to the
+
+    value of your API key.
+
+
+    ## Getting Started
+
+
+    Retraced has 2 environments against which you can send your requests and receive the
+
+    expected response: staging (for development and testing) and production. Your API key
+
+    is scoped for both environments. The staging Base URL is
+
+    https://publicapi.staging.retraced.com. Staging copies production data once daily, and
+
+    all changes made on staging will be deleted.
+
+
+    Find detailed guides on how to use the endpoints and how we recommend building an
+
+    integration given your use case in our
+
+    [guides](https://publicapi.retraced.com/api/v2/guides). A history of public API
+
+    changes is available in the
+
+    [release notes](https://publicapi.retraced.com/api/v2/release-notes).'
+  version: 2.938.1
+servers: []
+tags:
+- name: Product / Style Properties
+paths:
+  /api/v2/style-properties/:
+    post:
+      summary: Create a Style Property
+      tags:
+      - Product / Style Properties
+      description: Creates a new style property for the authenticated company. Style properties are predefined values for the brands, seasons, collections, and departments fields. A property must be created here before its id can be referenced on a style. The category field determines which field the property applies to.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                category:
+                  type: string
+                  enum:
+                  - collections
+                  - departments
+                  - seasons
+                  - brands
+              required:
+              - value
+              - category
+      responses:
+        '201':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                      pagination:
+                        type: object
+                        properties:
+                          page:
+                            default: 1
+                            type: number
+                          limit:
+                            default: 10
+                            type: number
+                          total:
+                            default: 0
+                            type: number
+                          totalPages:
+                            default: 0
+                            type: number
+                        required:
+                        - page
+                        - limit
+                        - total
+                        - totalPages
+                        additionalProperties: false
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    $ref: '#/components/schemas/StylePropertySchema'
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+    get:
+      summary: List Style Properties
+      tags:
+      - Product / Style Properties
+      description: Returns a paginated list of style properties for the authenticated company. Style properties are the predefined lookup values used to populate the brands, seasons, collections, and departments fields on a style. Use the category query parameter to filter by a specific type. The id returned for each property is what must be passed when creating or updating styles.
+      parameters:
+      - schema:
+          default: 1
+          type: integer
+          minimum: 1
+          maximum: 9007199254740991
+        in: query
+        name: page
+        required: false
+      - schema:
+          default: 20
+          type: integer
+          minimum: 1
+          maximum: 100
+        in: query
+        name: limit
+        required: false
+      - schema:
+          default: createdAt
+          type: string
+          enum:
+          - value
+          - category
+          - createdAt
+          - updatedAt
+          - createdByUserId
+          - updatedByUserId
+        in: query
+        name: sort
+        required: false
+      - schema:
+          default: desc
+          type: string
+          enum:
+          - asc
+          - desc
+          - ASC
+          - DESC
+        in: query
+        name: order
+        required: false
+      - schema:
+          type: string
+          enum:
+          - brands
+          - departments
+          - seasons
+          - collections
+        in: query
+        name: category
+        required: false
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                      pagination:
+                        type: object
+                        properties:
+                          page:
+                            default: 1
+                            type: number
+                          limit:
+                            default: 10
+                            type: number
+                          total:
+                            default: 0
+                            type: number
+                          totalPages:
+                            default: 0
+                            type: number
+                        required:
+                        - page
+                        - limit
+                        - total
+                        - totalPages
+                        additionalProperties: false
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          minLength: 1
+                        forCompanyId:
+                          type: string
+                          minLength: 1
+                        value:
+                          anyOf:
+                          - type: string
+                            maxLength: 255
+                          - type: 'null'
+                        category:
+                          type: string
+                          enum:
+                          - collections
+                          - departments
+                          - seasons
+                          - brands
+                        createdAt:
+                          anyOf:
+                          - type: string
+                            format: date-time
+                          - type: 'null'
+                        updatedAt:
+                          anyOf:
+                          - type: string
+                            format: date-time
+                          - type: 'null'
+                        createdByImpersonateId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        createdByUserId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        createdByCompanyId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        createdByApiKeyId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        createdByApiKeyLabel:
+                          anyOf:
+                          - type: string
+                            maxLength: 255
+                          - type: 'null'
+                        updatedByImpersonateId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        updatedByUserId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        updatedByCompanyId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        updatedByApiKeyId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        updatedByApiKeyLabel:
+                          anyOf:
+                          - type: string
+                            maxLength: 255
+                          - type: 'null'
+                      required:
+                      - id
+                      - forCompanyId
+                      - value
+                      - category
+                      additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+components:
+  schemas:
+    StylePropertySchema:
+      type: object
+      properties:
+        id:
+          type: string
+          minLength: 1
+        forCompanyId:
+          type: string
+          minLength: 1
+        value:
+          anyOf:
+          - type: string
+            maxLength: 255
+          - type: 'null'
+        category:
+          type: string
+          enum:
+          - collections
+          - departments
+          - seasons
+          - brands
+        createdAt:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        updatedAt:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        createdByImpersonateId:
+          anyOf:
+          - type: string
+            maxLength: 36
+          - type: 'null'
+        createdByUserId:
+          anyOf:
+          - type: string
+            maxLength: 36
+          - type: 'null'
+        createdByCompanyId:
+          anyOf:
+          - type: string
+            maxLength: 36
+          - type: 'null'
+        createdByApiKeyId:
+          anyOf:
+          - type: string
+            maxLength: 36
+          - type: 'null'
+        createdByApiKeyLabel:
+          anyOf:
+          - type: string
+            maxLength: 255
+          - type: 'null'
+        updatedByImpersonateId:
+          anyOf:
+          - type: string
+            maxLength: 36
+          - type: 'null'
+        updatedByUserId:
+          anyOf:
+          - type: string
+            maxLength: 36
+          - type: 'null'
+        updatedByCompanyId:
+          anyOf:
+          - type: string
+            maxLength: 36
+          - type: 'null'
+        updatedByApiKeyId:
+          anyOf:
+          - type: string
+            maxLength: 36
+          - type: 'null'
+        updatedByApiKeyLabel:
+          anyOf:
+          - type: string
+            maxLength: 255
+          - type: 'null'
+      required:
+      - id
+      - forCompanyId
+      - value
+      - category
+      additionalProperties: false

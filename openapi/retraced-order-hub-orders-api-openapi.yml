@@ -1,0 +1,2411 @@
+openapi: 3.0.3
+info:
+  title: Public API Reference Certificates Order Hub / Orders API
+  description: 'The retraced API comprises all publicly enabled options to make
+
+    machine-to-machine changes in the retraced platform. The retraced dashboard uses the
+
+    same endpoints, but also in addition more. If you wish to use the API of the dashboard,
+
+    it is possible but not versioned cleanly like the public API.
+
+
+    ## Authentication
+
+
+    The authentication procedure is passwordless and uses an API key in the header. To get
+
+    an API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**
+
+    then click **Create**. Be sure to copy the key somewhere safe, as you won''t be able to
+
+    view it again. If you don''t see Developers HQ in the sidebar contact your Customer
+
+    Success Manager to enable this for you. You can now set the key directly in request
+
+    headers. To authenticate using an API key, set the header key `companyapikey` to the
+
+    value of your API key.
+
+
+    ## Getting Started
+
+
+    Retraced has 2 environments against which you can send your requests and receive the
+
+    expected response: staging (for development and testing) and production. Your API key
+
+    is scoped for both environments. The staging Base URL is
+
+    https://publicapi.staging.retraced.com. Staging copies production data once daily, and
+
+    all changes made on staging will be deleted.
+
+
+    Find detailed guides on how to use the endpoints and how we recommend building an
+
+    integration given your use case in our
+
+    [guides](https://publicapi.retraced.com/api/v2/guides). A history of public API
+
+    changes is available in the
+
+    [release notes](https://publicapi.retraced.com/api/v2/release-notes).'
+  version: 2.938.1
+servers: []
+tags:
+- name: Order Hub / Orders
+paths:
+  /api/v2/orders/:
+    get:
+      tags:
+      - Order Hub / Orders
+      description: List the current company's orders. Supports filtering by type, supplier, buyer, status, tag, orderNumber, archived flag and updated-time range, plus pagination and sorting. Soft-removed orders are always excluded.
+      parameters:
+      - schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+        in: query
+        name: limit
+        required: false
+      - schema:
+          type: integer
+          minimum: 1
+          maximum: 9007199254740991
+        in: query
+        name: page
+        required: false
+      - schema:
+          default: desc
+          type: string
+          enum:
+          - asc
+          - desc
+          - ASC
+          - DESC
+        in: query
+        name: order
+        required: false
+      - schema:
+          default: updatedAt
+          type: string
+          enum:
+          - updatedAt
+          - createdAt
+          - orderNumber
+          - orderDate
+          - status
+        in: query
+        name: sort
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: type
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: supplier
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: buyer
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: status
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tag
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: orderNumber
+        required: false
+      - schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+        in: query
+        name: isArchived
+        required: false
+      - schema:
+          type: integer
+          minimum: 0
+          maximum: 9007199254740991
+        in: query
+        name: updatedAfterUnixMs
+        required: false
+      - schema:
+          type: integer
+          minimum: 0
+          maximum: 9007199254740991
+        in: query
+        name: updatedBeforeUnixMs
+        required: false
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                      pagination:
+                        type: object
+                        properties:
+                          page:
+                            default: 1
+                            type: number
+                          limit:
+                            default: 10
+                            type: number
+                          total:
+                            default: 0
+                            type: number
+                          totalPages:
+                            default: 0
+                            type: number
+                        required:
+                        - page
+                        - limit
+                        - total
+                        - totalPages
+                        additionalProperties: false
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        forCompanyId:
+                          type: string
+                        orderNumber:
+                          type: string
+                        orderType:
+                          anyOf:
+                          - type: string
+                            enum:
+                            - PURCHASE_ORDER
+                            - SALES_ORDER
+                            - INTERNAL_ORDER
+                          - type: 'null'
+                        orderSubType:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        status:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        tags:
+                          type: array
+                          items:
+                            type: string
+                        source:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        buyerCompanyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        supplierCompanyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        receiverCompanyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        vendorCompanyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        factory:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        buyerFacilityProcess:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        supplierFacilityProcess:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        receiverFacilityProcess:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        orderDate:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        deliveryDate:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        agreedDeliveryDate:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        expectedShippingDate:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        shippingDate:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        expectedDeliveryDate:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        actualDeliveryDate:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        shipmentReference:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        internalResponsiblePerson:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        season:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        counterpartyOrderNumberRef:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        isArchived:
+                          type: boolean
+                        tracingStatus:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdAt:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByUserId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByUserName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByCompanyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByCompanyName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByImpersonateId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByImpersonateName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByApiKeyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByApiKeyLabel:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedAt:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByUserId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByUserName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByCompanyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByCompanyName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByImpersonateId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByImpersonateName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByApiKeyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByApiKeyLabel:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                      required:
+                      - id
+                      - forCompanyId
+                      - orderNumber
+                      - orderType
+                      - orderSubType
+                      - status
+                      - tags
+                      - source
+                      - buyerCompanyId
+                      - supplierCompanyId
+                      - receiverCompanyId
+                      - vendorCompanyId
+                      - factory
+                      - buyerFacilityProcess
+                      - supplierFacilityProcess
+                      - receiverFacilityProcess
+                      - orderDate
+                      - deliveryDate
+                      - agreedDeliveryDate
+                      - expectedShippingDate
+                      - shippingDate
+                      - expectedDeliveryDate
+                      - actualDeliveryDate
+                      - shipmentReference
+                      - internalResponsiblePerson
+                      - season
+                      - counterpartyOrderNumberRef
+                      - isArchived
+                      - tracingStatus
+                      - createdAt
+                      - createdByUserId
+                      - createdByUserName
+                      - createdByCompanyId
+                      - createdByCompanyName
+                      - createdByImpersonateId
+                      - createdByImpersonateName
+                      - createdByApiKeyId
+                      - createdByApiKeyLabel
+                      - updatedAt
+                      - updatedByUserId
+                      - updatedByUserName
+                      - updatedByCompanyId
+                      - updatedByCompanyName
+                      - updatedByImpersonateId
+                      - updatedByImpersonateName
+                      - updatedByApiKeyId
+                      - updatedByApiKeyLabel
+                      additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+                example:
+                  metadata:
+                    success: true
+                    pagination:
+                      page: 1
+                      limit: 20
+                      total: 2
+                      totalPages: 1
+                  data:
+                  - id: order_01KWHF7TD318JZA3KM9A9E9979
+                    forCompanyId: M4MRIN4A9JQ
+                    orderNumber: PO-2026-0042
+                    orderType: PURCHASE_ORDER
+                    orderSubType: STANDARD
+                    status: IN_PROGRESS
+                    tags:
+                    - priority
+                    source: ERP
+                    buyerCompanyId: M4MRIN4A9JQ
+                    supplierCompanyId: 4ZGRBDHXAF5
+                    receiverCompanyId: 4N3TWW6BVA8
+                    vendorCompanyId: 4NX1XA2LARR
+                    factory: 41FP5A2HJPX
+                    buyerFacilityProcess: Quality inspection
+                    supplierFacilityProcess: Weaving
+                    receiverFacilityProcess: Washing & finishing
+                    orderDate: '2026-07-01'
+                    deliveryDate: '2026-09-15'
+                    agreedDeliveryDate: '2026-09-10'
+                    expectedShippingDate: '2026-08-28'
+                    shippingDate: '2026-08-30'
+                    expectedDeliveryDate: '2026-09-15'
+                    actualDeliveryDate: null
+                    shipmentReference: SHIP-2026-0042
+                    internalResponsiblePerson: KP1A1AILVU3
+                    season: FW26
+                    counterpartyOrderNumberRef: WW-SO-2026-118
+                    isArchived: false
+                    tracingStatus: null
+                    createdAt: '2026-07-02T12:48:40.563Z'
+                    createdByUserId: null
+                    createdByUserName: null
+                    createdByCompanyId: M4MRIN4A9JQ
+                    createdByCompanyName: null
+                    createdByImpersonateId: null
+                    createdByImpersonateName: null
+                    createdByApiKeyId: QLKL2SWPRSH
+                    createdByApiKeyLabel: ERP integration
+                    updatedAt: '2026-07-02T12:48:40.563Z'
+                    updatedByUserId: null
+                    updatedByUserName: null
+                    updatedByCompanyId: M4MRIN4A9JQ
+                    updatedByCompanyName: null
+                    updatedByImpersonateId: null
+                    updatedByImpersonateName: null
+                    updatedByApiKeyId: QLKL2SWPRSH
+                    updatedByApiKeyLabel: ERP integration
+                  - id: order_01KWHF7VW17Z89RDBEFVK4M8X8
+                    forCompanyId: M4MRIN4A9JQ
+                    orderNumber: SO-2026-0107
+                    orderType: SALES_ORDER
+                    orderSubType: REPEAT
+                    status: IN_REVIEW
+                    tags: []
+                    source: Manual
+                    buyerCompanyId: JCPAGPS53CQ
+                    supplierCompanyId: M4MRIN4A9JQ
+                    receiverCompanyId: JCPAGPS53CQ
+                    vendorCompanyId: null
+                    factory: 41FP5A2HJPX
+                    buyerFacilityProcess: Goods receipt
+                    supplierFacilityProcess: Cut-make-trim
+                    receiverFacilityProcess: null
+                    orderDate: '2026-06-20'
+                    deliveryDate: '2026-08-30'
+                    agreedDeliveryDate: '2026-08-30'
+                    expectedShippingDate: '2026-08-18'
+                    shippingDate: null
+                    expectedDeliveryDate: '2026-08-30'
+                    actualDeliveryDate: null
+                    shipmentReference: SHIP-4471
+                    internalResponsiblePerson: TBR6IG6HV9R
+                    season: SS26
+                    counterpartyOrderNumberRef: WW-PO-88121
+                    isArchived: false
+                    tracingStatus: null
+                    createdAt: '2026-07-02T12:49:08.050Z'
+                    createdByUserId: null
+                    createdByUserName: null
+                    createdByCompanyId: M4MRIN4A9JQ
+                    createdByCompanyName: null
+                    createdByImpersonateId: null
+                    createdByImpersonateName: null
+                    createdByApiKeyId: QLKL2SWPRSH
+                    createdByApiKeyLabel: ERP integration
+                    updatedAt: '2026-07-02T12:49:08.050Z'
+                    updatedByUserId: null
+                    updatedByUserName: null
+                    updatedByCompanyId: M4MRIN4A9JQ
+                    updatedByCompanyName: null
+                    updatedByImpersonateId: null
+                    updatedByImpersonateName: null
+                    updatedByApiKeyId: QLKL2SWPRSH
+                    updatedByApiKeyLabel: ERP integration
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
+    post:
+      tags:
+      - Order Hub / Orders
+      description: Create an order for the current company, optionally with nested order lines (created atomically with the order). The order number must be unique within the company for the same order type — a duplicate returns 400 (order_number_already_existing).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orderNumber:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                orderSubType:
+                  type: string
+                  enum:
+                  - STANDARD
+                  - REPEAT
+                  - COMMIT
+                  - SAMPLE
+                  - EXTRACTION_SPLIT
+                status:
+                  type: string
+                  enum:
+                  - IN_PROGRESS
+                  - IN_REVIEW
+                  - COMPLETED
+                tags:
+                  type: array
+                  items:
+                    type: string
+                source:
+                  type: string
+                  maxLength: 255
+                buyerCompanyId:
+                  type: string
+                  minLength: 1
+                  maxLength: 36
+                supplierCompanyId:
+                  type: string
+                  minLength: 1
+                  maxLength: 36
+                receiverCompanyId:
+                  type: string
+                  maxLength: 36
+                vendorCompanyId:
+                  type: string
+                  maxLength: 36
+                factory:
+                  type: string
+                  maxLength: 36
+                buyerFacilityProcess:
+                  type: string
+                  maxLength: 255
+                supplierFacilityProcess:
+                  type: string
+                  maxLength: 255
+                receiverFacilityProcess:
+                  type: string
+                  maxLength: 255
+                orderDate:
+                  format: date
+                  type: string
+                  example: '2026-07-21'
+                deliveryDate:
+                  format: date
+                  type: string
+                  example: '2026-07-21'
+                agreedDeliveryDate:
+                  format: date
+                  type: string
+                  example: '2026-07-21'
+                expectedShippingDate:
+                  format: date
+                  type: string
+                  example: '2026-07-21'
+                shippingDate:
+                  format: date
+                  type: string
+                  example: '2026-07-21'
+                expectedDeliveryDate:
+                  format: date
+                  type: string
+                  example: '2026-07-21'
+                actualDeliveryDate:
+                  format: date
+                  type: string
+                  example: '2026-07-21'
+                shipmentReference:
+                  type: string
+                  maxLength: 255
+                internalResponsiblePerson:
+                  type: string
+                  maxLength: 255
+                season:
+                  type: string
+                counterpartyOrderNumberRef:
+                  type: string
+                orderType:
+                  anyOf:
+                  - type: string
+                    enum:
+                    - PURCHASE_ORDER
+                    - SALES_ORDER
+                    - INTERNAL_ORDER
+                  - type: 'null'
+                tracingStatus:
+                  anyOf:
+                  - type: string
+                    maxLength: 255
+                  - type: 'null'
+                isArchived:
+                  type: boolean
+                lines:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      orderLineNumber:
+                        type: string
+                        minLength: 1
+                        maxLength: 255
+                      styleId:
+                        type: string
+                        minLength: 1
+                        maxLength: 36
+                      quantity:
+                        type: number
+                        exclusiveMinimum: 0
+                        exclusiveMaximum: 100000000000000000
+                      unit:
+                        type: string
+                        enum:
+                        - LITRE
+                        - MILLILITRE
+                        - CENTILITRE
+                        - CUBIC_DECIMETRE
+                        - CUBIC_METRE
+                        - GALLON
+                        - QUART
+                        - PINT
+                        - GILL
+                        - FLUID_OUNCE
+                        - FLUID_DRAM
+                        - MINIM
+                        - BUSHEL
+                        - ACRE_FOOT
+                        - CORD
+                        - CUBIC_YARD
+                        - CUBIC_FOOT
+                        - CUBIC_INCH
+                        - PECK
+                        - METRE
+                        - MILLIMETRE
+                        - DECIMETRE
+                        - CENTIMETRE
+                        - INCH
+                        - NAUTICAL_MILE
+                        - MILE
+                        - FURLONG
+                        - ROD
+                        - FATHOM
+                        - YARD
+                        - FOOT
+                        - GRAM
+                        - GRAM_PER_SQUARE_METER
+                        - GRAM_PER_SQUARE_FOOT
+                        - GRAM_PER_SQUARE_YARD
+                        - OUNCE_PER_SQUARE_YARD
+                        - MILLIGRAM
+                        - KILOGRAM
+                        - METRIC_TON
+                        - POUNDS
+                        - SHORT_TON
+                        - LONG_TON
+                        - HUNDREDWEIGHT
+                        - SHORT_HUNDREDWEIGHT
+                        - LONG_HUNDREDWEIGHT
+                        - OUNCE
+                        - DRAM
+                        - GRAIN
+                        - PENNYWEIGHT
+                        - SCRUPLE
+                        - STONE
+                        - SQUARE_METRE
+                        - SQUARE_DECIMETRE
+                        - SQUARE_CENTIMETRE
+                        - SQUARE_INCH
+                        - SQUARE_MILE
+                        - SQUARE_FEET
+                        - SQUARE_ROD
+                        - SQUARE_YARD
+                        - ACRE
+                        - PIECES
+                        - PAIR
+                        - PERCENTAGE
+                        - DENIER
+                        - JUTE
+                        - ENGLISH_COUNT
+                        - METRIC_COUNT
+                        - WORSTED_COUNT
+                        - TEX
+                        - KILOWATT_HOUR
+                        - MOUND
+                      secondaryQuantity:
+                        type: number
+                        exclusiveMinimum: 0
+                        exclusiveMaximum: 100000000000000000
+                      secondaryUnit:
+                        type: string
+                        enum:
+                        - KILOGRAM
+                    required:
+                    - styleId
+                    - quantity
+                    - unit
+                    additionalProperties: false
+              required:
+              - orderNumber
+              - buyerCompanyId
+              - supplierCompanyId
+              additionalProperties: false
+              example:
+                orderNumber: PO-2026-0042
+                status: IN_PROGRESS
+                orderSubType: STANDARD
+                source: ERP
+                tags:
+                - priority
+                buyerCompanyId: M4MRIN4A9JQ
+                supplierCompanyId: 4ZGRBDHXAF5
+                receiverCompanyId: 4N3TWW6BVA8
+                vendorCompanyId: 4NX1XA2LARR
+                factory: 41FP5A2HJPX
+                buyerFacilityProcess: Quality inspection
+                supplierFacilityProcess: Weaving
+                receiverFacilityProcess: Washing & finishing
+                orderDate: '2026-07-01'
+                deliveryDate: '2026-09-15'
+                agreedDeliveryDate: '2026-09-10'
+                expectedShippingDate: '2026-08-28'
+                shippingDate: '2026-08-30'
+                expectedDeliveryDate: '2026-09-15'
+                shipmentReference: SHIP-2026-0042
+                internalResponsiblePerson: KP1A1AILVU3
+                season: FW26
+                counterpartyOrderNumberRef: WW-SO-2026-118
+                lines:
+                - orderLineNumber: PO-2026-0042-PACKAGING
+                  styleId: style_01KM3A0QDRW7HRT0KZ8FQPXV6E
+                  quantity: 300
+                  unit: PIECES
+                  secondaryQuantity: 120.5
+                  secondaryUnit: KILOGRAM
+            examples:
+              default:
+                summary: Example request
+                value:
+                  orderNumber: PO-2026-0042
+                  status: IN_PROGRESS
+                  orderSubType: STANDARD
+                  source: ERP
+                  tags:
+                  - priority
+                  buyerCompanyId: M4MRIN4A9JQ
+                  supplierCompanyId: 4ZGRBDHXAF5
+                  receiverCompanyId: 4N3TWW6BVA8
+                  vendorCompanyId: 4NX1XA2LARR
+                  factory: 41FP5A2HJPX
+                  buyerFacilityProcess: Quality inspection
+                  supplierFacilityProcess: Weaving
+                  receiverFacilityProcess: Washing & finishing
+                  orderDate: '2026-07-01'
+                  deliveryDate: '2026-09-15'
+                  agreedDeliveryDate: '2026-09-10'
+                  expectedShippingDate: '2026-08-28'
+                  shippingDate: '2026-08-30'
+                  expectedDeliveryDate: '2026-09-15'
+                  shipmentReference: SHIP-2026-0042
+                  internalResponsiblePerson: KP1A1AILVU3
+                  season: FW26
+                  counterpartyOrderNumberRef: WW-SO-2026-118
+                  lines:
+                  - orderLineNumber: PO-2026-0042-PACKAGING
+                    styleId: style_01KM3A0QDRW7HRT0KZ8FQPXV6E
+                    quantity: 300
+                    unit: PIECES
+                    secondaryQuantity: 120.5
+                    secondaryUnit: KILOGRAM
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      forCompanyId:
+                        type: string
+                      orderNumber:
+                        type: string
+                      orderType:
+                        anyOf:
+                        - type: string
+                          enum:
+                          - PURCHASE_ORDER
+                          - SALES_ORDER
+                          - INTERNAL_ORDER
+                        - type: 'null'
+                      orderSubType:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      status:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      tags:
+                        type: array
+                        items:
+                          type: string
+                      source:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      buyerCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      supplierCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      receiverCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      vendorCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      factory:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      buyerFacilityProcess:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      supplierFacilityProcess:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      receiverFacilityProcess:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      orderDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      deliveryDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      agreedDeliveryDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      expectedShippingDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      shippingDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      expectedDeliveryDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      actualDeliveryDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      shipmentReference:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      internalResponsiblePerson:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      season:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      counterpartyOrderNumberRef:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      isArchived:
+                        type: boolean
+                      tracingStatus:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdAt:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByUserId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByUserName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByCompanyName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByImpersonateId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByImpersonateName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByApiKeyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByApiKeyLabel:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedAt:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByUserId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByUserName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByCompanyName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByImpersonateId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByImpersonateName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByApiKeyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByApiKeyLabel:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                    required:
+                    - id
+                    - forCompanyId
+                    - orderNumber
+                    - orderType
+                    - orderSubType
+                    - status
+                    - tags
+                    - source
+                    - buyerCompanyId
+                    - supplierCompanyId
+                    - receiverCompanyId
+                    - vendorCompanyId
+                    - factory
+                    - buyerFacilityProcess
+                    - supplierFacilityProcess
+                    - receiverFacilityProcess
+                    - orderDate
+                    - deliveryDate
+                    - agreedDeliveryDate
+                    - expectedShippingDate
+                    - shippingDate
+                    - expectedDeliveryDate
+                    - actualDeliveryDate
+                    - shipmentReference
+                    - internalResponsiblePerson
+                    - season
+                    - counterpartyOrderNumberRef
+                    - isArchived
+                    - tracingStatus
+                    - createdAt
+                    - createdByUserId
+                    - createdByUserName
+                    - createdByCompanyId
+                    - createdByCompanyName
+                    - createdByImpersonateId
+                    - createdByImpersonateName
+                    - createdByApiKeyId
+                    - createdByApiKeyLabel
+                    - updatedAt
+                    - updatedByUserId
+                    - updatedByUserName
+                    - updatedByCompanyId
+                    - updatedByCompanyName
+                    - updatedByImpersonateId
+                    - updatedByImpersonateName
+                    - updatedByApiKeyId
+                    - updatedByApiKeyLabel
+                    additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+                example:
+                  metadata:
+                    success: true
+                  data:
+                    id: order_01KWHF7TD318JZA3KM9A9E9979
+                    forCompanyId: M4MRIN4A9JQ
+                    orderNumber: PO-2026-0042
+                    orderType: PURCHASE_ORDER
+                    orderSubType: STANDARD
+                    status: IN_PROGRESS
+                    tags:
+                    - priority
+                    source: ERP
+                    buyerCompanyId: M4MRIN4A9JQ
+                    supplierCompanyId: 4ZGRBDHXAF5
+                    receiverCompanyId: 4N3TWW6BVA8
+                    vendorCompanyId: 4NX1XA2LARR
+                    factory: 41FP5A2HJPX
+                    buyerFacilityProcess: Quality inspection
+                    supplierFacilityProcess: Weaving
+                    receiverFacilityProcess: Washing & finishing
+                    orderDate: '2026-07-01'
+                    deliveryDate: '2026-09-15'
+                    agreedDeliveryDate: '2026-09-10'
+                    expectedShippingDate: '2026-08-28'
+                    shippingDate: '2026-08-30'
+                    expectedDeliveryDate: '2026-09-15'
+                    actualDeliveryDate: null
+                    shipmentReference: SHIP-2026-0042
+                    internalResponsiblePerson: KP1A1AILVU3
+                    season: FW26
+                    counterpartyOrderNumberRef: WW-SO-2026-118
+                    isArchived: false
+                    tracingStatus: null
+                    createdAt: '2026-07-02T12:48:40.563Z'
+                    createdByUserId: null
+                    createdByUserName: null
+                    createdByCompanyId: M4MRIN4A9JQ
+                    createdByCompanyName: null
+                    createdByImpersonateId: null
+                    createdByImpersonateName: null
+                    createdByApiKeyId: QLKL2SWPRSH
+                    createdByApiKeyLabel: ERP integration
+                    updatedAt: '2026-07-02T12:48:40.563Z'
+                    updatedByUserId: null
+                    updatedByUserName: null
+                    updatedByCompanyId: M4MRIN4A9JQ
+                    updatedByCompanyName: null
+                    updatedByImpersonateId: null
+                    updatedByImpersonateName: null
+                    updatedByApiKeyId: QLKL2SWPRSH
+                    updatedByApiKeyLabel: ERP integration
+        '400':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
+        '409':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
+  /api/v2/orders/{id}:
+    get:
+      tags:
+      - Order Hub / Orders
+      description: Fetch a single order by id. Returns 404 when the order is removed or belongs to another company.
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+        in: path
+        name: id
+        required: true
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      forCompanyId:
+                        type: string
+                      orderNumber:
+                        type: string
+                      orderType:
+                        anyOf:
+                        - type: string
+                          enum:
+                          - PURCHASE_ORDER
+                          - SALES_ORDER
+                          - INTERNAL_ORDER
+                        - type: 'null'
+                      orderSubType:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      status:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      tags:
+                        type: array
+                        items:
+                          type: string
+                      source:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      buyerCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      supplierCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      receiverCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      vendorCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      factory:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      buyerFacilityProcess:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      supplierFacilityProcess:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      receiverFacilityProcess:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      orderDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      deliveryDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      agreedDeliveryDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      expectedShippingDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      shippingDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      expectedDeliveryDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      actualDeliveryDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      shipmentReference:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      internalResponsiblePerson:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      season:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      counterpartyOrderNumberRef:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      isArchived:
+                        type: boolean
+                      tracingStatus:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdAt:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByUserId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByUserName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByCompanyName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByImpersonateId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByImpersonateName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByApiKeyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByApiKeyLabel:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedAt:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByUserId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByUserName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByCompanyName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByImpersonateId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByImpersonateName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByApiKeyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByApiKeyLabel:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                    required:
+                    - id
+                    - forCompanyId
+                    - orderNumber
+                    - orderType
+                    - orderSubType
+                    - status
+                    - tags
+                    - source
+                    - buyerCompanyId
+                    - supplierCompanyId
+                    - receiverCompanyId
+                    - vendorCompanyId
+                    - factory
+                    - buyerFacilityProcess
+                    - supplierFacilityProcess
+                    - receiverFacilityProcess
+                    - orderDate
+                    - deliveryDate
+                    - agreedDeliveryDate
+                    - expectedShippingDate
+                    - shippingDate
+                    - expectedDeliveryDate
+                    - actualDeliveryDate
+                    - shipmentReference
+                    - internalResponsiblePerson
+                    - season
+                    - counterpartyOrderNumberRef
+                    - isArchived
+                    - tracingStatus
+                    - createdAt
+                    - createdByUserId
+                    - createdByUserName
+                    - createdByCompanyId
+                    - createdByCompanyName
+                    - createdByImpersonateId
+                    - createdByImpersonateName
+                    - createdByApiKeyId
+                    - createdByApiKeyLabel
+                    - updatedAt
+                    - updatedByUserId
+                    - updatedByUserName
+                    - updatedByCompanyId
+                    - updatedByCompanyName
+                    - updatedByImpersonateId
+                    - updatedByImpersonateName
+                    - updatedByApiKeyId
+                    - updatedByApiKeyLabel
+                    additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+                example:
+                  metadata:
+                    success: true
+                  data:
+                    id: order_01KWHF7TD318JZA3KM9A9E9979
+                    forCompanyId: M4MRIN4A9JQ
+                    orderNumber: PO-2026-0042
+                    orderType: PURCHASE_ORDER
+                    orderSubType: STANDARD
+                    status: IN_PROGRESS
+                    tags:
+                    - priority
+                    source: ERP
+                    buyerCompanyId: M4MRIN4A9JQ
+                    supplierCompanyId: 4ZGRBDHXAF5
+                    receiverCompanyId: 4N3TWW6BVA8
+                    vendorCompanyId: 4NX1XA2LARR
+                    factory: 41FP5A2HJPX
+                    buyerFacilityProcess: Quality inspection
+                    supplierFacilityProcess: Weaving
+                    receiverFacilityProcess: Washing & finishing
+                    orderDate: '2026-07-01'
+                    deliveryDate: '2026-09-15'
+                    agreedDeliveryDate: '2026-09-10'
+                    expectedShippingDate: '2026-08-28'
+                    shippingDate: '2026-08-30'
+                    expectedDeliveryDate: '2026-09-15'
+                    actualDeliveryDate: null
+                    shipmentReference: SHIP-2026-0042
+                    internalResponsiblePerson: KP1A1AILVU3
+                    season: FW26
+                    counterpartyOrderNumberRef: WW-SO-2026-118
+                    isArchived: false
+                    tracingStatus: null
+                    createdAt: '2026-07-02T12:48:40.563Z'
+                    createdByUserId: null
+                    createdByUserName: null
+                    createdByCompanyId: M4MRIN4A9JQ
+                    createdByCompanyName: null
+                    createdByImpersonateId: null
+                    createdByImpersonateName: null
+                    createdByApiKeyId: QLKL2SWPRSH
+                    createdByApiKeyLabel: ERP integration
+                    updatedAt: '2026-07-02T12:48:40.563Z'
+                    updatedByUserId: null
+                    updatedByUserName: null
+                    updatedByCompanyId: M4MRIN4A9JQ
+                    updatedByCompanyName: null
+                    updatedByImpersonateId: null
+                    updatedByImpersonateName: null
+                    updatedByApiKeyId: QLKL2SWPRSH
+                    updatedByApiKeyLabel: ERP integration
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
+    patch:
+      tags:
+      - Order Hub / Orders
+      description: Partially update an order owned by the current company.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orderNumber:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                orderSubType:
+                  anyOf:
+                  - type: string
+                    enum:
+                    - STANDARD
+                    - REPEAT
+                    - COMMIT
+                    - SAMPLE
+                    - EXTRACTION_SPLIT
+                  - type: 'null'
+                status:
+                  anyOf:
+                  - type: string
+                    enum:
+                    - IN_PROGRESS
+                    - IN_REVIEW
+                    - COMPLETED
+                  - type: 'null'
+                tags:
+                  type: array
+                  items:
+                    type: string
+                source:
+                  anyOf:
+                  - type: string
+                    maxLength: 255
+                  - type: 'null'
+                buyerCompanyId:
+                  type: string
+                  minLength: 1
+                  maxLength: 36
+                supplierCompanyId:
+                  type: string
+                  minLength: 1
+                  maxLength: 36
+                receiverCompanyId:
+                  anyOf:
+                  - type: string
+                    maxLength: 36
+                  - type: 'null'
+                vendorCompanyId:
+                  anyOf:
+                  - type: string
+                    maxLength: 36
+                  - type: 'null'
+                factory:
+                  anyOf:
+                  - type: string
+                    maxLength: 36
+                  - type: 'null'
+                buyerFacilityProcess:
+                  anyOf:
+                  - type: string
+                    maxLength: 255
+                  - type: 'null'
+                supplierFacilityProcess:
+                  anyOf:
+                  - type: string
+                    maxLength: 255
+                  - type: 'null'
+                receiverFacilityProcess:
+                  anyOf:
+                  - type: string
+                    maxLength: 255
+                  - type: 'null'
+                orderDate:
+                  anyOf:
+                  - format: date
+                    examples:
+                    - '2026-07-21'
+                    type: string
+                  - type: 'null'
+                deliveryDate:
+                  anyOf:
+                  - format: date
+                    examples:
+                    - '2026-07-21'
+                    type: string
+                  - type: 'null'
+                agreedDeliveryDate:
+                  anyOf:
+                  - format: date
+                    examples:
+                    - '2026-07-21'
+                    type: string
+                  - type: 'null'
+                expectedShippingDate:
+                  anyOf:
+                  - format: date
+                    examples:
+                    - '2026-07-21'
+                    type: string
+                  - type: 'null'
+                shippingDate:
+                  anyOf:
+                  - format: date
+                    examples:
+                    - '2026-07-21'
+                    type: string
+                  - type: 'null'
+                expectedDeliveryDate:
+                  anyOf:
+                  - format: date
+                    examples:
+                    - '2026-07-21'
+                    type: string
+                  - type: 'null'
+                actualDeliveryDate:
+                  anyOf:
+                  - format: date
+                    examples:
+                    - '2026-07-21'
+                    type: string
+                  - type: 'null'
+                shipmentReference:
+                  anyOf:
+                  - type: string
+                    maxLength: 255
+                  - type: 'null'
+                internalResponsiblePerson:
+                  anyOf:
+                  - type: string
+                    maxLength: 255
+                  - type: 'null'
+                season:
+                  anyOf:
+                  - type: string
+                  - type: 'null'
+                counterpartyOrderNumberRef:
+                  anyOf:
+                  - type: string
+                  - type: 'null'
+                orderType:
+                  anyOf:
+                  - type: string
+                    enum:
+                    - PURCHASE_ORDER
+                    - SALES_ORDER
+                    - INTERNAL_ORDER
+                  - type: 'null'
+                tracingStatus:
+                  anyOf:
+                  - type: string
+                    maxLength: 255
+                  - type: 'null'
+                isArchived:
+                  type: boolean
+                lines:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      orderLineNumber:
+                        type: string
+                        minLength: 1
+                        maxLength: 255
+                      styleId:
+                        type: string
+                        minLength: 1
+                        maxLength: 36
+                      quantity:
+                        type: number
+                        exclusiveMinimum: 0
+                        exclusiveMaximum: 100000000000000000
+                      unit:
+                        type: string
+                        enum:
+                        - LITRE
+                        - MILLILITRE
+                        - CENTILITRE
+                        - CUBIC_DECIMETRE
+                        - CUBIC_METRE
+                        - GALLON
+                        - QUART
+                        - PINT
+                        - GILL
+                        - FLUID_OUNCE
+                        - FLUID_DRAM
+                        - MINIM
+                        - BUSHEL
+                        - ACRE_FOOT
+                        - CORD
+                        - CUBIC_YARD
+                        - CUBIC_FOOT
+                        - CUBIC_INCH
+                        - PECK
+                        - METRE
+                        - MILLIMETRE
+                        - DECIMETRE
+                        - CENTIMETRE
+                        - INCH
+                        - NAUTICAL_MILE
+                        - MILE
+                        - FURLONG
+                        - ROD
+                        - FATHOM
+                        - YARD
+                        - FOOT
+                        - GRAM
+                        - GRAM_PER_SQUARE_METER
+                        - GRAM_PER_SQUARE_FOOT
+                        - GRAM_PER_SQUARE_YARD
+                        - OUNCE_PER_SQUARE_YARD
+                        - MILLIGRAM
+                        - KILOGRAM
+                        - METRIC_TON
+                        - POUNDS
+                        - SHORT_TON
+                        - LONG_TON
+                        - HUNDREDWEIGHT
+                        - SHORT_HUNDREDWEIGHT
+                        - LONG_HUNDREDWEIGHT
+                        - OUNCE
+                        - DRAM
+                        - GRAIN
+                        - PENNYWEIGHT
+                        - SCRUPLE
+                        - STONE
+                        - SQUARE_METRE
+                        - SQUARE_DECIMETRE
+                        - SQUARE_CENTIMETRE
+                        - SQUARE_INCH
+                        - SQUARE_MILE
+                        - SQUARE_FEET
+                        - SQUARE_ROD
+                        - SQUARE_YARD
+                        - ACRE
+                        - PIECES
+                        - PAIR
+                        - PERCENTAGE
+                        - DENIER
+                        - JUTE
+                        - ENGLISH_COUNT
+                        - METRIC_COUNT
+                        - WORSTED_COUNT
+                        - TEX
+                        - KILOWATT_HOUR
+                        - MOUND
+                      secondaryQuantity:
+                        anyOf:
+                        - type: number
+                          exclusiveMinimum: 0
+                          exclusiveMaximum: 100000000000000000
+                        - type: 'null'
+                      secondaryUnit:
+                        anyOf:
+                        - type: string
+                          enum:
+                          - KILOGRAM
+                        - type: 'null'
+                      id:
+                        type: string
+                        minLength: 1
+                        maxLength: 36
+                    additionalProperties: false
+              additionalProperties: false
+              example:
+                status: COMPLETED
+                actualDeliveryDate: '2026-09-12'
+                season: null
+            examples:
+              default:
+                summary: Example request
+                value:
+                  status: COMPLETED
+                  actualDeliveryDate: '2026-09-12'
+                  season: null
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+        in: path
+        name: id
+        required: true
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      forCompanyId:
+                        type: string
+                      orderNumber:
+                        type: string
+                      orderType:
+                        anyOf:
+                        - type: string
+                          enum:
+                          - PURCHASE_ORDER
+                          - SALES_ORDER
+                          - INTERNAL_ORDER
+                        - type: 'null'
+                      orderSubType:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      status:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      tags:
+                        type: array
+                        items:
+                          type: string
+                      source:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      buyerCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      supplierCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      receiverCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      vendorCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      factory:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      buyerFacilityProcess:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      supplierFacilityProcess:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      receiverFacilityProcess:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      orderDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      deliveryDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      agreedDeliveryDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      expectedShippingDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      shippingDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      expectedDeliveryDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      actualDeliveryDate:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      shipmentReference:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      internalResponsiblePerson:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      season:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      counterpartyOrderNumberRef:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      isArchived:
+                        type: boolean
+                      tracingStatus:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdAt:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByUserId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByUserName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByCompanyName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByImpersonateId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByImpersonateName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByApiKeyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByApiKeyLabel:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedAt:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByUserId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByUserName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByCompanyName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByImpersonateId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByImpersonateName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByApiKeyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByApiKeyLabel:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                    required:
+                    - id
+                    - forCompanyId
+                    - orderNumber
+                    - orderType
+                    - orderSubType
+                    - status
+                    - tags
+                    - source
+                    - buyerCompanyId
+                    - supplierCompanyId
+                    - receiverCompanyId
+                    - vendorCompanyId
+                    - factory
+                    - buyerFacilityProcess
+                    - supplierFacilityProcess
+                    - receiverFacilityProcess
+                    - orderDate
+                    - deliveryDate
+                    - agreedDeliveryDate
+                    - expectedShippingDate
+                    - shippingDate
+                    - expectedDeliveryDate
+                    - actualDeliveryDate
+                    - shipmentReference
+                    - internalResponsiblePerson
+                    - season
+                    - counterpartyOrderNumberRef
+                    - isArchived
+                    - tracingStatus
+                    - createdAt
+                    - createdByUserId
+                    - createdByUserName
+                    - createdByCompanyId
+                    - createdByCompanyName
+                    - createdByImpersonateId
+                    - createdByImpersonateName
+                    - createdByApiKeyId
+                    - createdByApiKeyLabel
+                    - updatedAt
+                    - updatedByUserId
+                    - updatedByUserName
+                    - updatedByCompanyId
+                    - updatedByCompanyName
+                    - updatedByImpersonateId
+                    - updatedByImpersonateName
+                    - updatedByApiKeyId
+                    - updatedByApiKeyLabel
+                    additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+                example:
+                  metadata:
+                    success: true
+                  data:
+                    id: order_01KWHF7TD318JZA3KM9A9E9979
+                    forCompanyId: M4MRIN4A9JQ
+                    orderNumber: PO-2026-0042
+                    orderType: PURCHASE_ORDER
+                    orderSubType: STANDARD
+                    status: COMPLETED
+                    tags:
+                    - priority
+                    source: ERP
+                    buyerCompanyId: M4MRIN4A9JQ
+                    supplierCompanyId: 4ZGRBDHXAF5
+                    receiverCompanyId: 4N3TWW6BVA8
+                    vendorCompanyId: 4NX1XA2LARR
+                    factory: 41FP5A2HJPX
+                    buyerFacilityProcess: Quality inspection
+                    supplierFacilityProcess: Weaving
+                    receiverFacilityProcess: Washing & finishing
+                    orderDate: '2026-07-01'
+                    deliveryDate: '2026-09-15'
+                    agreedDeliveryDate: '2026-09-10'
+                    expectedShippingDate: '2026-08-28'
+                    shippingDate: '2026-08-30'
+                    expectedDeliveryDate: '2026-09-15'
+                    actualDeliveryDate: '2026-09-12'
+                    shipmentReference: SHIP-2026-0042
+                    internalResponsiblePerson: KP1A1AILVU3
+                    season: null
+                    counterpartyOrderNumberRef: WW-SO-2026-118
+                    isArchived: false
+                    tracingStatus: null
+                    createdAt: '2026-07-02T12:48:40.563Z'
+                    createdByUserId: null
+                    createdByUserName: null
+                    createdByCompanyId: M4MRIN4A9JQ
+                    createdByCompanyName: null
+                    createdByImpersonateId: null
+                    createdByImpersonateName: null
+                    createdByApiKeyId: QLKL2SWPRSH
+                    createdByApiKeyLabel: ERP integration
+                    updatedAt: '2026-07-02T12:49:08.497Z'
+                    updatedByUserId: null
+                    updatedByUserName: null
+                    updatedByCompanyId: M4MRIN4A9JQ
+                    updatedByCompanyName: null
+                    updatedByImpersonateId: null
+                    updatedByImpersonateName: null
+                    updatedByApiKeyId: null
+                    updatedByApiKeyLabel: null
+        '400':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
+    delete:
+      tags:
+      - Order Hub / Orders
+      description: Hard-delete an order and all of its lines. Returns 404 when the order does not exist or belongs to another company.
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+        in: path
+        name: id
+        required: true
+      responses:
+        '204':
+          description: No content
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false

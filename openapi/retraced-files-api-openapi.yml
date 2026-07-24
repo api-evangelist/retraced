@@ -1,0 +1,327 @@
+openapi: 3.0.3
+info:
+  title: Public API Reference Certificates Files API
+  description: 'The retraced API comprises all publicly enabled options to make
+
+    machine-to-machine changes in the retraced platform. The retraced dashboard uses the
+
+    same endpoints, but also in addition more. If you wish to use the API of the dashboard,
+
+    it is possible but not versioned cleanly like the public API.
+
+
+    ## Authentication
+
+
+    The authentication procedure is passwordless and uses an API key in the header. To get
+
+    an API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**
+
+    then click **Create**. Be sure to copy the key somewhere safe, as you won''t be able to
+
+    view it again. If you don''t see Developers HQ in the sidebar contact your Customer
+
+    Success Manager to enable this for you. You can now set the key directly in request
+
+    headers. To authenticate using an API key, set the header key `companyapikey` to the
+
+    value of your API key.
+
+
+    ## Getting Started
+
+
+    Retraced has 2 environments against which you can send your requests and receive the
+
+    expected response: staging (for development and testing) and production. Your API key
+
+    is scoped for both environments. The staging Base URL is
+
+    https://publicapi.staging.retraced.com. Staging copies production data once daily, and
+
+    all changes made on staging will be deleted.
+
+
+    Find detailed guides on how to use the endpoints and how we recommend building an
+
+    integration given your use case in our
+
+    [guides](https://publicapi.retraced.com/api/v2/guides). A history of public API
+
+    changes is available in the
+
+    [release notes](https://publicapi.retraced.com/api/v2/release-notes).'
+  version: 2.938.1
+servers: []
+tags:
+- name: Files
+paths:
+  /api/v2/files/:
+    post:
+      tags:
+      - Files
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filename:
+                  type: string
+                  minLength: 1
+                fileSize:
+                  type: number
+                  minimum: 1
+                  maximum: 1073741824
+                fileType:
+                  type: string
+                  enum:
+                  - image/jpeg
+                  - image/png
+                  - image/gif
+                  - image/webp
+                  - image/bmp
+                  - image/tiff
+                  - image/heic
+                  - video/mp4
+                  - video/webm
+                  - video/quicktime
+                  - video/x-msvideo
+                  - video/x-matroska
+                  - application/pdf
+                  - text/rtf
+                  - application/msword
+                  - application/vnd.openxmlformats-officedocument.wordprocessingml.document
+                  - application/vnd.ms-excel
+                  - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+                  - text/csv
+                  - application/vnd.ms-powerpoint
+                  - application/vnd.openxmlformats-officedocument.presentationml.presentation
+              required:
+              - filename
+              - fileSize
+              - fileType
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        minLength: 1
+                      bucketName:
+                        type: string
+                        enum:
+                        - public
+                        - private
+                        - incoming
+                      url:
+                        type: string
+                        minLength: 1
+                      name:
+                        type: string
+                        minLength: 1
+                      fileType:
+                        anyOf:
+                        - type: string
+                          enum:
+                          - IMAGE
+                          - VIDEO
+                          - DOCUMENT
+                        - type: 'null'
+                      documentText:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      contentType:
+                        anyOf:
+                        - type: string
+                          enum:
+                          - application/msword
+                          - application/vnd.openxmlformats-officedocument.wordprocessingml.document
+                          - application/octet-stream
+                          - application/pdf
+                          - text/rtf
+                          - application/vnd.ms-powerpoint
+                          - application/vnd.openxmlformats-officedocument.presentationml.presentation
+                          - application/vnd.ms-excel
+                          - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+                          - application/kswps
+                          - application/zip
+                          - binary/octet-stream
+                          - IMAGE
+                          - image/bmp
+                          - image/gif
+                          - image/heic
+                          - image/jpeg
+                          - image/png
+                          - image/svg+xml
+                          - image/tiff
+                          - image/webp
+                          - text/csv
+                          - video/mp4
+                          - video/webm
+                          - video/quicktime
+                          - video/x-msvideo
+                          - video/x-matroska
+                        - type: 'null'
+                      contentMd5Hash:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      fileHash:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      fileSize:
+                        anyOf:
+                        - type: number
+                        - type: 'null'
+                      isMigrated:
+                        anyOf:
+                        - type: integer
+                          minimum: 0
+                          maximum: 1
+                        - type: 'null'
+                      isPrivate:
+                        anyOf:
+                        - type: integer
+                          minimum: 0
+                          maximum: 1
+                        - type: 'null'
+                      uploadUrl:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      originalUrl:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      previewUrl:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdAt:
+                        anyOf:
+                        - type: string
+                          format: date-time
+                        - type: 'null'
+                      createdBy:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByApiKeyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByApiKeyLabel:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByImpersonateId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByImpersonateName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByUserId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedAt:
+                        anyOf:
+                        - type: string
+                          format: date-time
+                        - type: 'null'
+                      updatedByApiKeyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByApiKeyLabel:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByCompanyName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByImpersonateId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByImpersonateName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByUserId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByUserName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      normalizeAttemptedAt:
+                        anyOf:
+                        - type: string
+                          format: date-time
+                        - type: 'null'
+                    required:
+                    - id
+                    - bucketName
+                    - url
+                    - name
+                    - fileType
+                    - contentType
+                    - fileHash
+                    - fileSize
+                    - isMigrated
+                    - isPrivate
+                    - createdAt
+                    - createdBy
+                    - createdByCompanyId
+                    - createdByApiKeyId
+                    - createdByApiKeyLabel
+                    - createdByImpersonateId
+                    - createdByImpersonateName
+                    - createdByUserId
+                    - updatedAt
+                    - updatedByApiKeyId
+                    - updatedByApiKeyLabel
+                    - updatedByCompanyId
+                    - updatedByCompanyName
+                    - updatedByImpersonateId
+                    - updatedByImpersonateName
+                    - updatedByUserId
+                    - updatedByUserName
+                    additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false

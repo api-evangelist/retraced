@@ -1,0 +1,2625 @@
+openapi: 3.0.3
+info:
+  title: Public API Reference Certificates Product / Styles API
+  description: 'The retraced API comprises all publicly enabled options to make
+
+    machine-to-machine changes in the retraced platform. The retraced dashboard uses the
+
+    same endpoints, but also in addition more. If you wish to use the API of the dashboard,
+
+    it is possible but not versioned cleanly like the public API.
+
+
+    ## Authentication
+
+
+    The authentication procedure is passwordless and uses an API key in the header. To get
+
+    an API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**
+
+    then click **Create**. Be sure to copy the key somewhere safe, as you won''t be able to
+
+    view it again. If you don''t see Developers HQ in the sidebar contact your Customer
+
+    Success Manager to enable this for you. You can now set the key directly in request
+
+    headers. To authenticate using an API key, set the header key `companyapikey` to the
+
+    value of your API key.
+
+
+    ## Getting Started
+
+
+    Retraced has 2 environments against which you can send your requests and receive the
+
+    expected response: staging (for development and testing) and production. Your API key
+
+    is scoped for both environments. The staging Base URL is
+
+    https://publicapi.staging.retraced.com. Staging copies production data once daily, and
+
+    all changes made on staging will be deleted.
+
+
+    Find detailed guides on how to use the endpoints and how we recommend building an
+
+    integration given your use case in our
+
+    [guides](https://publicapi.retraced.com/api/v2/guides). A history of public API
+
+    changes is available in the
+
+    [release notes](https://publicapi.retraced.com/api/v2/release-notes).'
+  version: 2.938.1
+servers: []
+tags:
+- name: Product / Styles
+paths:
+  /api/v2/styles/:
+    post:
+      tags:
+      - Product / Styles
+      description: Create a style, variant, or SKU. Omit parentId to create a top-level style. Set parentId to a style ID to create a variant, or to a variant ID to create a SKU. styleTypeId and isComponent are required when creating a top-level style.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: Display name for the product, e.g. 'Summer Blazer'.
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                parentId:
+                  description: Omit to create a top-level style. Set to a style ID to create a variant, or to a variant ID to create a SKU.
+                  type: string
+                  minLength: 1
+                forCompanyId:
+                  description: Create this style on behalf of another company in your network.
+                  type: string
+                codes:
+                  minItems: 1
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      codeId:
+                        description: 'Identifier type for the code. Single-use (each may appear at most once): ERP_ID, PLM_ID, MAIN_SUPPLIERS_ID, PIM_ID, UPC_GTIN_12, EAN_GTIN_13, ZALANDO_ID, FASHIONCLOUD_ID. Multi-use (append a numeric suffix for additional entries, e.g. OTHER_ID1, OTHER_ID2): OTHER_ID, ALTERNATIVE_SUPPLIERS_ID.'
+                        type: string
+                        minLength: 1
+                      codeValue:
+                        description: The unique code value for this identifier, e.g. "ERP-001234".
+                        type: string
+                        minLength: 1
+                    required:
+                    - codeId
+                    - codeValue
+                description:
+                  description: Free-text product description. Nullable. Max 4000 characters.
+                  anyOf:
+                  - type: string
+                    maxLength: 4000
+                  - type: 'null'
+                gender:
+                  description: 'Product gender classification. Known values: MALE, FEMALE, UNISEX. Nullable.'
+                  anyOf:
+                  - type: string
+                    maxLength: 50
+                  - type: 'null'
+                styleTypeId:
+                  description: Retraced taxonomy identifier for the specific product type within the styleLevelId (e.g. TSHIRTS, OUTDOOR_JACKETS, BUTTONS). For the full list of valid values call GET /api/v2/style-types/. Required when creating a top-level style (no parentId).
+                  type: string
+                  minLength: 1
+                color:
+                  description: Color name for a variant, e.g. 'Navy Blue'. Only applicable when parentId points to a style.
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                dimension:
+                  description: Size or dimension for a SKU, e.g. 'M' or '38'. Only applicable when parentId points to a variant.
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                isComponent:
+                  description: True if this style is a sub-product (e.g. a fabric or trim piece) intended to be assembled into a finished good, rather than sold directly to a consumer. Components appear in BOM (bill of materials) relationships rather than as standalone products. Required when creating a top-level style.
+                  type: boolean
+                isStoryActive:
+                  description: Whether the public product story/traceability page is enabled for this product. Requires a supply chain to be attached to the product.
+                  type: boolean
+                brands:
+                  description: Array of style property IDs of category 'brands'. Values must be created via POST /api/v2/style-properties/ before use. Free-text strings will be rejected with a 404.
+                  anyOf:
+                  - type: array
+                    items:
+                      type: string
+                      minLength: 1
+                  - type: 'null'
+                departments:
+                  description: Array of style property IDs of category 'departments'. Values must be created via POST /api/v2/style-properties/ before use. Free-text strings will be rejected with a 404.
+                  anyOf:
+                  - type: array
+                    items:
+                      type: string
+                      minLength: 1
+                  - type: 'null'
+                seasons:
+                  description: Array of style property IDs of category 'seasons'. Values must be created via POST /api/v2/style-properties/ before use. Free-text strings will be rejected with a 404.
+                  anyOf:
+                  - type: array
+                    items:
+                      type: string
+                      minLength: 1
+                  - type: 'null'
+                collections:
+                  description: Array of style property IDs of category 'collections'. Values must be created via POST /api/v2/style-properties/ before use. Free-text strings will be rejected with a 404.
+                  anyOf:
+                  - type: array
+                    items:
+                      type: string
+                      minLength: 1
+                  - type: 'null'
+                claimIntentions:
+                  description: Array of sustainability claim intention IDs to associate with this product.
+                  anyOf:
+                  - type: array
+                    items:
+                      type: string
+                      minLength: 1
+                  - type: 'null'
+                customProperties:
+                  description: JSON string of arbitrary key-value pairs for custom metadata.
+                  anyOf:
+                  - type: string
+                  - type: 'null'
+                suppliers:
+                  description: Array of supplier IDs that can fulfil this product, including the main supplier and any alternates. Use the companyId values here to query GET /supply-chains/:styleId for detailed supply chain data.
+                  anyOf:
+                  - type: array
+                    items:
+                      type: string
+                      minLength: 1
+                  - type: 'null'
+                mainSupplier:
+                  description: The single designated primary supplier for this product. Null if not set. A product can have many entries in suppliers but at most one mainSupplier.
+                  anyOf:
+                  - type: string
+                    minLength: 1
+                  - type: 'null'
+                vendors:
+                  description: Array of vendor company IDs.
+                  anyOf:
+                  - type: array
+                    items:
+                      type: string
+                      minLength: 1
+                  - type: 'null'
+                imagesFileIds:
+                  description: Array of file IDs for product images, obtained via the Files API.
+                  anyOf:
+                  - type: array
+                    items:
+                      type: string
+                      minLength: 1
+                  - type: 'null'
+                ecoFootPrint:
+                  description: Sustainability and recyclability data for this product.
+                  anyOf:
+                  - type: object
+                    properties:
+                      hazardousMaterials:
+                        description: List of hazardous substances present in the product.
+                        anyOf:
+                        - type: array
+                          items:
+                            type: object
+                            properties:
+                              idx:
+                                type: number
+                              name:
+                                description: Name of the hazardous substance, e.g. 'Chromium'.
+                                type: string
+                                minLength: 1
+                              percentage:
+                                description: Concentration of the substance as a percentage of total product weight (0–100).
+                                type: number
+                                minimum: 0
+                                maximum: 100
+                            required:
+                            - idx
+                            - name
+                            - percentage
+                        - type: 'null'
+                      recyclabilityAbsenceDisruptor:
+                        description: True if there are no disruptors to recyclability (e.g. coatings, mixed materials).
+                        anyOf:
+                        - type: boolean
+                        - type: 'null'
+                      recyclabilityCanBeSorted:
+                        description: True if the product can be sorted at recycling facilities.
+                        anyOf:
+                        - type: boolean
+                        - type: 'null'
+                      recyclabilityCanCollectAtScale:
+                        description: True if collection infrastructure exists at scale for this product.
+                        anyOf:
+                        - type: boolean
+                        - type: 'null'
+                      recyclabilityIndustrialScale:
+                        description: True if industrial-scale recycling processes exist for this product.
+                        anyOf:
+                        - type: boolean
+                        - type: 'null'
+                      recyclabilityRate:
+                        description: Recyclability percentage (0–100).
+                        anyOf:
+                        - type: number
+                        - type: 'null'
+                  - type: 'null'
+                weight:
+                  description: Product weight object. unit is the unit of measurement (e.g. 'GRAM'). value is the numeric weight. Null if weight has not been entered.
+                  anyOf:
+                  - type: object
+                    properties:
+                      unit:
+                        anyOf:
+                        - type: string
+                          enum:
+                          - GRAM
+                          - GRAM_PER_SQUARE_METER
+                          - GRAM_PER_SQUARE_FOOT
+                          - GRAM_PER_SQUARE_YARD
+                          - OUNCE_PER_SQUARE_YARD
+                          - MILLIGRAM
+                          - KILOGRAM
+                          - METRIC_TON
+                          - POUNDS
+                          - SHORT_TON
+                          - LONG_TON
+                          - HUNDREDWEIGHT
+                          - SHORT_HUNDREDWEIGHT
+                          - LONG_HUNDREDWEIGHT
+                          - OUNCE
+                          - DRAM
+                          - GRAIN
+                          - PENNYWEIGHT
+                          - SCRUPLE
+                          - STONE
+                        - type: 'null'
+                      value:
+                        anyOf:
+                        - type: number
+                        - type: 'null'
+                    required:
+                    - unit
+                    - value
+                  - type: 'null'
+              required:
+              - name
+              - codes
+              example:
+                name: Geraldine Organic Cotton T-shirt
+                forCompanyId: M4MRIN4A9JQ
+                codes:
+                - codeId: OTHER_ID
+                  codeValue: '221739'
+                description: Organic cotton T-shirt from the Collectif mon Amour collection.
+                gender: FEMALE
+                styleTypeId: TSHIRTS
+                isComponent: false
+                isStoryActive: true
+                brands:
+                - stp_01KM2X04A6KXM1YZ0XFQ633BH1
+                departments:
+                - AWU28X9KFYL
+                seasons:
+                - stp_01KM2WY63RHNQXB3JRCF4VBBAY
+                collections:
+                - stp_01KM2WYM0P1M5EGDQYCYR74B34
+                claimIntentions: []
+                suppliers:
+                - KFIXXMKJT3G
+                - DCX5B2I5RM8
+                mainSupplier: KFIXXMKJT3G
+                vendors:
+                - KDYV8NRUGQY
+                ecoFootPrint:
+                  hazardousMaterials: null
+                  recyclabilityAbsenceDisruptor: false
+                  recyclabilityCanBeSorted: false
+                  recyclabilityCanCollectAtScale: false
+                  recyclabilityIndustrialScale: false
+                  recyclabilityRate: 0
+                weight:
+                  unit: GRAM
+                  value: 180
+            examples:
+              default:
+                summary: Example request
+                value:
+                  name: Geraldine Organic Cotton T-shirt
+                  forCompanyId: M4MRIN4A9JQ
+                  codes:
+                  - codeId: OTHER_ID
+                    codeValue: '221739'
+                  description: Organic cotton T-shirt from the Collectif mon Amour collection.
+                  gender: FEMALE
+                  styleTypeId: TSHIRTS
+                  isComponent: false
+                  isStoryActive: true
+                  brands:
+                  - stp_01KM2X04A6KXM1YZ0XFQ633BH1
+                  departments:
+                  - AWU28X9KFYL
+                  seasons:
+                  - stp_01KM2WY63RHNQXB3JRCF4VBBAY
+                  collections:
+                  - stp_01KM2WYM0P1M5EGDQYCYR74B34
+                  claimIntentions: []
+                  suppliers:
+                  - KFIXXMKJT3G
+                  - DCX5B2I5RM8
+                  mainSupplier: KFIXXMKJT3G
+                  vendors:
+                  - KDYV8NRUGQY
+                  ecoFootPrint:
+                    hazardousMaterials: null
+                    recyclabilityAbsenceDisruptor: false
+                    recyclabilityCanBeSorted: false
+                    recyclabilityCanCollectAtScale: false
+                    recyclabilityIndustrialScale: false
+                    recyclabilityRate: 0
+                  weight:
+                    unit: GRAM
+                    value: 180
+      responses:
+        '201':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties: {}
+                    additionalProperties: {}
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+    get:
+      tags:
+      - Product / Styles
+      description: GET /styles serves all three tiers of the product hierarchy from a single endpoint, controlled by the required `level` query parameter. At `level=style` the endpoint returns top-level products and accepts optional filters (nameOrCode, updatedAfterUnixMs, page, pageSize). At `level=variant` a `styleId` is required and results are scoped to colour/variant children of that style. At `level=sku` a `variantId` is required and results are scoped to size/SKU children of that variant. Paginate using the `page` and `pageSize` params; check `metadata.pagination.totalPages` in the response to determine whether additional pages exist.
+      parameters:
+      - schema:
+          default: style
+          type: string
+          enum:
+          - style
+          - variant
+          - sku
+        in: query
+        name: level
+        required: false
+        description: Controls which tier of the product hierarchy is returned. 'style' = top-level product (no parent ID required). 'variant' = colour or variant (requires styleId). 'sku' = size or SKU (requires variantId). The updatedAfterUnixMs filter is supported at all three levels.
+      - schema:
+          default: 1
+          type: integer
+          minimum: 1
+          maximum: 9007199254740991
+        in: query
+        name: page
+        required: false
+        description: Page number (1-based). Defaults to 1. Check metadata.pagination.totalPages in the response to know if more pages exist.
+      - schema:
+          default: 20
+          type: integer
+          minimum: 1
+          maximum: 100
+        in: query
+        name: limit
+        required: false
+        description: Number of results per page (1–100). Defaults to 20. Check metadata.pagination.totalPages in the response to know if more pages exist.
+      - schema:
+          default: desc
+          type: string
+          enum:
+          - asc
+          - desc
+          - ASC
+          - DESC
+        in: query
+        name: order
+        required: false
+      - schema:
+          default: createdAt
+          type: string
+          enum:
+          - createdAt
+          - updatedAt
+          - name
+          - gender
+          - typeName
+          - color
+          - styleId
+          - dimension
+          - variantId
+        in: query
+        name: sort
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: name
+        required: false
+        description: Filter by product name (partial match).
+      - schema:
+          type: string
+        in: query
+        name: codeId
+        required: false
+        description: Filter by code type/ID, e.g. ERP_ID. Combine with codeValue.
+      - schema:
+          type: string
+        in: query
+        name: codeValue
+        required: false
+        description: Filter by code value, e.g. DRS-001. Combine with codeId.
+      - schema:
+          type: string
+        in: query
+        name: styleTypeId
+        required: false
+        description: Filter by style type ID.
+      - schema:
+          type: string
+        in: query
+        name: styleLevelId
+        required: false
+        description: Filter by style level ID.
+      - schema:
+          type: string
+        in: query
+        name: brands
+        required: false
+        description: Comma-separated list of brand IDs to filter by.
+      - schema:
+          type: string
+        in: query
+        name: departments
+        required: false
+        description: Comma-separated list of department IDs to filter by.
+      - schema:
+          type: string
+        in: query
+        name: seasons
+        required: false
+        description: Comma-separated list of season IDs to filter by.
+      - schema:
+          type: string
+        in: query
+        name: collections
+        required: false
+        description: Comma-separated list of collection IDs to filter by.
+      - schema:
+          type: string
+        in: query
+        name: suppliers
+        required: false
+        description: Comma-separated list of supplier IDs to filter by.
+      - schema:
+          type: string
+        in: query
+        name: vendors
+        required: false
+        description: Comma-separated list of vendor IDs to filter by.
+      - schema:
+          type: string
+        in: query
+        name: mainSupplier
+        required: false
+        description: Filter by main supplier ID.
+      - schema:
+          anyOf:
+          - type: boolean
+          - type: string
+            enum:
+            - 'true'
+          - type: string
+            enum:
+            - 'false'
+        in: query
+        name: isComponent
+        required: false
+        description: Filter by component / raw material flag. Accepts true or false.
+      - schema:
+          anyOf:
+          - type: boolean
+          - type: string
+            enum:
+            - 'true'
+          - type: string
+            enum:
+            - 'false'
+        in: query
+        name: isStoryActive
+        required: false
+        description: Filter by traceability page status. Accepts true or false.
+      - schema:
+          anyOf:
+          - type: boolean
+          - type: string
+            enum:
+            - 'true'
+          - type: string
+            enum:
+            - 'false'
+        in: query
+        name: isArchived
+        required: false
+        description: Filter by archived status. Defaults to false.
+      - schema:
+          type: string
+        in: query
+        name: include
+        required: false
+        description: Comma-separated list of related data to include, e.g. 'codes,brands'.
+      - schema:
+          type: string
+        in: query
+        name: nameOrCode
+        required: false
+        description: Optional. Filter styles by name or external code value (partial match). Use to look up a specific product by its ERP ID, PLM ID, or display name.
+      - schema:
+          type: string
+        in: query
+        name: description
+        required: false
+        description: Filter by description (partial match).
+      - schema:
+          type: string
+        in: query
+        name: gender
+        required: false
+        description: Filter by gender (e.g. MALE, FEMALE, UNISEX).
+      - schema:
+          anyOf:
+          - type: boolean
+          - type: string
+            enum:
+            - 'true'
+          - type: string
+            enum:
+            - 'false'
+        in: query
+        name: createdForMe
+        required: false
+        description: Filter to products created for your company.
+      - schema:
+          anyOf:
+          - type: boolean
+          - type: string
+            enum:
+            - 'true'
+          - type: string
+            enum:
+            - 'false'
+        in: query
+        name: isCreatedForNetwork
+        required: false
+        description: Filter to products created for your network.
+      - schema:
+          type: string
+        in: query
+        name: companyId
+        required: false
+        description: Filter by owning company ID.
+      - schema:
+          type: string
+        in: query
+        name: certValidationStandardId
+        required: false
+        description: Filter by certification validation standard ID.
+      - schema:
+          type: string
+        in: query
+        name: certValidationExpirationDate
+        required: false
+        description: Filter by certification expiration date.
+      - schema:
+          type: string
+        in: query
+        name: certValidationIssueDate
+        required: false
+        description: Filter by certification issue date.
+      - schema:
+          type: string
+        in: query
+        name: color
+        required: false
+        description: Filter variants by color. Only applicable when level=variant.
+      - schema:
+          type: string
+        in: query
+        name: styleId
+        required: false
+        description: Filter variants by parent style ID. Only applicable when level=variant.
+      - schema:
+          type: string
+        in: query
+        name: variantId
+        required: false
+        description: Filter SKUs by parent variant ID. Only applicable when level=sku.
+      - schema:
+          type: string
+        in: query
+        name: dimension
+        required: false
+        description: Filter SKUs by dimension. Only applicable when level=sku.
+      - schema:
+          type: number
+        in: query
+        name: updatedAfterUnixMs
+        required: false
+        description: Optional. Unix timestamp in milliseconds. Returns only styles modified after this point in time. Use for incremental sync — on subsequent calls pass the timestamp of your last successful pull.
+      - schema:
+          type: number
+        in: query
+        name: updatedBeforeUnixMs
+        required: false
+        description: Return products updated before this Unix timestamp (milliseconds).
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                      pagination:
+                        type: object
+                        properties:
+                          page:
+                            default: 1
+                            type: number
+                          limit:
+                            default: 10
+                            type: number
+                          total:
+                            default: 0
+                            type: number
+                          totalPages:
+                            default: 0
+                            type: number
+                        required:
+                        - page
+                        - limit
+                        - total
+                        - totalPages
+                        additionalProperties: false
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          description: Retraced-generated unique identifier for this style. Format is a ULID prefixed with 'style_' on newer records; legacy records may use an unprefixed alphanumeric ID. Stable — safe to store and use as a foreign key.
+                          type: string
+                          minLength: 1
+                        forCompanyId:
+                          type: string
+                          minLength: 1
+                        name:
+                          type: string
+                          minLength: 1
+                          maxLength: 255
+                        codes:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              codeId:
+                                description: 'Identifier type for the code. Single-use (each may appear at most once): ERP_ID, PLM_ID, MAIN_SUPPLIERS_ID, PIM_ID, UPC_GTIN_12, EAN_GTIN_13, ZALANDO_ID, FASHIONCLOUD_ID. Multi-use (append a numeric suffix for additional entries, e.g. OTHER_ID1, OTHER_ID2): OTHER_ID, ALTERNATIVE_SUPPLIERS_ID.'
+                                type: string
+                                minLength: 1
+                              codeValue:
+                                description: The unique code value for this identifier, e.g. "ERP-001234".
+                                type: string
+                                minLength: 1
+                            required:
+                            - codeId
+                            - codeValue
+                            additionalProperties: false
+                        description:
+                          anyOf:
+                          - type: string
+                            maxLength: 4000
+                          - type: 'null'
+                        gender:
+                          anyOf:
+                          - type: string
+                            maxLength: 50
+                          - type: 'null'
+                        styleLevelId:
+                          description: Retraced taxonomy identifier for the broad product level (e.g. APPAREL_END_CONSUMER_FINISHED_GOODS, FABRICS, TRIM_AND_ACCESSORIES). For the full list of valid values call GET /api/v2/style-types/ and read the parentId field.
+                          type: string
+                          minLength: 1
+                        styleTypeId:
+                          type: string
+                          minLength: 1
+                        productLevel:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        brands:
+                          anyOf:
+                          - type: array
+                            items:
+                              type: string
+                              minLength: 1
+                          - type: 'null'
+                        departments:
+                          anyOf:
+                          - type: array
+                            items:
+                              type: string
+                              minLength: 1
+                          - type: 'null'
+                        seasons:
+                          anyOf:
+                          - type: array
+                            items:
+                              type: string
+                              minLength: 1
+                          - type: 'null'
+                        collections:
+                          anyOf:
+                          - type: array
+                            items:
+                              type: string
+                              minLength: 1
+                          - type: 'null'
+                        claimIntentions:
+                          anyOf:
+                          - type: array
+                            items:
+                              type: string
+                              minLength: 1
+                          - type: 'null'
+                        customProperties:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        suppliers:
+                          anyOf:
+                          - type: array
+                            items:
+                              type: string
+                              minLength: 1
+                          - type: 'null'
+                        mainSupplier:
+                          anyOf:
+                          - type: string
+                            minLength: 1
+                          - type: 'null'
+                        vendors:
+                          anyOf:
+                          - type: array
+                            items:
+                              type: string
+                              minLength: 1
+                          - type: 'null'
+                        imagesFileIds:
+                          anyOf:
+                          - type: array
+                            items:
+                              type: string
+                              minLength: 1
+                          - type: 'null'
+                        images:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                minLength: 1
+                              url:
+                                type: string
+                              previewUrl:
+                                type: string
+                              fileType:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              bucketName:
+                                type: string
+                              name:
+                                type: string
+                              fileSize:
+                                anyOf:
+                                - type: number
+                                - type: 'null'
+                              contentType:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              fileHash:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              createdAt:
+                                anyOf:
+                                - type: string
+                                  format: date-time
+                                - type: 'null'
+                              updatedAt:
+                                anyOf:
+                                - type: string
+                                  format: date-time
+                                - type: 'null'
+                              createdBy:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              createdByCompanyId:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              createdByImpersonateId:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              createdByImpersonateName:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              createdByUserId:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              createdByApiKeyId:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              createdByApiKeyLabel:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              updatedByUserId:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              updatedByUserName:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              updatedByCompanyId:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              updatedByCompanyName:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              updatedByImpersonateId:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              updatedByImpersonateName:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              updatedByApiKeyId:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              updatedByApiKeyLabel:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                            required:
+                            - id
+                            - url
+                            - previewUrl
+                            - fileType
+                            - bucketName
+                            - name
+                            - fileSize
+                            - contentType
+                            - fileHash
+                            - createdAt
+                            - updatedAt
+                            additionalProperties: false
+                        isComponent:
+                          anyOf:
+                          - type: boolean
+                          - type: number
+                        isStoryActive:
+                          anyOf:
+                          - type: boolean
+                          - type: number
+                        isArchived:
+                          description: True if the product has been archived. Archived products are excluded from default API results.
+                          type: boolean
+                        qrCodeUrl:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdAt:
+                          description: ISO 8601 UTC timestamp of when the record was created.
+                          anyOf:
+                          - type: string
+                            format: date-time
+                          - type: 'null'
+                        updatedAt:
+                          description: ISO 8601 UTC timestamp of when the record was last modified. Use with updatedAfterUnixMs for incremental sync.
+                          anyOf:
+                          - type: string
+                            format: date-time
+                          - type: 'null'
+                        createdByImpersonateId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        createdByUserId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        createdByCompanyId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        createdByApiKeyId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        createdByApiKeyLabel:
+                          anyOf:
+                          - type: string
+                            maxLength: 255
+                          - type: 'null'
+                        updatedByImpersonateId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        updatedByUserId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        updatedByCompanyId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        updatedByApiKeyId:
+                          anyOf:
+                          - type: string
+                            maxLength: 36
+                          - type: 'null'
+                        updatedByApiKeyLabel:
+                          anyOf:
+                          - type: string
+                            maxLength: 255
+                          - type: 'null'
+                        ecoFootPrint:
+                          anyOf:
+                          - type: object
+                            properties:
+                              syntheticMaterialPercentage:
+                                anyOf:
+                                - type: number
+                                  minimum: 0
+                                  maximum: 100
+                                - type: 'null'
+                              recycledMaterialPercentage:
+                                anyOf:
+                                - type: number
+                                  minimum: 0
+                                  maximum: 100
+                                - type: 'null'
+                              hazardousMaterials:
+                                anyOf:
+                                - type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      idx:
+                                        type: number
+                                      name:
+                                        type: string
+                                        minLength: 1
+                                      percentage:
+                                        type: number
+                                        minimum: 0
+                                        maximum: 100
+                                    required:
+                                    - idx
+                                    - name
+                                    - percentage
+                                    additionalProperties: false
+                                - type: 'null'
+                              recyclabilityAbsenceDisruptor:
+                                anyOf:
+                                - type: boolean
+                                - type: 'null'
+                              recyclabilityCanBeSorted:
+                                anyOf:
+                                - type: boolean
+                                - type: 'null'
+                              recyclabilityCanCollectAtScale:
+                                anyOf:
+                                - type: boolean
+                                - type: 'null'
+                              recyclabilityIndustrialScale:
+                                anyOf:
+                                - type: boolean
+                                - type: 'null'
+                              recyclabilityRate:
+                                anyOf:
+                                - type: number
+                                - type: 'null'
+                            additionalProperties: false
+                          - type: 'null'
+                        weight:
+                          anyOf:
+                          - type: object
+                            properties:
+                              unit:
+                                type: string
+                              value:
+                                type: number
+                            required:
+                            - unit
+                            - value
+                            additionalProperties: false
+                          - type: 'null'
+                        tracingStory:
+                          anyOf:
+                          - type: object
+                            properties:
+                              id:
+                                type: string
+                              tracingType:
+                                type: string
+                              tracingId:
+                                type: string
+                              isActive:
+                                type: boolean
+                              createdAt:
+                                anyOf:
+                                - type: string
+                                  format: date-time
+                                - type: 'null'
+                              updatedAt:
+                                anyOf:
+                                - type: string
+                                  format: date-time
+                                - type: 'null'
+                              tracingName:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                            required:
+                            - id
+                            - tracingType
+                            - tracingId
+                            - isActive
+                            - createdAt
+                            - updatedAt
+                            additionalProperties: false
+                          - type: 'null'
+                        isWeightAvailable:
+                          description: True if a weight value has been recorded for this variant.
+                          type: boolean
+                        featureImageUrl:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        material:
+                          anyOf:
+                          - type: object
+                            properties:
+                              id:
+                                type: string
+                              name:
+                                type: string
+                              description:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              lines:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    id:
+                                      type: string
+                                    rawMaterialId:
+                                      type: string
+                                    rawMaterialName:
+                                      type: string
+                                    percentage:
+                                      anyOf:
+                                      - type: number
+                                      - type: 'null'
+                                    countriesOfOrigin:
+                                      anyOf:
+                                      - type: string
+                                      - type: 'null'
+                                  required:
+                                  - id
+                                  - rawMaterialId
+                                  - rawMaterialName
+                                  - percentage
+                                  - countriesOfOrigin
+                                  additionalProperties: false
+                            required:
+                            - id
+                            - name
+                            additionalProperties: false
+                          - type: 'null'
+                        bom:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              name:
+                                type: string
+                            required:
+                            - id
+                            - name
+                            additionalProperties: false
+                        styleProperties:
+                          type: object
+                          properties:
+                            brands:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                  name:
+                                    type: string
+                                  category:
+                                    type: string
+                                required:
+                                - id
+                                - name
+                                - category
+                                additionalProperties: false
+                            departments:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                  name:
+                                    type: string
+                                  category:
+                                    type: string
+                                required:
+                                - id
+                                - name
+                                - category
+                                additionalProperties: false
+                            seasons:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                  name:
+                                    type: string
+                                  category:
+                                    type: string
+                                required:
+                                - id
+                                - name
+                                - category
+                                additionalProperties: false
+                            collections:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                  name:
+                                    type: string
+                                  category:
+                                    type: string
+                                required:
+                                - id
+                                - name
+                                - category
+                                additionalProperties: false
+                          additionalProperties: false
+                        type:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            name:
+                              type: string
+                            parentId:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            quantityUnits:
+                              anyOf:
+                              - type: array
+                                items:
+                                  type: string
+                              - type: 'null'
+                            weightUnits:
+                              anyOf:
+                              - type: array
+                                items:
+                                  type: string
+                              - type: 'null'
+                          required:
+                          - id
+                          - name
+                          - parentId
+                          - quantityUnits
+                          - weightUnits
+                          additionalProperties: false
+                        linkedStyles:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              styleId:
+                                type: string
+                            required:
+                            - styleId
+                            additionalProperties: false
+                        validationResult:
+                          type: object
+                          properties:
+                            valid:
+                              type: boolean
+                            selectable:
+                              type: boolean
+                            description:
+                              type: array
+                              items:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                    text:
+                                      type: string
+                                  required:
+                                  - type
+                                  - text
+                                  additionalProperties: false
+                            certificateDuplications:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                  text:
+                                    type: string
+                                  claimId:
+                                    type: string
+                                required:
+                                - type
+                                - text
+                                additionalProperties: false
+                          required:
+                          - valid
+                          - selectable
+                          - description
+                          - certificateDuplications
+                          additionalProperties: false
+                      required:
+                      - id
+                      - forCompanyId
+                      - name
+                      - codes
+                      - styleLevelId
+                      - styleTypeId
+                      - isArchived
+                      additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+                example:
+                  metadata:
+                    success: true
+                    pagination:
+                      page: 1
+                      limit: 20
+                      total: 2
+                      totalPages: 1
+                  data:
+                  - id: style_01KM2XVHS8NCPRP3PD5EREZ30H
+                    forCompanyId: M4MRIN4A9JQ
+                    name: TENTA TEE
+                    codes:
+                    - codeId: OTHER_ID
+                      codeValue: '1445678923'
+                    description: 'A marine graphic to fill up on salt water
+
+
+                      All aboard! The TENTA TEE is your open invitation to ocean air and salty skin. Made from 180g organic cotton, it features a graphic blending palm trees, waves, and undersea creatures—symbols of everything we love about life near the water. Its classic cut and easy-to-match tones make it a staple for coastal escapes and nature-filled weekends. Let''s meet at the shoreline—adventure awaits.'
+                    gender: null
+                    styleLevelId: APPAREL_END_CONSUMER_FINISHED_GOODS
+                    styleTypeId: TSHIRTS
+                    brands:
+                    - stp_01KM2XWW86E5RGCYYR0AG6AGE7
+                    departments:
+                    - AWU28X9KFYL
+                    seasons:
+                    - stp_01KM06Z3DN8MNPWTCH3FAZA86S
+                    collections:
+                    - stp_01KM2XX5F0YC1KJ0Y2PFAZW9C6
+                    claimIntentions: []
+                    customProperties: null
+                    suppliers: []
+                    mainSupplier: null
+                    vendors: []
+                    imagesFileIds:
+                    - 22KLPeX1hrUpxUcvxyQgC
+                    - XVRvStFL4ZcE661WbrvaE
+                    - idAiVnD7WHrpxjfsw7aPx
+                    - Tt9yMYE2VjRVrKPzMcdzT
+                    - MzNt15T3X1rLhj34iwmtV
+                    isComponent: false
+                    isStoryActive: true
+                    isArchived: false
+                    qrCodeUrl: https://retraced-bucket-production-public.imgix.net/qr_01KM2XVJ3W5NT3JKTE4MDSWZY4.svg
+                    createdAt: '2026-03-19T11:31:53.768Z'
+                    updatedAt: '2026-03-19T12:23:18.124Z'
+                    createdByImpersonateId: null
+                    createdByUserId: BBS1KRZSDLZ
+                    createdByCompanyId: M4MRIN4A9JQ
+                    createdByApiKeyId: null
+                    createdByApiKeyLabel: null
+                    updatedByImpersonateId: null
+                    updatedByUserId: BBS1KRZSDLZ
+                    updatedByCompanyId: M4MRIN4A9JQ
+                    updatedByApiKeyId: null
+                    updatedByApiKeyLabel: null
+                    ecoFootPrint:
+                      hazardousMaterials: null
+                    weight: null
+                    featureImageUrl: https://retraced-bucket-production-public.imgix.net/22KLPeX1hrUpxUcvxyQgC.webp
+                  - id: LXMBF6U52MU
+                    forCompanyId: M4MRIN4A9JQ
+                    name: Skinny Jeans
+                    codes:
+                    - codeId: OTHER_ID
+                      codeValue: PC12345
+                    description: Slim fit tight jeans
+                    gender: MALE
+                    styleLevelId: APPAREL_END_CONSUMER_FINISHED_GOODS
+                    styleTypeId: JEANS
+                    brands:
+                    - TGT2ZEGUKZM
+                    departments:
+                    - TKJTGU7LM8K
+                    seasons:
+                    - N9OYY6LRO2WPZHUNAW
+                    collections: []
+                    claimIntentions: []
+                    customProperties: null
+                    suppliers:
+                    - KFIXXMKJT3G
+                    mainSupplier: null
+                    vendors: []
+                    imagesFileIds:
+                    - hbzmTA4oKsyGkmCGy2HWr
+                    isComponent: false
+                    isStoryActive: true
+                    isArchived: false
+                    qrCodeUrl: https://retraced-bucket-production-public.imgix.net/DYXC968XVF7YRJW0BP.svg
+                    createdAt: '2025-10-10T08:50:57.911Z'
+                    updatedAt: '2026-03-05T10:18:28.066Z'
+                    createdByImpersonateId: null
+                    createdByUserId: 1MZFVJVYR63
+                    createdByCompanyId: M4MRIN4A9JQ
+                    createdByApiKeyId: null
+                    createdByApiKeyLabel: null
+                    updatedByImpersonateId: null
+                    updatedByUserId: 1MZFVJVYR63
+                    updatedByCompanyId: M4MRIN4A9JQ
+                    updatedByApiKeyId: null
+                    updatedByApiKeyLabel: null
+                    ecoFootPrint:
+                      hazardousMaterials: null
+                    weight: null
+                    featureImageUrl: https://retraced-bucket-production-public.imgix.net/hbzmTA4oKsyGkmCGy2HWr.png
+  /api/v2/styles/{id}:
+    put:
+      tags:
+      - Product / Styles
+      description: Update a style, variant, or SKU by ID. The product level is resolved automatically from the ID. All body fields are optional — only provided fields will be updated.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: Display name for the product, e.g. 'Summer Blazer'.
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                forCompanyId:
+                  description: Create this style on behalf of another company in your network.
+                  type: string
+                codes:
+                  minItems: 1
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      codeId:
+                        description: 'Identifier type for the code. Single-use (each may appear at most once): ERP_ID, PLM_ID, MAIN_SUPPLIERS_ID, PIM_ID, UPC_GTIN_12, EAN_GTIN_13, ZALANDO_ID, FASHIONCLOUD_ID. Multi-use (append a numeric suffix for additional entries, e.g. OTHER_ID1, OTHER_ID2): OTHER_ID, ALTERNATIVE_SUPPLIERS_ID.'
+                        type: string
+                        minLength: 1
+                      codeValue:
+                        description: The unique code value for this identifier, e.g. "ERP-001234".
+                        type: string
+                        minLength: 1
+                    required:
+                    - codeId
+                    - codeValue
+                description:
+                  description: Free-text product description. Nullable. Max 4000 characters.
+                  anyOf:
+                  - type: string
+                    maxLength: 4000
+                  - type: 'null'
+                gender:
+                  description: 'Product gender classification. Known values: MALE, FEMALE, UNISEX. Nullable.'
+                  anyOf:
+                  - type: string
+                    maxLength: 50
+                  - type: 'null'
+                styleTypeId:
+                  description: Retraced taxonomy identifier for the specific product type within the styleLevelId (e.g. TSHIRTS, OUTDOOR_JACKETS, BUTTONS). For the full list of valid values call GET /api/v2/style-types/. Required when creating a top-level style (no parentId).
+                  type: string
+                  minLength: 1
+                color:
+                  description: Color name for a variant, e.g. 'Navy Blue'. Only applicable when parentId points to a style.
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                dimension:
+                  description: Size or dimension for a SKU, e.g. 'M' or '38'. Only applicable when parentId points to a variant.
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                isStoryActive:
+                  description: Whether the public product story/traceability page is enabled for this product. Requires a supply chain to be attached to the product.
+                  type: boolean
+                brands:
+                  description: Array of style property IDs of category 'brands'. Values must be created via POST /api/v2/style-properties/ before use. Free-text strings will be rejected with a 404.
+                  anyOf:
+                  - type: array
+                    items:
+                      type: string
+                      minLength: 1
+                  - type: 'null'
+                departments:
+                  description: Array of style property IDs of category 'departments'. Values must be created via POST /api/v2/style-properties/ before use. Free-text strings will be rejected with a 404.
+                  anyOf:
+                  - type: array
+                    items:
+                      type: string
+                      minLength: 1
+                  - type: 'null'
+                seasons:
+                  description: Array of style property IDs of category 'seasons'. Values must be created via POST /api/v2/style-properties/ before use. Free-text strings will be rejected with a 404.
+                  anyOf:
+                  - type: array
+                    items:
+                      type: string
+                      minLength: 1
+                  - type: 'null'
+                collections:
+                  description: Array of style property IDs of category 'collections'. Values must be created via POST /api/v2/style-properties/ before use. Free-text strings will be rejected with a 404.
+                  anyOf:
+                  - type: array
+                    items:
+                      type: string
+                      minLength: 1
+                  - type: 'null'
+                claimIntentions:
+                  description: Array of sustainability claim intention IDs to associate with this product.
+                  anyOf:
+                  - type: array
+                    items:
+                      type: string
+                      minLength: 1
+                  - type: 'null'
+                customProperties:
+                  description: JSON string of arbitrary key-value pairs for custom metadata.
+                  anyOf:
+                  - type: string
+                  - type: 'null'
+                suppliers:
+                  description: Array of supplier IDs that can fulfil this product, including the main supplier and any alternates. Use the companyId values here to query GET /supply-chains/:styleId for detailed supply chain data.
+                  anyOf:
+                  - type: array
+                    items:
+                      type: string
+                      minLength: 1
+                  - type: 'null'
+                mainSupplier:
+                  description: The single designated primary supplier for this product. Null if not set. A product can have many entries in suppliers but at most one mainSupplier.
+                  anyOf:
+                  - type: string
+                    minLength: 1
+                  - type: 'null'
+                vendors:
+                  description: Array of vendor company IDs.
+                  anyOf:
+                  - type: array
+                    items:
+                      type: string
+                      minLength: 1
+                  - type: 'null'
+                imagesFileIds:
+                  description: Array of file IDs for product images, obtained via the Files API.
+                  anyOf:
+                  - type: array
+                    items:
+                      type: string
+                      minLength: 1
+                  - type: 'null'
+                ecoFootPrint:
+                  description: Sustainability and recyclability data for this product.
+                  anyOf:
+                  - type: object
+                    properties:
+                      hazardousMaterials:
+                        description: List of hazardous substances present in the product.
+                        anyOf:
+                        - type: array
+                          items:
+                            type: object
+                            properties:
+                              idx:
+                                type: number
+                              name:
+                                description: Name of the hazardous substance, e.g. 'Chromium'.
+                                type: string
+                                minLength: 1
+                              percentage:
+                                description: Concentration of the substance as a percentage of total product weight (0–100).
+                                type: number
+                                minimum: 0
+                                maximum: 100
+                            required:
+                            - idx
+                            - name
+                            - percentage
+                        - type: 'null'
+                      recyclabilityAbsenceDisruptor:
+                        description: True if there are no disruptors to recyclability (e.g. coatings, mixed materials).
+                        anyOf:
+                        - type: boolean
+                        - type: 'null'
+                      recyclabilityCanBeSorted:
+                        description: True if the product can be sorted at recycling facilities.
+                        anyOf:
+                        - type: boolean
+                        - type: 'null'
+                      recyclabilityCanCollectAtScale:
+                        description: True if collection infrastructure exists at scale for this product.
+                        anyOf:
+                        - type: boolean
+                        - type: 'null'
+                      recyclabilityIndustrialScale:
+                        description: True if industrial-scale recycling processes exist for this product.
+                        anyOf:
+                        - type: boolean
+                        - type: 'null'
+                      recyclabilityRate:
+                        description: Recyclability percentage (0–100).
+                        anyOf:
+                        - type: number
+                        - type: 'null'
+                  - type: 'null'
+                weight:
+                  description: Product weight object. unit is the unit of measurement (e.g. 'GRAM'). value is the numeric weight. Null if weight has not been entered.
+                  anyOf:
+                  - type: object
+                    properties:
+                      unit:
+                        anyOf:
+                        - type: string
+                          enum:
+                          - GRAM
+                          - GRAM_PER_SQUARE_METER
+                          - GRAM_PER_SQUARE_FOOT
+                          - GRAM_PER_SQUARE_YARD
+                          - OUNCE_PER_SQUARE_YARD
+                          - MILLIGRAM
+                          - KILOGRAM
+                          - METRIC_TON
+                          - POUNDS
+                          - SHORT_TON
+                          - LONG_TON
+                          - HUNDREDWEIGHT
+                          - SHORT_HUNDREDWEIGHT
+                          - LONG_HUNDREDWEIGHT
+                          - OUNCE
+                          - DRAM
+                          - GRAIN
+                          - PENNYWEIGHT
+                          - SCRUPLE
+                          - STONE
+                        - type: 'null'
+                      value:
+                        anyOf:
+                        - type: number
+                        - type: 'null'
+                    required:
+                    - unit
+                    - value
+                  - type: 'null'
+                styleLevelId:
+                  description: ID of the style level to assign to this product.
+                  type: string
+                  minLength: 1
+              required:
+              - name
+              - codes
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+        in: path
+        name: id
+        required: true
+        description: ID of the style, variant, or SKU.
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties: {}
+                    additionalProperties: {}
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+    get:
+      tags:
+      - Product / Styles
+      description: Retrieve a single style, variant, or SKU by ID. The product level is resolved automatically from the ID.
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+        in: path
+        name: id
+        required: true
+        description: ID of the style, variant, or SKU.
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        description: Retraced-generated unique identifier for this style. Format is a ULID prefixed with 'style_' on newer records; legacy records may use an unprefixed alphanumeric ID. Stable — safe to store and use as a foreign key.
+                        type: string
+                        minLength: 1
+                      forCompanyId:
+                        type: string
+                        minLength: 1
+                      name:
+                        type: string
+                        minLength: 1
+                        maxLength: 255
+                      codes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            codeId:
+                              description: 'Identifier type for the code. Single-use (each may appear at most once): ERP_ID, PLM_ID, MAIN_SUPPLIERS_ID, PIM_ID, UPC_GTIN_12, EAN_GTIN_13, ZALANDO_ID, FASHIONCLOUD_ID. Multi-use (append a numeric suffix for additional entries, e.g. OTHER_ID1, OTHER_ID2): OTHER_ID, ALTERNATIVE_SUPPLIERS_ID.'
+                              type: string
+                              minLength: 1
+                            codeValue:
+                              description: The unique code value for this identifier, e.g. "ERP-001234".
+                              type: string
+                              minLength: 1
+                          required:
+                          - codeId
+                          - codeValue
+                          additionalProperties: false
+                      description:
+                        anyOf:
+                        - type: string
+                          maxLength: 4000
+                        - type: 'null'
+                      gender:
+                        anyOf:
+                        - type: string
+                          maxLength: 50
+                        - type: 'null'
+                      styleLevelId:
+                        description: Retraced taxonomy identifier for the broad product level (e.g. APPAREL_END_CONSUMER_FINISHED_GOODS, FABRICS, TRIM_AND_ACCESSORIES). For the full list of valid values call GET /api/v2/style-types/ and read the parentId field.
+                        type: string
+                        minLength: 1
+                      styleTypeId:
+                        type: string
+                        minLength: 1
+                      productLevel:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      brands:
+                        anyOf:
+                        - type: array
+                          items:
+                            type: string
+                            minLength: 1
+                        - type: 'null'
+                      departments:
+                        anyOf:
+                        - type: array
+                          items:
+                            type: string
+                            minLength: 1
+                        - type: 'null'
+                      seasons:
+                        anyOf:
+                        - type: array
+                          items:
+                            type: string
+                            minLength: 1
+                        - type: 'null'
+                      collections:
+                        anyOf:
+                        - type: array
+                          items:
+                            type: string
+                            minLength: 1
+                        - type: 'null'
+                      claimIntentions:
+                        anyOf:
+                        - type: array
+                          items:
+                            type: string
+                            minLength: 1
+                        - type: 'null'
+                      customProperties:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      suppliers:
+                        anyOf:
+                        - type: array
+                          items:
+                            type: string
+                            minLength: 1
+                        - type: 'null'
+                      mainSupplier:
+                        anyOf:
+                        - type: string
+                          minLength: 1
+                        - type: 'null'
+                      vendors:
+                        anyOf:
+                        - type: array
+                          items:
+                            type: string
+                            minLength: 1
+                        - type: 'null'
+                      imagesFileIds:
+                        anyOf:
+                        - type: array
+                          items:
+                            type: string
+                            minLength: 1
+                        - type: 'null'
+                      images:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              minLength: 1
+                            url:
+                              type: string
+                            previewUrl:
+                              type: string
+                            fileType:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            bucketName:
+                              type: string
+                            name:
+                              type: string
+                            fileSize:
+                              anyOf:
+                              - type: number
+                              - type: 'null'
+                            contentType:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            fileHash:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            createdAt:
+                              anyOf:
+                              - type: string
+                                format: date-time
+                              - type: 'null'
+                            updatedAt:
+                              anyOf:
+                              - type: string
+                                format: date-time
+                              - type: 'null'
+                            createdBy:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            createdByCompanyId:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            createdByImpersonateId:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            createdByImpersonateName:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            createdByUserId:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            createdByApiKeyId:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            createdByApiKeyLabel:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            updatedByUserId:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            updatedByUserName:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            updatedByCompanyId:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            updatedByCompanyName:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            updatedByImpersonateId:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            updatedByImpersonateName:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            updatedByApiKeyId:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            updatedByApiKeyLabel:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                          required:
+                          - id
+                          - url
+                          - previewUrl
+                          - fileType
+                          - bucketName
+                          - name
+                          - fileSize
+                          - contentType
+                          - fileHash
+                          - createdAt
+                          - updatedAt
+                          additionalProperties: false
+                      isComponent:
+                        anyOf:
+                        - type: boolean
+                        - type: number
+                      isStoryActive:
+                        anyOf:
+                        - type: boolean
+                        - type: number
+                      isArchived:
+                        description: True if the product has been archived. Archived products are excluded from default API results.
+                        type: boolean
+                      qrCodeUrl:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdAt:
+                        description: ISO 8601 UTC timestamp of when the record was created.
+                        anyOf:
+                        - type: string
+                          format: date-time
+                        - type: 'null'
+                      updatedAt:
+                        description: ISO 8601 UTC timestamp of when the record was last modified. Use with updatedAfterUnixMs for incremental sync.
+                        anyOf:
+                        - type: string
+                          format: date-time
+                        - type: 'null'
+                      createdByImpersonateId:
+                        anyOf:
+                        - type: string
+                          maxLength: 36
+                        - type: 'null'
+                      createdByUserId:
+                        anyOf:
+                        - type: string
+                          maxLength: 36
+                        - type: 'null'
+                      createdByCompanyId:
+                        anyOf:
+                        - type: string
+                          maxLength: 36
+                        - type: 'null'
+                      createdByApiKeyId:
+                        anyOf:
+                        - type: string
+                          maxLength: 36
+                        - type: 'null'
+                      createdByApiKeyLabel:
+                        anyOf:
+                        - type: string
+                          maxLength: 255
+                        - type: 'null'
+                      updatedByImpersonateId:
+                        anyOf:
+                        - type: string
+                          maxLength: 36
+                        - type: 'null'
+                      updatedByUserId:
+                        anyOf:
+                        - type: string
+                          maxLength: 36
+                        - type: 'null'
+                      updatedByCompanyId:
+                        anyOf:
+                        - type: string
+                          maxLength: 36
+                        - type: 'null'
+                      updatedByApiKeyId:
+                        anyOf:
+                        - type: string
+                          maxLength: 36
+                        - type: 'null'
+                      updatedByApiKeyLabel:
+                        anyOf:
+                        - type: string
+                          maxLength: 255
+                        - type: 'null'
+                      ecoFootPrint:
+                        anyOf:
+                        - type: object
+                          properties:
+                            syntheticMaterialPercentage:
+                              anyOf:
+                              - type: number
+                                minimum: 0
+                                maximum: 100
+                              - type: 'null'
+                            recycledMaterialPercentage:
+                              anyOf:
+                              - type: number
+                                minimum: 0
+                                maximum: 100
+                              - type: 'null'
+                            hazardousMaterials:
+                              anyOf:
+                              - type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    idx:
+                                      type: number
+                                    name:
+                                      type: string
+                                      minLength: 1
+                                    percentage:
+                                      type: number
+                                      minimum: 0
+                                      maximum: 100
+                                  required:
+                                  - idx
+                                  - name
+                                  - percentage
+                                  additionalProperties: false
+                              - type: 'null'
+                            recyclabilityAbsenceDisruptor:
+                              anyOf:
+                              - type: boolean
+                              - type: 'null'
+                            recyclabilityCanBeSorted:
+                              anyOf:
+                              - type: boolean
+                              - type: 'null'
+                            recyclabilityCanCollectAtScale:
+                              anyOf:
+                              - type: boolean
+                              - type: 'null'
+                            recyclabilityIndustrialScale:
+                              anyOf:
+                              - type: boolean
+                              - type: 'null'
+                            recyclabilityRate:
+                              anyOf:
+                              - type: number
+                              - type: 'null'
+                          additionalProperties: false
+                        - type: 'null'
+                      weight:
+                        anyOf:
+                        - type: object
+                          properties:
+                            unit:
+                              type: string
+                            value:
+                              type: number
+                          required:
+                          - unit
+                          - value
+                          additionalProperties: false
+                        - type: 'null'
+                      tracingStory:
+                        anyOf:
+                        - type: object
+                          properties:
+                            id:
+                              type: string
+                            tracingType:
+                              type: string
+                            tracingId:
+                              type: string
+                            isActive:
+                              type: boolean
+                            createdAt:
+                              anyOf:
+                              - type: string
+                                format: date-time
+                              - type: 'null'
+                            updatedAt:
+                              anyOf:
+                              - type: string
+                                format: date-time
+                              - type: 'null'
+                            tracingName:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                          required:
+                          - id
+                          - tracingType
+                          - tracingId
+                          - isActive
+                          - createdAt
+                          - updatedAt
+                          additionalProperties: false
+                        - type: 'null'
+                      isWeightAvailable:
+                        description: True if a weight value has been recorded for this variant.
+                        type: boolean
+                      featureImageUrl:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      material:
+                        anyOf:
+                        - type: object
+                          properties:
+                            id:
+                              type: string
+                            name:
+                              type: string
+                            description:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            lines:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                  rawMaterialId:
+                                    type: string
+                                  rawMaterialName:
+                                    type: string
+                                  percentage:
+                                    anyOf:
+                                    - type: number
+                                    - type: 'null'
+                                  countriesOfOrigin:
+                                    anyOf:
+                                    - type: string
+                                    - type: 'null'
+                                required:
+                                - id
+                                - rawMaterialId
+                                - rawMaterialName
+                                - percentage
+                                - countriesOfOrigin
+                                additionalProperties: false
+                          required:
+                          - id
+                          - name
+                          additionalProperties: false
+                        - type: 'null'
+                      bom:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            name:
+                              type: string
+                          required:
+                          - id
+                          - name
+                          additionalProperties: false
+                      styleProperties:
+                        type: object
+                        properties:
+                          brands:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                name:
+                                  type: string
+                                category:
+                                  type: string
+                              required:
+                              - id
+                              - name
+                              - category
+                              additionalProperties: false
+                          departments:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                name:
+                                  type: string
+                                category:
+                                  type: string
+                              required:
+                              - id
+                              - name
+                              - category
+                              additionalProperties: false
+                          seasons:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                name:
+                                  type: string
+                                category:
+                                  type: string
+                              required:
+                              - id
+                              - name
+                              - category
+                              additionalProperties: false
+                          collections:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                name:
+                                  type: string
+                                category:
+                                  type: string
+                              required:
+                              - id
+                              - name
+                              - category
+                              additionalProperties: false
+                        additionalProperties: false
+                      type:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          name:
+                            type: string
+                          parentId:
+                            anyOf:
+                            - type: string
+                            - type: 'null'
+                          quantityUnits:
+                            anyOf:
+                            - type: array
+                              items:
+                                type: string
+                            - type: 'null'
+                          weightUnits:
+                            anyOf:
+                            - type: array
+                              items:
+                                type: string
+                            - type: 'null'
+                        required:
+                        - id
+                        - name
+                        - parentId
+                        - quantityUnits
+                        - weightUnits
+                        additionalProperties: false
+                      linkedStyles:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            styleId:
+                              type: string
+                          required:
+                          - styleId
+                          additionalProperties: false
+                      validationResult:
+                        type: object
+                        properties:
+                          valid:
+                            type: boolean
+                          selectable:
+                            type: boolean
+                          description:
+                            type: array
+                            items:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                  text:
+                                    type: string
+                                required:
+                                - type
+                                - text
+                                additionalProperties: false
+                          certificateDuplications:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                text:
+                                  type: string
+                                claimId:
+                                  type: string
+                              required:
+                              - type
+                              - text
+                              additionalProperties: false
+                        required:
+                        - valid
+                        - selectable
+                        - description
+                        - certificateDuplications
+                        additionalProperties: false
+                      dimension:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      color:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      variantId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      styleId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      overriddenFlag:
+                        anyOf:
+                        - type: array
+                          items:
+                            type: string
+                        - type: 'null'
+                    required:
+                    - id
+                    - forCompanyId
+                    - name
+                    - codes
+                    - styleLevelId
+                    - styleTypeId
+                    - isArchived
+                    additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+                example:
+                  metadata:
+                    success: true
+                  data:
+                    id: FA5TURRZBA3
+                    forCompanyId: M4MRIN4A9JQ
+                    name: Stone-Transparent-001-AW23
+                    codes:
+                    - codeId: EAN_GTIN_13
+                      codeValue: '978020137962'
+                    - codeId: OTHER_ID
+                      codeValue: ST243578-001-AW23
+                    description: Rigid black denim heavy washed and treated mens regular straight fit jeans
+                    gender: MALE
+                    styleLevelId: APPAREL_END_CONSUMER_FINISHED_GOODS
+                    styleTypeId: JEANS
+                    productLevel: style
+                    brands:
+                    - YCIZ224OHALGK2YU7Y
+                    departments:
+                    - TKJTGU7LM8K
+                    seasons:
+                    - stp_01KM2WY63RHNQXB3JRCF4VBBAY
+                    collections:
+                    - stp_01KFG66VC1C74G9RP74AP8JPR3
+                    claimIntentions:
+                    - GOTS
+                    customProperties: null
+                    suppliers:
+                    - DN553A2VP56
+                    - 4N3TWW6BVA8
+                    - S7CFG7ITY8B
+                    - 8FE1ZAPSYF2
+                    mainSupplier: DN553A2VP56
+                    vendors:
+                    - DN553A2VP56
+                    imagesFileIds:
+                    - 0CY0GOB0T7RCZD0A66
+                    - 7BN1N1LRHUZZPFEQT6
+                    images:
+                    - id: 0CY0GOB0T7RCZD0A66
+                      url: 0CY0GOB0T7RCZD0A66.jpg
+                      previewUrl: https://retraced-bucket-production-public.imgix.net/0CY0GOB0T7RCZD0A66.jpg
+                      fileType: IMAGE
+                      bucketName: public
+                      name: jeans-homme-blue-clark-long34-X-2.jpg
+                      fileSize: 155976
+                      contentType: image/jpeg
+                      fileHash: 5c9085494eb594bad469bb9953031c1c4398a65afee8ae5b9a914c2a83362b5c
+                      createdAt: '2024-03-11T15:58:42.000Z'
+                      updatedAt: '2024-03-11T15:58:42.000Z'
+                      createdBy: null
+                      createdByCompanyId: M4MRIN4A9JQ
+                      createdByImpersonateId: null
+                      createdByImpersonateName: null
+                      createdByUserId: MXP5E436ZRD
+                      createdByApiKeyId: null
+                      createdByApiKeyLabel: null
+                      updatedByUserId: MXP5E436ZRD
+                      updatedByUserName: null
+                      updatedByCompanyId: M4MRIN4A9JQ
+                      updatedByCompanyName: null
+                      updatedByImpersonateId: null
+                      updatedByImpersonateName: null
+                      updatedByApiKeyId: null
+                      updatedByApiKeyLabel: null
+                    - id: 7BN1N1LRHUZZPFEQT6
+                      url: 7BN1N1LRHUZZPFEQT6.jpg
+                      previewUrl: https://retraced-bucket-production-public.imgix.net/7BN1N1LRHUZZPFEQT6.jpg
+                      fileType: IMAGE
+                      bucketName: public
+                      name: jeans-homme-blue-clark-long34-X.jpg
+                      fileSize: 315769
+                      contentType: image/jpeg
+                      fileHash: 4171f5ccb21d28454693eb513abffb0a6de96972312e1c3c4eb153b62a47f272
+                      createdAt: '2024-03-11T15:58:42.000Z'
+                      updatedAt: '2024-03-11T15:58:42.000Z'
+                      createdBy: null
+                      createdByCompanyId: M4MRIN4A9JQ
+                      createdByImpersonateId: null
+                      createdByImpersonateName: null
+                      createdByUserId: MXP5E436ZRD
+                      createdByApiKeyId: null
+                      createdByApiKeyLabel: null
+                      updatedByUserId: MXP5E436ZRD
+                      updatedByUserName: null
+                      updatedByCompanyId: M4MRIN4A9JQ
+                      updatedByCompanyName: null
+                      updatedByImpersonateId: null
+                      updatedByImpersonateName: null
+                      updatedByApiKeyId: null
+                      updatedByApiKeyLabel: null
+                    isComponent: false
+                    isStoryActive: true
+                    isArchived: false
+                    qrCodeUrl: https://retraced-bucket-production-public.imgix.net/RJUJ7AC9S61.svg
+                    createdAt: '2022-06-02T11:50:58.028Z'
+                    updatedAt: '2026-06-15T14:02:53.729Z'
+                    createdByImpersonateId: null
+                    createdByUserId: GZXUI1P6Q24
+                    createdByCompanyId: M4MRIN4A9JQ
+                    createdByApiKeyId: null
+                    createdByApiKeyLabel: null
+                    updatedByImpersonateId: null
+                    updatedByUserId: XI9MMYMZK7K
+                    updatedByCompanyId: M4MRIN4A9JQ
+                    updatedByApiKeyId: null
+                    updatedByApiKeyLabel: null
+                    ecoFootPrint:
+                      syntheticMaterialPercentage: 0
+                      recycledMaterialPercentage: 0
+                      hazardousMaterials: []
+                      recyclabilityAbsenceDisruptor: false
+                      recyclabilityCanBeSorted: false
+                      recyclabilityCanCollectAtScale: false
+                      recyclabilityIndustrialScale: false
+                      recyclabilityRate: 0
+                    weight:
+                      unit: GRAM
+                      value: 400
+                    tracingStory:
+                      id: prdstory_01KQCT8350CB2N2NAF9WAHJ2JT
+                      tracingType: SUPPLY_CHAIN_MAPPINGS
+                      tracingId: L41RWLMA367
+                      isActive: true
+                      createdAt: '2026-04-29T14:28:20.256Z'
+                      updatedAt: '2026-04-29T15:16:16.451Z'
+                    isWeightAvailable: true
+  /api/v2/styles/archive:
+    post:
+      tags:
+      - Product / Styles
+      description: Archive one or more styles, variants, or SKUs. All IDs must belong to the same product level. Archiving a style cascades to all its child variants and SKUs.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  description: Array of IDs to archive or unarchive. Max 100. All IDs must belong to the same product level (style, variant, or SKU).
+                  minItems: 1
+                  maxItems: 100
+                  type: array
+                  items:
+                    type: string
+                    minLength: 1
+                shouldUnarchiveChildren:
+                  description: Whether to cascade the operation to child variants and SKUs. Defaults to true.
+                  default: true
+                  type: boolean
+              required:
+              - ids
+      responses:
+        '204':
+          description: No content
+  /api/v2/styles/unarchive:
+    post:
+      tags:
+      - Product / Styles
+      description: Unarchive one or more styles, variants, or SKUs. All IDs must belong to the same product level.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  description: Array of IDs to archive or unarchive. Max 100. All IDs must belong to the same product level (style, variant, or SKU).
+                  minItems: 1
+                  maxItems: 100
+                  type: array
+                  items:
+                    type: string
+                    minLength: 1
+                shouldUnarchiveChildren:
+                  description: Whether to cascade the operation to child variants and SKUs. Defaults to true.
+                  default: true
+                  type: boolean
+              required:
+              - ids
+      responses:
+        '204':
+          description: No content

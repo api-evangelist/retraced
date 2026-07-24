@@ -1,0 +1,611 @@
+openapi: 3.0.3
+info:
+  title: Public API Reference Certificates Order Hub / Order Lines API
+  description: 'The retraced API comprises all publicly enabled options to make
+
+    machine-to-machine changes in the retraced platform. The retraced dashboard uses the
+
+    same endpoints, but also in addition more. If you wish to use the API of the dashboard,
+
+    it is possible but not versioned cleanly like the public API.
+
+
+    ## Authentication
+
+
+    The authentication procedure is passwordless and uses an API key in the header. To get
+
+    an API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**
+
+    then click **Create**. Be sure to copy the key somewhere safe, as you won''t be able to
+
+    view it again. If you don''t see Developers HQ in the sidebar contact your Customer
+
+    Success Manager to enable this for you. You can now set the key directly in request
+
+    headers. To authenticate using an API key, set the header key `companyapikey` to the
+
+    value of your API key.
+
+
+    ## Getting Started
+
+
+    Retraced has 2 environments against which you can send your requests and receive the
+
+    expected response: staging (for development and testing) and production. Your API key
+
+    is scoped for both environments. The staging Base URL is
+
+    https://publicapi.staging.retraced.com. Staging copies production data once daily, and
+
+    all changes made on staging will be deleted.
+
+
+    Find detailed guides on how to use the endpoints and how we recommend building an
+
+    integration given your use case in our
+
+    [guides](https://publicapi.retraced.com/api/v2/guides). A history of public API
+
+    changes is available in the
+
+    [release notes](https://publicapi.retraced.com/api/v2/release-notes).'
+  version: 2.938.1
+servers: []
+tags:
+- name: Order Hub / Order Lines
+paths:
+  /api/v2/order-lines/:
+    get:
+      tags:
+      - Order Hub / Order Lines
+      description: List order lines, paginated via `page`/`limit`. Provide `orderId` to filter to a single order; omit it to list every line your company owns. Lines of removed or foreign orders are never returned.
+      parameters:
+      - schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+        in: query
+        name: limit
+        required: false
+      - schema:
+          type: integer
+          minimum: 1
+          maximum: 9007199254740991
+        in: query
+        name: page
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: orderId
+        required: false
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                      pagination:
+                        type: object
+                        properties:
+                          page:
+                            default: 1
+                            type: number
+                          limit:
+                            default: 10
+                            type: number
+                          total:
+                            default: 0
+                            type: number
+                          totalPages:
+                            default: 0
+                            type: number
+                        required:
+                        - page
+                        - limit
+                        - total
+                        - totalPages
+                        additionalProperties: false
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        orderId:
+                          type: string
+                        orderLineNumber:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        lineNo:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        styleId:
+                          type: string
+                        quantity:
+                          type: number
+                        unit:
+                          type: string
+                        secondaryQuantity:
+                          anyOf:
+                          - type: number
+                          - type: 'null'
+                        secondaryUnit:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdAt:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByUserId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByUserName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByCompanyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByCompanyName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByImpersonateId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByImpersonateName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByApiKeyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        createdByApiKeyLabel:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedAt:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByUserId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByUserName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByCompanyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByCompanyName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByImpersonateId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByImpersonateName:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByApiKeyId:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        updatedByApiKeyLabel:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                      required:
+                      - id
+                      - orderId
+                      - orderLineNumber
+                      - lineNo
+                      - styleId
+                      - quantity
+                      - unit
+                      - secondaryQuantity
+                      - secondaryUnit
+                      - createdAt
+                      - createdByUserId
+                      - createdByUserName
+                      - createdByCompanyId
+                      - createdByCompanyName
+                      - createdByImpersonateId
+                      - createdByImpersonateName
+                      - createdByApiKeyId
+                      - createdByApiKeyLabel
+                      - updatedAt
+                      - updatedByUserId
+                      - updatedByUserName
+                      - updatedByCompanyId
+                      - updatedByCompanyName
+                      - updatedByImpersonateId
+                      - updatedByImpersonateName
+                      - updatedByApiKeyId
+                      - updatedByApiKeyLabel
+                      additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+                example:
+                  metadata:
+                    success: true
+                    pagination:
+                      page: 1
+                      limit: 20
+                      total: 2
+                      totalPages: 1
+                  data:
+                  - id: ordline_01KWHF7XAY4Q74CAVXYAPJ6FJV
+                    orderId: order_01KWHF7TD318JZA3KM9A9E9979
+                    orderLineNumber: PO-2026-0042-L1
+                    lineNo: 1
+                    styleId: style_01KM2XVHS8NCPRP3PD5EREZ30H
+                    quantity: 1500
+                    unit: PIECES
+                    secondaryQuantity: 450.75
+                    secondaryUnit: KILOGRAM
+                    createdAt: '2026-07-02T12:50:08.096Z'
+                    createdByUserId: null
+                    createdByUserName: null
+                    createdByCompanyId: M4MRIN4A9JQ
+                    createdByCompanyName: null
+                    createdByImpersonateId: null
+                    createdByImpersonateName: null
+                    createdByApiKeyId: QLKL2SWPRSH
+                    createdByApiKeyLabel: ERP integration
+                    updatedAt: '2026-07-02T12:50:08.096Z'
+                    updatedByUserId: null
+                    updatedByUserName: null
+                    updatedByCompanyId: M4MRIN4A9JQ
+                    updatedByCompanyName: null
+                    updatedByImpersonateId: null
+                    updatedByImpersonateName: null
+                    updatedByApiKeyId: QLKL2SWPRSH
+                    updatedByApiKeyLabel: ERP integration
+                  - id: ordline_01KWHF7YSW1A1R34E1DMEHMAK5
+                    orderId: order_01KWHF7TD318JZA3KM9A9E9979
+                    orderLineNumber: PO-2026-0042-FABRIC-A
+                    lineNo: 2
+                    styleId: style_01KVT1Y6QSRSF7WSEK8QQVRAZ2
+                    quantity: 850.5
+                    unit: METRE
+                    secondaryQuantity: 320.25
+                    secondaryUnit: KILOGRAM
+                    createdAt: '2026-07-02T12:50:08.402Z'
+                    createdByUserId: null
+                    createdByUserName: null
+                    createdByCompanyId: M4MRIN4A9JQ
+                    createdByCompanyName: null
+                    createdByImpersonateId: null
+                    createdByImpersonateName: null
+                    createdByApiKeyId: QLKL2SWPRSH
+                    createdByApiKeyLabel: ERP integration
+                    updatedAt: '2026-07-02T12:50:08.402Z'
+                    updatedByUserId: null
+                    updatedByUserName: null
+                    updatedByCompanyId: M4MRIN4A9JQ
+                    updatedByCompanyName: null
+                    updatedByImpersonateId: null
+                    updatedByImpersonateName: null
+                    updatedByApiKeyId: QLKL2SWPRSH
+                    updatedByApiKeyLabel: ERP integration
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
+  /api/v2/order-lines/{lineId}:
+    get:
+      tags:
+      - Order Hub / Order Lines
+      description: Fetch a single order line by its id. Returns 404 when the line does not exist or its parent order is removed / belongs to another company.
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+        in: path
+        name: lineId
+        required: true
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: true
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      orderId:
+                        type: string
+                      orderLineNumber:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      lineNo:
+                        anyOf:
+                        - type: integer
+                          minimum: -9007199254740991
+                          maximum: 9007199254740991
+                        - type: 'null'
+                      styleId:
+                        type: string
+                      quantity:
+                        type: number
+                      unit:
+                        type: string
+                      secondaryQuantity:
+                        anyOf:
+                        - type: number
+                        - type: 'null'
+                      secondaryUnit:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdAt:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByUserId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByUserName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByCompanyName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByImpersonateId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByImpersonateName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByApiKeyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      createdByApiKeyLabel:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedAt:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByUserId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByUserName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByCompanyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByCompanyName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByImpersonateId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByImpersonateName:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByApiKeyId:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      updatedByApiKeyLabel:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                    required:
+                    - id
+                    - orderId
+                    - orderLineNumber
+                    - lineNo
+                    - styleId
+                    - quantity
+                    - unit
+                    - secondaryQuantity
+                    - secondaryUnit
+                    - createdAt
+                    - createdByUserId
+                    - createdByUserName
+                    - createdByCompanyId
+                    - createdByCompanyName
+                    - createdByImpersonateId
+                    - createdByImpersonateName
+                    - createdByApiKeyId
+                    - createdByApiKeyLabel
+                    - updatedAt
+                    - updatedByUserId
+                    - updatedByUserName
+                    - updatedByCompanyId
+                    - updatedByCompanyName
+                    - updatedByImpersonateId
+                    - updatedByImpersonateName
+                    - updatedByApiKeyId
+                    - updatedByApiKeyLabel
+                    additionalProperties: false
+                required:
+                - metadata
+                - data
+                additionalProperties: false
+                example:
+                  metadata:
+                    success: true
+                  data:
+                    id: ordline_01KWHF7XAY4Q74CAVXYAPJ6FJV
+                    orderId: order_01KWHF7TD318JZA3KM9A9E9979
+                    orderLineNumber: PO-2026-0042-L1
+                    lineNo: 1
+                    styleId: style_01KM2XVHS8NCPRP3PD5EREZ30H
+                    quantity: 1500
+                    unit: PIECES
+                    secondaryQuantity: 450.75
+                    secondaryUnit: KILOGRAM
+                    createdAt: '2026-07-02T12:50:08.096Z'
+                    createdByUserId: null
+                    createdByUserName: null
+                    createdByCompanyId: M4MRIN4A9JQ
+                    createdByCompanyName: null
+                    createdByImpersonateId: null
+                    createdByImpersonateName: null
+                    createdByApiKeyId: QLKL2SWPRSH
+                    createdByApiKeyLabel: ERP integration
+                    updatedAt: '2026-07-02T12:50:08.096Z'
+                    updatedByUserId: null
+                    updatedByUserName: null
+                    updatedByCompanyId: M4MRIN4A9JQ
+                    updatedByCompanyName: null
+                    updatedByImpersonateId: null
+                    updatedByImpersonateName: null
+                    updatedByApiKeyId: QLKL2SWPRSH
+                    updatedByApiKeyLabel: ERP integration
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      success:
+                        default: false
+                        type: boolean
+                    required:
+                    - success
+                    additionalProperties: false
+                  statusCode:
+                    type: number
+                  code:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  expected:
+                    type: boolean
+                required:
+                - statusCode
+                - code
+                - message
+                additionalProperties: false
