@@ -1,0 +1,27 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Retraced Public API
+  version: 1.0.0
+extends: openapi/retraced-openapi-original.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-rating: 3
+      x-apievangelist-notes: >-
+        Enriched 2026-07-20. The upstream spec omits servers[] and securitySchemes and
+        has empty operationIds — these are captured below and in authentication/.
+  - target: $.servers
+    update:
+      - url: https://publicapi.retraced.com
+        description: Production
+      - url: https://publicapi.staging.retraced.com
+        description: Staging (development and testing; daily copy of production data)
+  - target: $.components.securitySchemes
+    update:
+      companyApiKey:
+        type: apiKey
+        in: header
+        name: companyapikey
+        description: >-
+          Company-scoped API key created in the Retraced Platform under
+          Developers HQ > API Keys. Scoped for both staging and production.

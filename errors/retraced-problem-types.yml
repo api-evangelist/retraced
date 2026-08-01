@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/retraced-openapi-original.json
+format: custom-json
+description: >-
+  Error catalog derived from the 4xx/5xx responses declared in the Retraced Public API v2
+  OpenAPI. Retraced does NOT use RFC 9457 application/problem+json; errors use a custom
+  JSON envelope. Titles/remediation are derived from HTTP semantics and the documented
+  auth/validation model.
+envelope:
+  media_type: application/json
+  fields:
+    metadata: { success: boolean }
+    statusCode: number
+    code: string
+    error: string
+    message: string
+    expected: boolean
+  required: [statusCode, code, message]
+problems:
+  - status: 400
+    title: Bad request
+    meaning: Request payload or query parameters failed validation.
+    remediation: Correct the request against the operation schema and resend.
+  - status: 401
+    title: Unauthorized
+    meaning: Missing or invalid companyapikey header.
+    remediation: >-
+      Set the companyapikey header to a valid API key from Developers HQ > API Keys.
+  - status: 403
+    title: Forbidden
+    meaning: The API key is valid but not permitted to perform this action.
+    remediation: Confirm the key's company scope and requested resource permissions.
+  - status: 404
+    title: Not found
+    meaning: The referenced resource does not exist or is not visible to this company.
+    remediation: Verify the resource id and that it belongs to your company scope.
+  - status: 409
+    title: Conflict
+    meaning: The request conflicts with the current state of the resource.
+    remediation: Re-fetch the resource state and retry with a consistent request.

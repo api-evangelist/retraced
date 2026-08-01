@@ -1,0 +1,68 @@
+generated: '2026-07-20'
+method: searched
+source: https://publicapi.retraced.com/
+docs: https://publicapi.retraced.com/api/v2/guides
+description: >-
+  Cross-cutting request/response conventions for the Retraced Public API v2, captured
+  from the published API reference and integration guides and derived from the OpenAPI.
+authentication:
+  style: api-key-header
+  header: companyapikey
+  see: authentication/retraced-authentication.yml
+base_path: /api/v2
+versioning:
+  scheme: uri-path
+  current: v2
+  release_version: 2.938.1
+  see: lifecycle/retraced-lifecycle.yml
+pagination:
+  style: page-number
+  request_params:
+    - name: page
+      in: query
+      type: integer
+    - name: limit
+      in: query
+      type: integer
+    - name: order
+      in: query
+      type: string
+      note: order direction (asc/desc)
+    - name: sort
+      in: query
+      type: string
+      note: field to sort by
+  note: >-
+    List endpoints (e.g. GET /api/v2/styles/, /orders/, /order-lines/) accept page/limit
+    plus rich resource-specific filter query params and an `include` param for related data.
+idempotency:
+  supported: false
+  note: >-
+    No idempotency-key header or scope is documented in the API reference or guides, and
+    no Idempotency-Key parameter appears in the OpenAPI. Write operations are not
+    documented as idempotent.
+error_envelope:
+  format: custom-json
+  media_type: application/json
+  shape:
+    metadata: { success: boolean }
+    statusCode: number
+    code: string
+    error: string
+    message: string
+    expected: boolean
+  required: [statusCode, code, message]
+  see: errors/retraced-problem-types.yml
+soft_delete:
+  note: >-
+    Several resources distinguish soft- vs hard-delete semantics and expose an
+    isArchived flag plus archive/unarchive operations (e.g. POST /api/v2/styles/archive).
+file_upload:
+  pattern: presigned-url
+  note: >-
+    Two-step upload: POST /api/v2/files returns a pre-signed URL, then the client PUTs
+    the bytes directly to object storage.
+environments:
+  staging: https://publicapi.staging.retraced.com
+  production: https://publicapi.retraced.com
+  see: sandbox/retraced-sandbox.yml

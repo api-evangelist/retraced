@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/retraced-openapi-original.json + https://publicapi.retraced.com/api/v2/guides
+note: >-
+  Skills are grounded in real HTTP method+path operations; the upstream OpenAPI has empty
+  operationIds, so steps reference verified method+path pairs rather than operationIds.
+skills:
+  - file: retraced-manage-products.md
+    name: Manage products (styles) in Retraced
+    api: openapi/retraced-openapi-original.json
+    operations:
+      - 'POST /api/v2/styles/'
+      - 'GET /api/v2/styles/'
+      - 'PUT /api/v2/styles/{id}'
+      - 'POST /api/v2/styles/archive'
+  - file: retraced-dpp-label-provider.md
+    name: Retrieve Digital Product Passport data (DPP / label provider)
+    api: openapi/retraced-openapi-original.json
+    operations:
+      - 'GET /api/v2/styles/{id}'
+      - 'GET /api/v2/supply-chains/{id}'
+      - 'GET /api/v2/certificates/'
+      - 'GET /api/v2/material-headers/'
+  - file: retraced-manage-orders.md
+    name: Manage orders in Retraced Order Hub
+    api: openapi/retraced-openapi-original.json
+    operations:
+      - 'POST /api/v2/orders/'
+      - 'GET /api/v2/orders/'
+      - 'PATCH /api/v2/orders/{id}'
+      - 'GET /api/v2/order-lines/'

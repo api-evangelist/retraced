@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: searched
+source: https://publicapi.retraced.com/
+description: >-
+  Retraced exposes a staging environment for development and testing alongside production.
+  A single API key is scoped for both environments.
+environments:
+  - name: staging
+    base_url: https://publicapi.staging.retraced.com
+    purpose: development and testing
+    data: >-
+      Staging copies production data once daily; all changes made on staging are deleted.
+  - name: production
+    base_url: https://publicapi.retraced.com
+    purpose: live
+key_scope: >-
+  API keys are scoped for both staging and production; no separate test-vs-live key prefix
+  is documented.
+test_values:
+  note: >-
+    No published magic test identifiers, test cards, or fixtures — the staging environment
+    is seeded from a daily copy of production data rather than static test fixtures.

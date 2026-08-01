@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/retraced-openapi-original.json
+description: >-
+  Cross-cutting standards conformance for the Retraced Public API v2, derived from the
+  OpenAPI and the published API reference. Absence of a claim is honest data.
+standards:
+  - id: openapi-3.0
+    conforms: true
+    evidence: OpenAPI 3.0.3 document published at /api/docs/openapi.json
+  - id: oauth2
+    conforms: false
+    evidence: no oauth2 securityScheme; auth is a company-scoped API key header
+  - id: oidc
+    conforms: false
+    evidence: marketing storefront uses Shopify OIDC; the API itself does not
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: errors use a custom JSON envelope, not application/problem+json
+  - id: pagination
+    conforms: true
+    evidence: page/limit/order/sort query parameters on list operations
+  - id: idempotency
+    conforms: false
+    evidence: no Idempotency-Key header/parameter documented
+  - id: json
+    conforms: true
+    evidence: application/json request and response bodies throughout
+  - id: rest
+    conforms: true
+    evidence: resource-oriented /api/v2 paths with HTTP verb semantics

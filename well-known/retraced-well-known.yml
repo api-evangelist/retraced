@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: live probes of /.well-known/* on Retraced hosts
+hosts:
+  - host: https://www.retraced.com
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: retraced-openid-configuration.json
+        note: >-
+          OIDC discovery for the Shopify customer-account provider backing the
+          www.retraced.com marketing storefront (issuer shopify.com/authentication/...),
+          not the Retraced Public API (which uses a companyapikey header).
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        file: retraced-oauth-authorization-server.json
+        note: Shopify customer-account authorization-server metadata (see above).
+      - path: /.well-known/security.txt
+        status: 404
+  - host: https://publicapi.retraced.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404

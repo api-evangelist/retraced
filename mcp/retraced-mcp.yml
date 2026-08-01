@@ -1,0 +1,174 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/retraced-openapi-original.json
+note: No official hosted/remote Retraced MCP server was found. Candidate tool list derived one-per-operation
+  from the OpenAPI (operationIds are absent upstream, so tools reference HTTP method+path).
+server:
+  name: retraced
+  transport: http
+  base_url: https://publicapi.retraced.com/api/v2
+  auth: header companyapikey
+tools:
+- name: create_styles
+  description: Product / Styles
+  source_operation: openapi/retraced-openapi-original.json POST /api/v2/styles/
+- name: list_styles
+  description: Product / Styles
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/styles/
+- name: update_styles
+  description: Product / Styles
+  source_operation: openapi/retraced-openapi-original.json PUT /api/v2/styles/{id}
+- name: get_styles
+  description: Product / Styles
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/styles/{id}
+- name: create_styles_archive
+  description: Product / Styles
+  source_operation: openapi/retraced-openapi-original.json POST /api/v2/styles/archive
+- name: create_styles_unarchive
+  description: Product / Styles
+  source_operation: openapi/retraced-openapi-original.json POST /api/v2/styles/unarchive
+- name: list_style_types
+  description: Product / Style Types
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/style-types/
+- name: create_style_properties
+  description: Create a Style Property
+  source_operation: openapi/retraced-openapi-original.json POST /api/v2/style-properties/
+- name: list_style_properties
+  description: List Style Properties
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/style-properties/
+- name: create_bom_headers
+  description: Product / BOM Headers
+  source_operation: openapi/retraced-openapi-original.json POST /api/v2/bom-headers/
+- name: list_bom_headers
+  description: Product / BOM Headers
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/bom-headers/
+- name: create_bom_headers_delete
+  description: Product / BOM Headers
+  source_operation: openapi/retraced-openapi-original.json POST /api/v2/bom-headers/delete
+- name: update_bom_headers
+  description: Product / BOM Headers
+  source_operation: openapi/retraced-openapi-original.json PUT /api/v2/bom-headers/{id}
+- name: get_bom_headers
+  description: Product / BOM Headers
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/bom-headers/{id}
+- name: create_bom_lines
+  description: Product / BOM Lines
+  source_operation: openapi/retraced-openapi-original.json POST /api/v2/bom-lines/
+- name: list_bom_lines
+  description: Product / BOM Lines
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/bom-lines/
+- name: create_bom_lines_delete
+  description: Product / BOM Lines
+  source_operation: openapi/retraced-openapi-original.json POST /api/v2/bom-lines/delete
+- name: update_bom_lines
+  description: Product / BOM Lines
+  source_operation: openapi/retraced-openapi-original.json PUT /api/v2/bom-lines/{id}
+- name: create_bom_placements
+  description: Product / BOM Placements
+  source_operation: openapi/retraced-openapi-original.json POST /api/v2/bom-placements/
+- name: list_bom_placements
+  description: Product / BOM Placements
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/bom-placements/
+- name: get_bom_placements
+  description: Product / BOM Placements
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/bom-placements/{id}
+- name: create_material_headers
+  description: Product / Material Headers
+  source_operation: openapi/retraced-openapi-original.json POST /api/v2/material-headers/
+- name: list_material_headers
+  description: Product / Material Headers
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/material-headers/
+- name: get_material_headers
+  description: Product / Material Headers
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/material-headers/{id}
+- name: update_material_headers
+  description: Product / Material Headers
+  source_operation: openapi/retraced-openapi-original.json PUT /api/v2/material-headers/{id}
+- name: create_material_headers_delete
+  description: Product / Material Headers
+  source_operation: openapi/retraced-openapi-original.json POST /api/v2/material-headers/delete
+- name: create_material_lines
+  description: Product / Material Lines
+  source_operation: openapi/retraced-openapi-original.json POST /api/v2/material-lines/
+- name: list_material_lines
+  description: Product / Material Lines
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/material-lines/
+- name: create_material_lines_delete
+  description: Product / Material Lines
+  source_operation: openapi/retraced-openapi-original.json POST /api/v2/material-lines/delete
+- name: update_material_lines
+  description: Product / Material Lines
+  source_operation: openapi/retraced-openapi-original.json PUT /api/v2/material-lines/{id}
+- name: get_supply_chains
+  description: Product / Supply Chains
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/supply-chains/{id}
+- name: list_certificates
+  description: Certificates
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/certificates/
+- name: get_certificates
+  description: Certificates
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/certificates/{id}
+- name: list_companies
+  description: Companies
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/companies/
+- name: get_companies
+  description: Companies
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/companies/{id}
+- name: list_companies_esg
+  description: Companies
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/companies/{id}/esg/
+- name: create_files
+  description: Files
+  source_operation: openapi/retraced-openapi-original.json POST /api/v2/files/
+- name: list_attachment_templates
+  description: Order Hub / Attachment Templates
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/attachment-templates/
+- name: list_orders
+  description: Order Hub / Orders
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/orders/
+- name: create_orders
+  description: Order Hub / Orders
+  source_operation: openapi/retraced-openapi-original.json POST /api/v2/orders/
+- name: get_orders
+  description: Order Hub / Orders
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/orders/{id}
+- name: update_orders
+  description: Order Hub / Orders
+  source_operation: openapi/retraced-openapi-original.json PATCH /api/v2/orders/{id}
+- name: delete_orders
+  description: Order Hub / Orders
+  source_operation: openapi/retraced-openapi-original.json DELETE /api/v2/orders/{id}
+- name: list_order_lines
+  description: Order Hub / Order Lines
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/order-lines/
+- name: get_order_lines
+  description: Order Hub / Order Lines
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/order-lines/{lineId}
+- name: list_guides
+  description: GET /api/v2/guides
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/guides
+- name: list_release_notes
+  description: GET /api/v2/release-notes
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/release-notes
+- name: list_guides_products
+  description: GET /api/v2/guides/products
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/guides/products
+- name: list_guides_lca_provider
+  description: GET /api/v2/guides/lca-provider
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/guides/lca-provider
+- name: list_guides_dpp_label_provider
+  description: GET /api/v2/guides/dpp-label-provider
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/guides/dpp-label-provider
+- name: list_guides_bom
+  description: GET /api/v2/guides/bom
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/guides/bom
+- name: list_guides_materials
+  description: GET /api/v2/guides/materials
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/guides/materials
+- name: list_guides_file_upload
+  description: GET /api/v2/guides/file-upload
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/guides/file-upload
+- name: list_guides_order_hub
+  description: GET /api/v2/guides/order-hub
+  source_operation: openapi/retraced-openapi-original.json GET /api/v2/guides/order-hub

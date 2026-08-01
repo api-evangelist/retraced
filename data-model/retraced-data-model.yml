@@ -1,0 +1,74 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/retraced-openapi-original.json
+description: >-
+  Entity-relationship graph for the Retraced Public API v2, derived from the OpenAPI path
+  structure, resource tags, and id-reference fields. Retraced models a fashion/textile
+  supply chain: products (styles), bills of materials, material composition, certificates,
+  companies, and purchase/sales orders.
+entities:
+  - name: Style
+    resource: /api/v2/styles
+    description: A product (fiber-to-finish), the central catalog entity; supports variants, archive/unarchive, and supply-chain lookup.
+  - name: StyleType
+    resource: /api/v2/style-types
+  - name: StyleProperty
+    resource: /api/v2/style-properties
+  - name: BomHeader
+    resource: /api/v2/bom-headers
+    description: Bill-of-materials header; owns lines; copy-on-write inheritance and main-BOM versioning.
+  - name: BomLine
+    resource: /api/v2/bom-lines
+  - name: BomPlacement
+    resource: /api/v2/bom-placements
+  - name: MaterialHeader
+    resource: /api/v2/material-headers
+    description: Material composition header; owns line trees with percentages and countries of origin.
+  - name: MaterialLine
+    resource: /api/v2/material-lines
+  - name: SupplyChain
+    resource: /api/v2/supply-chains
+  - name: Certificate
+    resource: /api/v2/certificates
+  - name: Company
+    resource: /api/v2/companies
+    description: Supplier/brand company; exposes an ESG (energy sources, ESG 2.1.6.1) sub-resource.
+  - name: File
+    resource: /api/v2/files
+    description: Two-step presigned-URL upload target.
+  - name: AttachmentTemplate
+    resource: /api/v2/attachment-templates
+  - name: Order
+    resource: /api/v2/orders
+    description: Purchase/sales order in Order Hub; owns lines with auto-generated line numbers.
+  - name: OrderLine
+    resource: /api/v2/order-lines
+relationships:
+  - from: Style
+    to: StyleType
+    kind: belongs_to
+    via: styleTypeId
+  - from: Style
+    to: SupplyChain
+    kind: has_one
+    via: supply-chains/{id}
+  - from: BomHeader
+    to: BomLine
+    kind: has_many
+    via: bomHeaderId
+  - from: BomLine
+    to: BomPlacement
+    kind: has_many
+    via: bomLineId
+  - from: MaterialHeader
+    to: MaterialLine
+    kind: has_many
+    via: materialHeaderId
+  - from: Company
+    to: ESG
+    kind: has_one
+    via: companies/{id}/esg
+  - from: Order
+    to: OrderLine
+    kind: has_many
+    via: orderId

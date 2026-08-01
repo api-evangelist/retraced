@@ -1,8 +1,28 @@
 aid: retraced
 name: Retraced
-description: 'Retraced is a company surfaced as a portfolio company of partech and added to the API Evangelist
-  network as a stub for enrichment. Sector: Applicative SaaS. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Retraced is an AI-first supply chain transparency and compliance platform for the
+  fashion and textile industry. It helps brands and suppliers manage multi-tier
+  traceability (fiber to finish), certified-materials validation, material composition,
+  Digital Product Passports, supplier collaboration, and regulatory compliance across
+  frameworks such as CSDDD, AGEC, and LKSG. Retraced exposes a versioned Public API v2
+  for machine-to-machine access to products (styles), bills of materials, material
+  composition, certificates, companies with ESG data, supply chains, files, and Order Hub
+  purchase/sales orders — the same data model that powers the Retraced dashboard. Backed
+  by Partech.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.shopify.com/s/files/1/0568/3524/4150/files/iso-retraced.svg?v=1760701227
 url: https://raw.githubusercontent.com/api-evangelist/retraced/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,11 +32,303 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v1
 tags:
 - Company
 - Applicative Saas
-apis: []
+- Supply Chain
+- Sustainability
+- Compliance
+- Fashion
+- Traceability
+- Digital Product Passport
+- ESG
+apis:
+- aid: retraced:retraced-certificates-api
+  name: Retraced Certificates API
+  description: The Certificates API from Retraced — 2 operation(s) for certificates.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Certificates
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-certificates-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
+- aid: retraced:retraced-companies-api
+  name: Retraced Companies API
+  description: The Companies API from Retraced — 3 operation(s) for companies.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Companies
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-companies-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
+- aid: retraced:retraced-files-api
+  name: Retraced Files API
+  description: The Files API from Retraced — 1 operation(s) for files.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Files
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-files-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
+- aid: retraced:retraced-guides-api
+  name: Retraced Guides API
+  description: The Guides API from Retraced — 8 operation(s) for guides.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Guides
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-guides-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
+- aid: retraced:retraced-order-hub-attachment-templates-api
+  name: Retraced Order Hub / Attachment Templates API
+  description: >-
+    The Order Hub / Attachment Templates API from Retraced — 1 operation(s) for order hub / attachment
+    templates.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Order Hub / Attachment Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-order-hub-attachment-templates-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
+- aid: retraced:retraced-order-hub-order-lines-api
+  name: Retraced Order Hub / Order Lines API
+  description: >-
+    The Order Hub / Order Lines API from Retraced — 2 operation(s) for order hub / order lines.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Order Hub / Order Lines
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-order-hub-order-lines-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
+- aid: retraced:retraced-order-hub-orders-api
+  name: Retraced Order Hub / Orders API
+  description: The Order Hub / Orders API from Retraced — 2 operation(s) for order hub / orders.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Order Hub / Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-order-hub-orders-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
+- aid: retraced:retraced-product-bom-headers-api
+  name: Retraced Product / BOM Headers API
+  description: The Product / BOM Headers API from Retraced — 3 operation(s) for product / bom headers.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Product / BOM Headers
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-product-bom-headers-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
+- aid: retraced:retraced-product-bom-lines-api
+  name: Retraced Product / BOM Lines API
+  description: The Product / BOM Lines API from Retraced — 3 operation(s) for product / bom lines.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Product / BOM Lines
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-product-bom-lines-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
+- aid: retraced:retraced-product-bom-placements-api
+  name: Retraced Product / BOM Placements API
+  description: >-
+    The Product / BOM Placements API from Retraced — 2 operation(s) for product / bom placements.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Product / BOM Placements
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-product-bom-placements-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
+- aid: retraced:retraced-product-material-headers-api
+  name: Retraced Product / Material Headers API
+  description: >-
+    The Product / Material Headers API from Retraced — 3 operation(s) for product / material headers.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Product / Material Headers
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-product-material-headers-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
+- aid: retraced:retraced-product-material-lines-api
+  name: Retraced Product / Material Lines API
+  description: >-
+    The Product / Material Lines API from Retraced — 3 operation(s) for product / material lines.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Product / Material Lines
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-product-material-lines-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
+- aid: retraced:retraced-product-style-properties-api
+  name: Retraced Product / Style Properties API
+  description: >-
+    The Product / Style Properties API from Retraced — 1 operation(s) for product / style properties.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Product / Style Properties
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-product-style-properties-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
+- aid: retraced:retraced-product-style-types-api
+  name: Retraced Product / Style Types API
+  description: The Product / Style Types API from Retraced — 1 operation(s) for product / style types.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Product / Style Types
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-product-style-types-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
+- aid: retraced:retraced-product-styles-api
+  name: Retraced Product / Styles API
+  description: The Product / Styles API from Retraced — 4 operation(s) for product / styles.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Product / Styles
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-product-styles-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
+- aid: retraced:retraced-product-supply-chains-api
+  name: Retraced Product / Supply Chains API
+  description: >-
+    The Product / Supply Chains API from Retraced — 1 operation(s) for product / supply chains.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Product / Supply Chains
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-product-supply-chains-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
+- aid: retraced:retraced-release-notes-api
+  name: Retraced Release Notes API
+  description: The Release Notes API from Retraced — 1 operation(s) for release notes.
+  humanURL: https://publicapi.retraced.com/
+  baseURL: https://publicapi.retraced.com/api/v2
+  tags:
+  - Release Notes
+  properties:
+  - type: OpenAPI
+    url: openapi/retraced-release-notes-api-openapi.yml
+  - type: Documentation
+    url: https://publicapi.retraced.com/
+  - type: APIReference
+    url: https://publicapi.retraced.com/
+  - type: GettingStarted
+    url: https://publicapi.retraced.com/api/v2/guides
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,3 +337,49 @@ maintainers:
 common:
 - type: Website
   url: https://www.retraced.com/
+- type: DeveloperPortal
+  url: https://publicapi.retraced.com/
+- type: Documentation
+  url: https://publicapi.retraced.com/
+- type: APIReference
+  url: https://publicapi.retraced.com/
+- type: GettingStarted
+  url: https://publicapi.retraced.com/api/v2/guides
+- type: OpenAPI
+  url: openapi/retraced-openapi-original.json
+- type: ChangeLog
+  url: https://publicapi.retraced.com/api/v2/release-notes
+- type: PrivacyPolicy
+  url: https://www.retraced.com/pages/privacy-policy
+- type: TermsOfService
+  url: https://www.retraced.com/pages/legal
+- type: Support
+  url: https://www.retraced.com/pages/contact
+- type: Authentication
+  url: authentication/retraced-authentication.yml
+- type: Conventions
+  url: conventions/retraced-conventions.yml
+- type: ErrorCatalog
+  url: errors/retraced-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/retraced-lifecycle.yml
+- type: Sandbox
+  url: sandbox/retraced-sandbox.yml
+- type: DataModel
+  url: data-model/retraced-data-model.yml
+- type: Conformance
+  url: conformance/retraced-conformance.yml
+- type: WellKnown
+  url: well-known/retraced-well-known.yml
+- type: MCPServer
+  url: mcp/retraced-mcp.yml
+- type: LLMsTxt
+  url: llms/retraced-llms.txt
+- type: Overlay
+  url: overlays/retraced-openapi-overlay.yaml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgenticAccess
+  url: agentic-access/retraced-agentic-access.yml
+- type: DomainSecurity
+  url: security/retraced-domain-security.yml

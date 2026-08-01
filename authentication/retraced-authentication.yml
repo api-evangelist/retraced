@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: https://publicapi.retraced.com/
+docs: https://publicapi.retraced.com/
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  oauth2_flows: []
+note: >-
+  The Retraced Public API OpenAPI does not declare securitySchemes; the auth model
+  below is captured verbatim from the published API reference. Authentication is
+  passwordless via a company-scoped API key sent in an HTTP header.
+schemes:
+  - name: companyApiKey
+    type: apiKey
+    in: header
+    parameter: companyapikey
+    description: >-
+      Set the request header `companyapikey` to the value of an API key created in the
+      Retraced Platform under Developers HQ > API Keys. Keys are shown once at creation.
+      A single key is scoped to both the staging and production environments. If
+      Developers HQ is not visible in the sidebar, a Customer Success Manager must
+      enable it for the account.
+    sources: [openapi/retraced-openapi-original.json]

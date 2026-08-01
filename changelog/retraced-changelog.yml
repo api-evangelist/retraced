@@ -1,0 +1,17 @@
+generated: '2026-07-20'
+method: searched
+source: https://publicapi.retraced.com/api/v2/release-notes
+description: >-
+  Retraced Public API release notes. Categorizes changes as Added / Fixed / Changed /
+  Breaking / Deprecated. Platform releases that do not affect the public API are not listed.
+scheme: semver
+current_version: 2.938.1
+entries:
+  - version: v2.930.2
+    date: '2026-07-14'
+    breaking: false
+    changes:
+      - category: Fixed
+        highlight: Update response example and schema for supply chain tier.
+      - category: Changed
+        highlight: Add release note and start gathering information for public API.

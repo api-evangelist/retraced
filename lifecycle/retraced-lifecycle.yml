@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: https://publicapi.retraced.com/
+versioning:
+  scheme: uri-path
+  current: v2
+  release_version: 2.938.1
+  docs: https://publicapi.retraced.com/
+  note: >-
+    The public API is versioned cleanly under /api/v2. Dashboard endpoints share the
+    same host but are explicitly not versioned cleanly and are out of scope.
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: >-
+    Release notes track a "Deprecated" category, but no formal deprecation/sunset policy
+    or RFC 8594 header support is documented.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+changelog: https://publicapi.retraced.com/api/v2/release-notes
+guides: https://publicapi.retraced.com/api/v2/guides
+deprecated_operations: []

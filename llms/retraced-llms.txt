@@ -1,0 +1,36 @@
+# Retraced
+
+> Retraced is an AI-first supply chain transparency and compliance platform for the fashion and textile industry. Its Public API v2 provides machine-to-machine access to products (styles), bills of materials, material composition, certificates, companies (with ESG data), supply chains, files, and purchase/sales orders — the same data model that powers the Retraced dashboard, for traceability, Digital Product Passport, LCA, and regulatory compliance (CSDDD, AGEC, LKSG) use cases.
+
+Authentication is passwordless via a company-scoped API key sent in the `companyapikey` HTTP header. Base URL: https://publicapi.retraced.com/api/v2 (staging: https://publicapi.staging.retraced.com). Backed by Partech.
+
+## API
+
+- [Retraced Public API Reference](https://publicapi.retraced.com/): Scalar-rendered OpenAPI 3.0.3 reference, 41 paths / 54 operations across Products, BOM, Materials, Certificates, Companies, Files, and Order Hub.
+- [OpenAPI document](https://publicapi.retraced.com/api/docs/openapi.json): machine-readable spec.
+
+## Specs & Artifacts
+
+- OpenAPI: openapi/retraced-openapi-original.json
+- Overlay (adds servers + security scheme): overlays/retraced-openapi-overlay.yaml
+- Authentication: authentication/retraced-authentication.yml
+- Conventions (pagination, error envelope, versioning): conventions/retraced-conventions.yml
+- Error catalog: errors/retraced-problem-types.yml
+- Data model / ERD: data-model/retraced-data-model.yml
+- Lifecycle: lifecycle/retraced-lifecycle.yml
+- Changelog: changelog/retraced-changelog.yml
+- Sandbox (staging): sandbox/retraced-sandbox.yml
+- Conformance: conformance/retraced-conformance.yml
+- Agentic access: agentic-access/retraced-agentic-access.yml
+
+## Docs
+
+- [Integration Guides](https://publicapi.retraced.com/api/v2/guides): Products, BOM, Materials, LCA Provider, DPP/Label Provider, Order Hub, File Upload.
+- [Release Notes](https://publicapi.retraced.com/api/v2/release-notes): dated public API changelog.
+
+## Company
+
+- [Website](https://www.retraced.com/)
+- [Contact](https://www.retraced.com/pages/contact)
+- [Privacy Policy](https://www.retraced.com/pages/privacy-policy)
+- [Legal](https://www.retraced.com/pages/legal)
