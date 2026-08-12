@@ -346,7 +346,7 @@ common:
 - type: GettingStarted
   url: https://publicapi.retraced.com/api/v2/guides
 - type: OpenAPI
-  url: openapi/retraced-openapi-original.json
+  url: openapi/_original/retraced-openapi-original.json
 - type: ChangeLog
   url: https://publicapi.retraced.com/api/v2/release-notes
 - type: PrivacyPolicy
