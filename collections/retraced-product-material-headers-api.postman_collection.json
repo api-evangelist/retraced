@@ -1,0 +1,576 @@
+{
+  "item": [
+    {
+      "id": "db127684-abe3-489b-b857-e4f50eb56fc4",
+      "name": "Product / Material Headers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "24fef3f8-24d4-4206-984d-51e5f1dc3038",
+          "name": "/api/v2/material-headers/",
+          "request": {
+            "name": "/api/v2/material-headers/",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "material-headers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"link\": {\n    \"styleId\": \"<string>\",\n    \"isMainMaterial\": \"<boolean>\"\n  },\n  \"description\": \"<string>\",\n  \"forCompanyId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cb9779df-b4f5-4e89-805e-722d1f52d1c6",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "material-headers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"link\": {\n    \"styleId\": \"<string>\",\n    \"isMainMaterial\": \"<boolean>\"\n  },\n  \"description\": \"<string>\",\n  \"forCompanyId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"forCompanyId\": \"string\",\n    \"link\": {\n      \"styleId\": \"stri\",\n      \"isMainMaterial\": false,\n      \"isOwner\": true\n    },\n    \"description\": \"string\",\n    \"createdAt\": \"1969-07-12T17:00:59.788Z\",\n    \"createdByUserId\": \"string\",\n    \"createdByCompanyId\": \"string\",\n    \"updatedAt\": \"2002-04-14T20:54:28.080Z\",\n    \"updatedByUserId\": \"string\",\n    \"updatedByCompanyId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74cd8efe-d64f-43d1-8522-9826d55cebcf",
+          "name": "/api/v2/material-headers/",
+          "request": {
+            "name": "/api/v2/material-headers/",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "material-headers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "desc"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "name"
+                },
+                {
+                  "disabled": false,
+                  "key": "styleId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "isMainMaterial",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "isOwner",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "153aab63-915c-4aa8-add2-b4ed57ff053b",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "material-headers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "name"
+                    },
+                    {
+                      "key": "styleId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isMainMaterial",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "isOwner",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"forCompanyId\": \"string\",\n      \"link\": {\n        \"styleId\": \"string\",\n        \"isMainMaterial\": false,\n        \"isOwner\": true\n      },\n      \"description\": \"string\",\n      \"createdAt\": \"2002-04-24T06:16:12.536Z\",\n      \"createdByUserId\": \"string\",\n      \"createdByCompanyId\": \"string\",\n      \"updatedAt\": \"1966-05-07T08:53:26.450Z\",\n      \"updatedByUserId\": \"string\",\n      \"updatedByCompanyId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"forCompanyId\": \"string\",\n      \"link\": {\n        \"styleId\": \"string\",\n        \"isMainMaterial\": false,\n        \"isOwner\": true\n      },\n      \"description\": \"string\",\n      \"createdAt\": \"2019-03-05T23:44:11.914Z\",\n      \"createdByUserId\": \"string\",\n      \"createdByCompanyId\": \"string\",\n      \"updatedAt\": \"2004-06-28T13:41:05.181Z\",\n      \"updatedByUserId\": \"string\",\n      \"updatedByCompanyId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "feafec8e-40c2-4049-abc8-c17294b2b3cd",
+          "name": "/api/v2/material-headers/:id",
+          "request": {
+            "name": "/api/v2/material-headers/:id",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "material-headers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0189d644-8633-4d1d-a949-e592b3679bd3",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "material-headers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"forCompanyId\": \"string\",\n    \"link\": {\n      \"styleId\": \"stri\",\n      \"isMainMaterial\": false,\n      \"isOwner\": true\n    },\n    \"description\": \"string\",\n    \"createdAt\": \"1969-07-12T17:00:59.788Z\",\n    \"createdByUserId\": \"string\",\n    \"createdByCompanyId\": \"string\",\n    \"updatedAt\": \"2002-04-14T20:54:28.080Z\",\n    \"updatedByUserId\": \"string\",\n    \"updatedByCompanyId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb84d101-3e06-46dc-b046-3d374e8727bf",
+          "name": "/api/v2/material-headers/:id",
+          "request": {
+            "name": "/api/v2/material-headers/:id",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "material-headers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"link\": {\n    \"styleId\": \"<string>\",\n    \"isMainMaterial\": \"<boolean>\"\n  },\n  \"description\": \"<string>\",\n  \"forCompanyId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "faf4e8c1-b06c-43a2-9627-6e50d0208960",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "material-headers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"link\": {\n    \"styleId\": \"<string>\",\n    \"isMainMaterial\": \"<boolean>\"\n  },\n  \"description\": \"<string>\",\n  \"forCompanyId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"forCompanyId\": \"string\",\n    \"link\": {\n      \"styleId\": \"stri\",\n      \"isMainMaterial\": false,\n      \"isOwner\": true\n    },\n    \"description\": \"string\",\n    \"createdAt\": \"1969-07-12T17:00:59.788Z\",\n    \"createdByUserId\": \"string\",\n    \"createdByCompanyId\": \"string\",\n    \"updatedAt\": \"2002-04-14T20:54:28.080Z\",\n    \"updatedByUserId\": \"string\",\n    \"updatedByCompanyId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82433984-e3e9-4a85-a8d2-7bae967cc455",
+          "name": "/api/v2/material-headers/delete",
+          "request": {
+            "name": "/api/v2/material-headers/delete",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "material-headers",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"styleId\": \"<string>\",\n  \"materialHeaderIds\": [\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ae79020f-80ee-451c-8462-039d0b5cb34a",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "material-headers",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"styleId\": \"<string>\",\n  \"materialHeaderIds\": [\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": {\n    \"deletedHeaders\": [\n      \"string\",\n      \"string\"\n    ],\n    \"deletedLinks\": [\n      \"string\",\n      \"string\"\n    ],\n    \"errors\": [\n      {\n        \"materialHeaderId\": \"string\",\n        \"message\": \"string\"\n      },\n      {\n        \"materialHeaderId\": \"string\",\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2e4e1b3f-eb00-4106-a561-0638d32a90fa",
+    "name": "Public API Reference Certificates Product / Material Headers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The retraced API comprises all publicly enabled options to make\nmachine-to-machine changes in the retraced platform. The retraced dashboard uses the\nsame endpoints, but also in addition more. If you wish to use the API of the dashboard,\nit is possible but not versioned cleanly like the public API.\n\n## Authentication\n\nThe authentication procedure is passwordless and uses an API key in the header. To get\nan API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**\nthen click **Create**. Be sure to copy the key somewhere safe, as you won't be able to\nview it again. If you don't see Developers HQ in the sidebar contact your Customer\nSuccess Manager to enable this for you. You can now set the key directly in request\nheaders. To authenticate using an API key, set the header key `companyapikey` to the\nvalue of your API key.\n\n## Getting Started\n\nRetraced has 2 environments against which you can send your requests and receive the\nexpected response: staging (for development and testing) and production. Your API key\nis scoped for both environments. The staging Base URL is\nhttps://publicapi.staging.retraced.com. Staging copies production data once daily, and\nall changes made on staging will be deleted.\n\nFind detailed guides on how to use the endpoints and how we recommend building an\nintegration given your use case in our\n[guides](https://publicapi.retraced.com/api/v2/guides). A history of public API\nchanges is available in the\n[release notes](https://publicapi.retraced.com/api/v2/release-notes).",
+      "type": "text/plain"
+    }
+  }
+}

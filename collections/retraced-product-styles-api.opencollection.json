@@ -1,0 +1,332 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Public API Reference Certificates Product / Styles API",
+    "version": "2.938.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product / Styles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /api/v2/styles/",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/styles/",
+            "params": [
+              {
+                "name": "level",
+                "value": "",
+                "type": "query",
+                "description": "Controls which tier of the product hierarchy is returned. 'style' = top-level product (no parent ID required). 'variant' = colour or variant (requires styleId). 'sku' = size or SKU (requires variantId). The updatedAfterUnixMs filter is supported at all three levels."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (1-based). Defaults to 1. Check metadata.pagination.totalPages in the response to know if more pages exist."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page (1–100). Defaults to 20. Check metadata.pagination.totalPages in the response to know if more pages exist."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by product name (partial match)."
+              },
+              {
+                "name": "codeId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by code type/ID, e.g. ERP_ID. Combine with codeValue."
+              },
+              {
+                "name": "codeValue",
+                "value": "",
+                "type": "query",
+                "description": "Filter by code value, e.g. DRS-001. Combine with codeId."
+              },
+              {
+                "name": "styleTypeId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by style type ID."
+              },
+              {
+                "name": "styleLevelId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by style level ID."
+              },
+              {
+                "name": "brands",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of brand IDs to filter by."
+              },
+              {
+                "name": "departments",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of department IDs to filter by."
+              },
+              {
+                "name": "seasons",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of season IDs to filter by."
+              },
+              {
+                "name": "collections",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of collection IDs to filter by."
+              },
+              {
+                "name": "suppliers",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of supplier IDs to filter by."
+              },
+              {
+                "name": "vendors",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of vendor IDs to filter by."
+              },
+              {
+                "name": "mainSupplier",
+                "value": "",
+                "type": "query",
+                "description": "Filter by main supplier ID."
+              },
+              {
+                "name": "isComponent",
+                "value": "",
+                "type": "query",
+                "description": "Filter by component / raw material flag. Accepts true or false."
+              },
+              {
+                "name": "isStoryActive",
+                "value": "",
+                "type": "query",
+                "description": "Filter by traceability page status. Accepts true or false."
+              },
+              {
+                "name": "isArchived",
+                "value": "",
+                "type": "query",
+                "description": "Filter by archived status. Defaults to false."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of related data to include, e.g. 'codes,brands'."
+              },
+              {
+                "name": "nameOrCode",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Filter styles by name or external code value (partial match). Use to look up a specific product by its ERP ID, PLM ID, or display name."
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "Filter by description (partial match)."
+              },
+              {
+                "name": "gender",
+                "value": "",
+                "type": "query",
+                "description": "Filter by gender (e.g. MALE, FEMALE, UNISEX)."
+              },
+              {
+                "name": "createdForMe",
+                "value": "",
+                "type": "query",
+                "description": "Filter to products created for your company."
+              },
+              {
+                "name": "isCreatedForNetwork",
+                "value": "",
+                "type": "query",
+                "description": "Filter to products created for your network."
+              },
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by owning company ID."
+              },
+              {
+                "name": "certValidationStandardId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by certification validation standard ID."
+              },
+              {
+                "name": "certValidationExpirationDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter by certification expiration date."
+              },
+              {
+                "name": "certValidationIssueDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter by certification issue date."
+              },
+              {
+                "name": "color",
+                "value": "",
+                "type": "query",
+                "description": "Filter variants by color. Only applicable when level=variant."
+              },
+              {
+                "name": "styleId",
+                "value": "",
+                "type": "query",
+                "description": "Filter variants by parent style ID. Only applicable when level=variant."
+              },
+              {
+                "name": "variantId",
+                "value": "",
+                "type": "query",
+                "description": "Filter SKUs by parent variant ID. Only applicable when level=sku."
+              },
+              {
+                "name": "dimension",
+                "value": "",
+                "type": "query",
+                "description": "Filter SKUs by dimension. Only applicable when level=sku."
+              },
+              {
+                "name": "updatedAfterUnixMs",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Unix timestamp in milliseconds. Returns only styles modified after this point in time. Use for incremental sync — on subsequent calls pass the timestamp of your last successful pull."
+              },
+              {
+                "name": "updatedBeforeUnixMs",
+                "value": "",
+                "type": "query",
+                "description": "Return products updated before this Unix timestamp (milliseconds)."
+              }
+            ]
+          },
+          "docs": "GET /styles serves all three tiers of the product hierarchy from a single endpoint, controlled by the required `level` query parameter. At `level=style` the endpoint returns top-level products and accepts optional filters (nameOrCode, updatedAfterUnixMs, page, pageSize). At `level=variant` a `styleId` is required and results are scoped to colour/variant children of that style. At `level=sku` a `variantId` is required and results are scoped to size/SKU children of that variant. Paginate using the"
+        },
+        {
+          "info": {
+            "name": "POST /api/v2/styles/",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/styles/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a style, variant, or SKU. Omit parentId to create a top-level style. Set parentId to a style ID to create a variant, or to a variant ID to create a SKU. styleTypeId and isComponent are required when creating a top-level style."
+        },
+        {
+          "info": {
+            "name": "GET /api/v2/styles/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/styles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the style, variant, or SKU."
+              }
+            ]
+          },
+          "docs": "Retrieve a single style, variant, or SKU by ID. The product level is resolved automatically from the ID."
+        },
+        {
+          "info": {
+            "name": "PUT /api/v2/styles/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/styles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the style, variant, or SKU."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a style, variant, or SKU by ID. The product level is resolved automatically from the ID. All body fields are optional — only provided fields will be updated."
+        },
+        {
+          "info": {
+            "name": "POST /api/v2/styles/archive",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/styles/archive",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Archive one or more styles, variants, or SKUs. All IDs must belong to the same product level. Archiving a style cascades to all its child variants and SKUs."
+        },
+        {
+          "info": {
+            "name": "POST /api/v2/styles/unarchive",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/styles/unarchive",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unarchive one or more styles, variants, or SKUs. All IDs must belong to the same product level."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

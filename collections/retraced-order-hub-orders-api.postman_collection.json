@@ -1,0 +1,1190 @@
+{
+  "item": [
+    {
+      "id": "39466070-f227-4e09-b4ae-84aa78bd3999",
+      "name": "Order Hub / Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ffdb81e9-13ce-47e7-b479-c00b39e73d01",
+          "name": "List the current company's orders. Supports filtering by type, supplier, buyer, status, tag, orderNumber, archived flag and updated-time range, plus pagination and sorting. Soft-removed orders are always excluded.",
+          "request": {
+            "name": "List the current company's orders. Supports filtering by type, supplier, buyer, status, tag, orderNumber, archived flag and updated-time range, plus pagination and sorting. Soft-removed orders are always excluded.",
+            "description": {
+              "content": "List the current company's orders. Supports filtering by type, supplier, buyer, status, tag, orderNumber, archived flag and updated-time range, plus pagination and sorting. Soft-removed orders are always excluded.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "orders",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "desc"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "updatedAt"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "supplier",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "buyer",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "orderNumber",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "isArchived",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAfterUnixMs",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedBeforeUnixMs",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8303d244-5443-45b1-bdeb-e35963d85294",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "updatedAt"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isArchived",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updatedAfterUnixMs",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updatedBeforeUnixMs",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"forCompanyId\": \"string\",\n      \"orderNumber\": \"string\",\n      \"orderType\": \"SALES_ORDER\",\n      \"orderSubType\": \"string\",\n      \"status\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"source\": \"string\",\n      \"buyerCompanyId\": \"string\",\n      \"supplierCompanyId\": \"string\",\n      \"receiverCompanyId\": \"string\",\n      \"vendorCompanyId\": \"string\",\n      \"factory\": \"string\",\n      \"buyerFacilityProcess\": \"string\",\n      \"supplierFacilityProcess\": \"string\",\n      \"receiverFacilityProcess\": \"string\",\n      \"orderDate\": \"string\",\n      \"deliveryDate\": \"string\",\n      \"agreedDeliveryDate\": \"string\",\n      \"expectedShippingDate\": \"string\",\n      \"shippingDate\": \"string\",\n      \"expectedDeliveryDate\": \"string\",\n      \"actualDeliveryDate\": \"string\",\n      \"shipmentReference\": \"string\",\n      \"internalResponsiblePerson\": \"string\",\n      \"season\": \"string\",\n      \"counterpartyOrderNumberRef\": \"string\",\n      \"isArchived\": true,\n      \"tracingStatus\": \"string\",\n      \"createdAt\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdByUserName\": \"string\",\n      \"createdByCompanyId\": \"string\",\n      \"createdByCompanyName\": \"string\",\n      \"createdByImpersonateId\": \"string\",\n      \"createdByImpersonateName\": \"string\",\n      \"createdByApiKeyId\": \"string\",\n      \"createdByApiKeyLabel\": \"string\",\n      \"updatedAt\": \"string\",\n      \"updatedByUserId\": \"string\",\n      \"updatedByUserName\": \"string\",\n      \"updatedByCompanyId\": \"string\",\n      \"updatedByCompanyName\": \"string\",\n      \"updatedByImpersonateId\": \"string\",\n      \"updatedByImpersonateName\": \"string\",\n      \"updatedByApiKeyId\": \"string\",\n      \"updatedByApiKeyLabel\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"forCompanyId\": \"string\",\n      \"orderNumber\": \"string\",\n      \"orderType\": \"SALES_ORDER\",\n      \"orderSubType\": \"string\",\n      \"status\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"source\": \"string\",\n      \"buyerCompanyId\": \"string\",\n      \"supplierCompanyId\": \"string\",\n      \"receiverCompanyId\": \"string\",\n      \"vendorCompanyId\": \"string\",\n      \"factory\": \"string\",\n      \"buyerFacilityProcess\": \"string\",\n      \"supplierFacilityProcess\": \"string\",\n      \"receiverFacilityProcess\": \"string\",\n      \"orderDate\": \"string\",\n      \"deliveryDate\": \"string\",\n      \"agreedDeliveryDate\": \"string\",\n      \"expectedShippingDate\": \"string\",\n      \"shippingDate\": \"string\",\n      \"expectedDeliveryDate\": \"string\",\n      \"actualDeliveryDate\": \"string\",\n      \"shipmentReference\": \"string\",\n      \"internalResponsiblePerson\": \"string\",\n      \"season\": \"string\",\n      \"counterpartyOrderNumberRef\": \"string\",\n      \"isArchived\": false,\n      \"tracingStatus\": \"string\",\n      \"createdAt\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdByUserName\": \"string\",\n      \"createdByCompanyId\": \"string\",\n      \"createdByCompanyName\": \"string\",\n      \"createdByImpersonateId\": \"string\",\n      \"createdByImpersonateName\": \"string\",\n      \"createdByApiKeyId\": \"string\",\n      \"createdByApiKeyLabel\": \"string\",\n      \"updatedAt\": \"string\",\n      \"updatedByUserId\": \"string\",\n      \"updatedByUserName\": \"string\",\n      \"updatedByCompanyId\": \"string\",\n      \"updatedByCompanyName\": \"string\",\n      \"updatedByImpersonateId\": \"string\",\n      \"updatedByImpersonateName\": \"string\",\n      \"updatedByApiKeyId\": \"string\",\n      \"updatedByApiKeyLabel\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23218013-8f31-459d-945e-09ae2f514a12",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "updatedAt"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isArchived",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updatedAfterUnixMs",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updatedBeforeUnixMs",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2769.196552522557,\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"metadata\": {\n    \"success\": false\n  },\n  \"error\": \"string\",\n  \"expected\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "812c1788-5d1a-4d95-9015-857bc70be8cc",
+          "name": "Create an order for the current company, optionally with nested order lines (created atomically with the order). The order number must be unique within the company for the same order type — a duplicate returns 400 (order_number_already_existing).",
+          "request": {
+            "name": "Create an order for the current company, optionally with nested order lines (created atomically with the order). The order number must be unique within the company for the same order type — a duplicate returns 400 (order_number_already_existing).",
+            "description": {
+              "content": "Create an order for the current company, optionally with nested order lines (created atomically with the order). The order number must be unique within the company for the same order type — a duplicate returns 400 (order_number_already_existing).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "orders",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderNumber\": \"<string>\",\n  \"buyerCompanyId\": \"<string>\",\n  \"supplierCompanyId\": \"<string>\",\n  \"orderSubType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"source\": \"<string>\",\n  \"receiverCompanyId\": \"<string>\",\n  \"vendorCompanyId\": \"<string>\",\n  \"factory\": \"<string>\",\n  \"buyerFacilityProcess\": \"<string>\",\n  \"supplierFacilityProcess\": \"<string>\",\n  \"receiverFacilityProcess\": \"<string>\",\n  \"orderDate\": \"<date>\",\n  \"deliveryDate\": \"<date>\",\n  \"agreedDeliveryDate\": \"<date>\",\n  \"expectedShippingDate\": \"<date>\",\n  \"shippingDate\": \"<date>\",\n  \"expectedDeliveryDate\": \"<date>\",\n  \"actualDeliveryDate\": \"<date>\",\n  \"shipmentReference\": \"<string>\",\n  \"internalResponsiblePerson\": \"<string>\",\n  \"season\": \"<string>\",\n  \"counterpartyOrderNumberRef\": \"<string>\",\n  \"orderType\": \"<string>\",\n  \"tracingStatus\": \"<string>\",\n  \"isArchived\": \"<boolean>\",\n  \"lines\": [\n    {\n      \"styleId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit\": \"<string>\",\n      \"orderLineNumber\": \"<string>\",\n      \"secondaryQuantity\": \"<number>\",\n      \"secondaryUnit\": \"<string>\"\n    },\n    {\n      \"styleId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit\": \"<string>\",\n      \"orderLineNumber\": \"<string>\",\n      \"secondaryQuantity\": \"<number>\",\n      \"secondaryUnit\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "110d91d2-6a2d-495a-a18f-fda23b596fc7",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderNumber\": \"PO-2026-0042\",\n  \"status\": \"IN_PROGRESS\",\n  \"orderSubType\": \"STANDARD\",\n  \"source\": \"ERP\",\n  \"tags\": [\n    \"priority\"\n  ],\n  \"buyerCompanyId\": \"M4MRIN4A9JQ\",\n  \"supplierCompanyId\": \"4ZGRBDHXAF5\",\n  \"receiverCompanyId\": \"4N3TWW6BVA8\",\n  \"vendorCompanyId\": \"4NX1XA2LARR\",\n  \"factory\": \"41FP5A2HJPX\",\n  \"buyerFacilityProcess\": \"Quality inspection\",\n  \"supplierFacilityProcess\": \"Weaving\",\n  \"receiverFacilityProcess\": \"Washing & finishing\",\n  \"orderDate\": \"2026-07-01\",\n  \"deliveryDate\": \"2026-09-15\",\n  \"agreedDeliveryDate\": \"2026-09-10\",\n  \"expectedShippingDate\": \"2026-08-28\",\n  \"shippingDate\": \"2026-08-30\",\n  \"expectedDeliveryDate\": \"2026-09-15\",\n  \"shipmentReference\": \"SHIP-2026-0042\",\n  \"internalResponsiblePerson\": \"KP1A1AILVU3\",\n  \"season\": \"FW26\",\n  \"counterpartyOrderNumberRef\": \"WW-SO-2026-118\",\n  \"lines\": [\n    {\n      \"orderLineNumber\": \"PO-2026-0042-PACKAGING\",\n      \"styleId\": \"style_01KM3A0QDRW7HRT0KZ8FQPXV6E\",\n      \"quantity\": 300,\n      \"unit\": \"PIECES\",\n      \"secondaryQuantity\": 120.5,\n      \"secondaryUnit\": \"KILOGRAM\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true\n  },\n  \"data\": {\n    \"id\": \"string\",\n    \"forCompanyId\": \"string\",\n    \"orderNumber\": \"string\",\n    \"orderType\": \"INTERNAL_ORDER\",\n    \"orderSubType\": \"string\",\n    \"status\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"source\": \"string\",\n    \"buyerCompanyId\": \"string\",\n    \"supplierCompanyId\": \"string\",\n    \"receiverCompanyId\": \"string\",\n    \"vendorCompanyId\": \"string\",\n    \"factory\": \"string\",\n    \"buyerFacilityProcess\": \"string\",\n    \"supplierFacilityProcess\": \"string\",\n    \"receiverFacilityProcess\": \"string\",\n    \"orderDate\": \"string\",\n    \"deliveryDate\": \"string\",\n    \"agreedDeliveryDate\": \"string\",\n    \"expectedShippingDate\": \"string\",\n    \"shippingDate\": \"string\",\n    \"expectedDeliveryDate\": \"string\",\n    \"actualDeliveryDate\": \"string\",\n    \"shipmentReference\": \"string\",\n    \"internalResponsiblePerson\": \"string\",\n    \"season\": \"string\",\n    \"counterpartyOrderNumberRef\": \"string\",\n    \"isArchived\": false,\n    \"tracingStatus\": \"string\",\n    \"createdAt\": \"string\",\n    \"createdByUserId\": \"string\",\n    \"createdByUserName\": \"string\",\n    \"createdByCompanyId\": \"string\",\n    \"createdByCompanyName\": \"string\",\n    \"createdByImpersonateId\": \"string\",\n    \"createdByImpersonateName\": \"string\",\n    \"createdByApiKeyId\": \"string\",\n    \"createdByApiKeyLabel\": \"string\",\n    \"updatedAt\": \"string\",\n    \"updatedByUserId\": \"string\",\n    \"updatedByUserName\": \"string\",\n    \"updatedByCompanyId\": \"string\",\n    \"updatedByCompanyName\": \"string\",\n    \"updatedByImpersonateId\": \"string\",\n    \"updatedByImpersonateName\": \"string\",\n    \"updatedByApiKeyId\": \"string\",\n    \"updatedByApiKeyLabel\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0fd7ef3f-c735-4cdd-932d-ff8196eb6e59",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderNumber\": \"PO-2026-0042\",\n  \"status\": \"IN_PROGRESS\",\n  \"orderSubType\": \"STANDARD\",\n  \"source\": \"ERP\",\n  \"tags\": [\n    \"priority\"\n  ],\n  \"buyerCompanyId\": \"M4MRIN4A9JQ\",\n  \"supplierCompanyId\": \"4ZGRBDHXAF5\",\n  \"receiverCompanyId\": \"4N3TWW6BVA8\",\n  \"vendorCompanyId\": \"4NX1XA2LARR\",\n  \"factory\": \"41FP5A2HJPX\",\n  \"buyerFacilityProcess\": \"Quality inspection\",\n  \"supplierFacilityProcess\": \"Weaving\",\n  \"receiverFacilityProcess\": \"Washing & finishing\",\n  \"orderDate\": \"2026-07-01\",\n  \"deliveryDate\": \"2026-09-15\",\n  \"agreedDeliveryDate\": \"2026-09-10\",\n  \"expectedShippingDate\": \"2026-08-28\",\n  \"shippingDate\": \"2026-08-30\",\n  \"expectedDeliveryDate\": \"2026-09-15\",\n  \"shipmentReference\": \"SHIP-2026-0042\",\n  \"internalResponsiblePerson\": \"KP1A1AILVU3\",\n  \"season\": \"FW26\",\n  \"counterpartyOrderNumberRef\": \"WW-SO-2026-118\",\n  \"lines\": [\n    {\n      \"orderLineNumber\": \"PO-2026-0042-PACKAGING\",\n      \"styleId\": \"style_01KM3A0QDRW7HRT0KZ8FQPXV6E\",\n      \"quantity\": 300,\n      \"unit\": \"PIECES\",\n      \"secondaryQuantity\": 120.5,\n      \"secondaryUnit\": \"KILOGRAM\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2769.196552522557,\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"metadata\": {\n    \"success\": false\n  },\n  \"error\": \"string\",\n  \"expected\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "988ae46d-8da2-4761-a977-5b92b3de40a9",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderNumber\": \"PO-2026-0042\",\n  \"status\": \"IN_PROGRESS\",\n  \"orderSubType\": \"STANDARD\",\n  \"source\": \"ERP\",\n  \"tags\": [\n    \"priority\"\n  ],\n  \"buyerCompanyId\": \"M4MRIN4A9JQ\",\n  \"supplierCompanyId\": \"4ZGRBDHXAF5\",\n  \"receiverCompanyId\": \"4N3TWW6BVA8\",\n  \"vendorCompanyId\": \"4NX1XA2LARR\",\n  \"factory\": \"41FP5A2HJPX\",\n  \"buyerFacilityProcess\": \"Quality inspection\",\n  \"supplierFacilityProcess\": \"Weaving\",\n  \"receiverFacilityProcess\": \"Washing & finishing\",\n  \"orderDate\": \"2026-07-01\",\n  \"deliveryDate\": \"2026-09-15\",\n  \"agreedDeliveryDate\": \"2026-09-10\",\n  \"expectedShippingDate\": \"2026-08-28\",\n  \"shippingDate\": \"2026-08-30\",\n  \"expectedDeliveryDate\": \"2026-09-15\",\n  \"shipmentReference\": \"SHIP-2026-0042\",\n  \"internalResponsiblePerson\": \"KP1A1AILVU3\",\n  \"season\": \"FW26\",\n  \"counterpartyOrderNumberRef\": \"WW-SO-2026-118\",\n  \"lines\": [\n    {\n      \"orderLineNumber\": \"PO-2026-0042-PACKAGING\",\n      \"styleId\": \"style_01KM3A0QDRW7HRT0KZ8FQPXV6E\",\n      \"quantity\": 300,\n      \"unit\": \"PIECES\",\n      \"secondaryQuantity\": 120.5,\n      \"secondaryUnit\": \"KILOGRAM\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2769.196552522557,\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"metadata\": {\n    \"success\": false\n  },\n  \"error\": \"string\",\n  \"expected\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0193342a-56f2-4b6d-92f7-93b679a44714",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderNumber\": \"PO-2026-0042\",\n  \"status\": \"IN_PROGRESS\",\n  \"orderSubType\": \"STANDARD\",\n  \"source\": \"ERP\",\n  \"tags\": [\n    \"priority\"\n  ],\n  \"buyerCompanyId\": \"M4MRIN4A9JQ\",\n  \"supplierCompanyId\": \"4ZGRBDHXAF5\",\n  \"receiverCompanyId\": \"4N3TWW6BVA8\",\n  \"vendorCompanyId\": \"4NX1XA2LARR\",\n  \"factory\": \"41FP5A2HJPX\",\n  \"buyerFacilityProcess\": \"Quality inspection\",\n  \"supplierFacilityProcess\": \"Weaving\",\n  \"receiverFacilityProcess\": \"Washing & finishing\",\n  \"orderDate\": \"2026-07-01\",\n  \"deliveryDate\": \"2026-09-15\",\n  \"agreedDeliveryDate\": \"2026-09-10\",\n  \"expectedShippingDate\": \"2026-08-28\",\n  \"shippingDate\": \"2026-08-30\",\n  \"expectedDeliveryDate\": \"2026-09-15\",\n  \"shipmentReference\": \"SHIP-2026-0042\",\n  \"internalResponsiblePerson\": \"KP1A1AILVU3\",\n  \"season\": \"FW26\",\n  \"counterpartyOrderNumberRef\": \"WW-SO-2026-118\",\n  \"lines\": [\n    {\n      \"orderLineNumber\": \"PO-2026-0042-PACKAGING\",\n      \"styleId\": \"style_01KM3A0QDRW7HRT0KZ8FQPXV6E\",\n      \"quantity\": 300,\n      \"unit\": \"PIECES\",\n      \"secondaryQuantity\": 120.5,\n      \"secondaryUnit\": \"KILOGRAM\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2769.196552522557,\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"metadata\": {\n    \"success\": false\n  },\n  \"error\": \"string\",\n  \"expected\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d321835-56fc-4579-b68b-6e2d083d0bfa",
+          "name": "Fetch a single order by id. Returns 404 when the order is removed or belongs to another company.",
+          "request": {
+            "name": "Fetch a single order by id. Returns 404 when the order is removed or belongs to another company.",
+            "description": {
+              "content": "Fetch a single order by id. Returns 404 when the order is removed or belongs to another company.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1158f6f-dd34-4193-ad30-0f6c48916089",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true\n  },\n  \"data\": {\n    \"id\": \"string\",\n    \"forCompanyId\": \"string\",\n    \"orderNumber\": \"string\",\n    \"orderType\": \"INTERNAL_ORDER\",\n    \"orderSubType\": \"string\",\n    \"status\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"source\": \"string\",\n    \"buyerCompanyId\": \"string\",\n    \"supplierCompanyId\": \"string\",\n    \"receiverCompanyId\": \"string\",\n    \"vendorCompanyId\": \"string\",\n    \"factory\": \"string\",\n    \"buyerFacilityProcess\": \"string\",\n    \"supplierFacilityProcess\": \"string\",\n    \"receiverFacilityProcess\": \"string\",\n    \"orderDate\": \"string\",\n    \"deliveryDate\": \"string\",\n    \"agreedDeliveryDate\": \"string\",\n    \"expectedShippingDate\": \"string\",\n    \"shippingDate\": \"string\",\n    \"expectedDeliveryDate\": \"string\",\n    \"actualDeliveryDate\": \"string\",\n    \"shipmentReference\": \"string\",\n    \"internalResponsiblePerson\": \"string\",\n    \"season\": \"string\",\n    \"counterpartyOrderNumberRef\": \"string\",\n    \"isArchived\": false,\n    \"tracingStatus\": \"string\",\n    \"createdAt\": \"string\",\n    \"createdByUserId\": \"string\",\n    \"createdByUserName\": \"string\",\n    \"createdByCompanyId\": \"string\",\n    \"createdByCompanyName\": \"string\",\n    \"createdByImpersonateId\": \"string\",\n    \"createdByImpersonateName\": \"string\",\n    \"createdByApiKeyId\": \"string\",\n    \"createdByApiKeyLabel\": \"string\",\n    \"updatedAt\": \"string\",\n    \"updatedByUserId\": \"string\",\n    \"updatedByUserName\": \"string\",\n    \"updatedByCompanyId\": \"string\",\n    \"updatedByCompanyName\": \"string\",\n    \"updatedByImpersonateId\": \"string\",\n    \"updatedByImpersonateName\": \"string\",\n    \"updatedByApiKeyId\": \"string\",\n    \"updatedByApiKeyLabel\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54691546-707b-4bda-889e-52994181a910",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2769.196552522557,\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"metadata\": {\n    \"success\": false\n  },\n  \"error\": \"string\",\n  \"expected\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f243bcd-e6d2-4631-9797-26bbe341439b",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2769.196552522557,\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"metadata\": {\n    \"success\": false\n  },\n  \"error\": \"string\",\n  \"expected\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d60e807-31c0-47e0-a634-58eddecc99ce",
+          "name": "Partially update an order owned by the current company.",
+          "request": {
+            "name": "Partially update an order owned by the current company.",
+            "description": {
+              "content": "Partially update an order owned by the current company.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderNumber\": \"<string>\",\n  \"orderSubType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"source\": \"<string>\",\n  \"buyerCompanyId\": \"<string>\",\n  \"supplierCompanyId\": \"<string>\",\n  \"receiverCompanyId\": \"<string>\",\n  \"vendorCompanyId\": \"<string>\",\n  \"factory\": \"<string>\",\n  \"buyerFacilityProcess\": \"<string>\",\n  \"supplierFacilityProcess\": \"<string>\",\n  \"receiverFacilityProcess\": \"<string>\",\n  \"orderDate\": \"<date>\",\n  \"deliveryDate\": \"<date>\",\n  \"agreedDeliveryDate\": \"<date>\",\n  \"expectedShippingDate\": \"<date>\",\n  \"shippingDate\": \"<date>\",\n  \"expectedDeliveryDate\": \"<date>\",\n  \"actualDeliveryDate\": \"<date>\",\n  \"shipmentReference\": \"<string>\",\n  \"internalResponsiblePerson\": \"<string>\",\n  \"season\": \"<string>\",\n  \"counterpartyOrderNumberRef\": \"<string>\",\n  \"orderType\": \"<string>\",\n  \"tracingStatus\": \"<string>\",\n  \"isArchived\": \"<boolean>\",\n  \"lines\": [\n    {\n      \"orderLineNumber\": \"<string>\",\n      \"styleId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit\": \"<string>\",\n      \"secondaryQuantity\": \"<number>\",\n      \"secondaryUnit\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"orderLineNumber\": \"<string>\",\n      \"styleId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit\": \"<string>\",\n      \"secondaryQuantity\": \"<number>\",\n      \"secondaryUnit\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "757694bd-cfc9-47b0-97b9-91a22bb65ac8",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"COMPLETED\",\n  \"actualDeliveryDate\": \"2026-09-12\",\n  \"season\": null\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true\n  },\n  \"data\": {\n    \"id\": \"string\",\n    \"forCompanyId\": \"string\",\n    \"orderNumber\": \"string\",\n    \"orderType\": \"INTERNAL_ORDER\",\n    \"orderSubType\": \"string\",\n    \"status\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"source\": \"string\",\n    \"buyerCompanyId\": \"string\",\n    \"supplierCompanyId\": \"string\",\n    \"receiverCompanyId\": \"string\",\n    \"vendorCompanyId\": \"string\",\n    \"factory\": \"string\",\n    \"buyerFacilityProcess\": \"string\",\n    \"supplierFacilityProcess\": \"string\",\n    \"receiverFacilityProcess\": \"string\",\n    \"orderDate\": \"string\",\n    \"deliveryDate\": \"string\",\n    \"agreedDeliveryDate\": \"string\",\n    \"expectedShippingDate\": \"string\",\n    \"shippingDate\": \"string\",\n    \"expectedDeliveryDate\": \"string\",\n    \"actualDeliveryDate\": \"string\",\n    \"shipmentReference\": \"string\",\n    \"internalResponsiblePerson\": \"string\",\n    \"season\": \"string\",\n    \"counterpartyOrderNumberRef\": \"string\",\n    \"isArchived\": true,\n    \"tracingStatus\": \"string\",\n    \"createdAt\": \"string\",\n    \"createdByUserId\": \"string\",\n    \"createdByUserName\": \"string\",\n    \"createdByCompanyId\": \"string\",\n    \"createdByCompanyName\": \"string\",\n    \"createdByImpersonateId\": \"string\",\n    \"createdByImpersonateName\": \"string\",\n    \"createdByApiKeyId\": \"string\",\n    \"createdByApiKeyLabel\": \"string\",\n    \"updatedAt\": \"string\",\n    \"updatedByUserId\": \"string\",\n    \"updatedByUserName\": \"string\",\n    \"updatedByCompanyId\": \"string\",\n    \"updatedByCompanyName\": \"string\",\n    \"updatedByImpersonateId\": \"string\",\n    \"updatedByImpersonateName\": \"string\",\n    \"updatedByApiKeyId\": \"string\",\n    \"updatedByApiKeyLabel\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4ad603d-d9b0-46e5-9fd8-a8214b2be7ca",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"COMPLETED\",\n  \"actualDeliveryDate\": \"2026-09-12\",\n  \"season\": null\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2769.196552522557,\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"metadata\": {\n    \"success\": false\n  },\n  \"error\": \"string\",\n  \"expected\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "856045df-917a-4847-99f1-a6b43202e6dd",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"COMPLETED\",\n  \"actualDeliveryDate\": \"2026-09-12\",\n  \"season\": null\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2769.196552522557,\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"metadata\": {\n    \"success\": false\n  },\n  \"error\": \"string\",\n  \"expected\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2772eb37-1ed8-40f7-afc2-0bcc473ee98c",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"COMPLETED\",\n  \"actualDeliveryDate\": \"2026-09-12\",\n  \"season\": null\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2769.196552522557,\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"metadata\": {\n    \"success\": false\n  },\n  \"error\": \"string\",\n  \"expected\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64beb59e-f7f4-4d15-8f05-8346d236fc9d",
+          "name": "Hard-delete an order and all of its lines. Returns 404 when the order does not exist or belongs to another company.",
+          "request": {
+            "name": "Hard-delete an order and all of its lines. Returns 404 when the order does not exist or belongs to another company.",
+            "description": {
+              "content": "Hard-delete an order and all of its lines. Returns 404 when the order does not exist or belongs to another company.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7686c24d-66d4-47be-b99c-ba5f476a91c5",
+              "name": "No content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d4828d72-38d5-4ad7-bcfa-d4d5216e3cc1",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2769.196552522557,\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"metadata\": {\n    \"success\": false\n  },\n  \"error\": \"string\",\n  \"expected\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3bde8dd5-db41-4823-ade6-dd2c7c0f0c4a",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2769.196552522557,\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"metadata\": {\n    \"success\": false\n  },\n  \"error\": \"string\",\n  \"expected\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1b5fa7c1-9330-4647-bde4-c2739a9429de",
+    "name": "Public API Reference Certificates Order Hub / Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The retraced API comprises all publicly enabled options to make\nmachine-to-machine changes in the retraced platform. The retraced dashboard uses the\nsame endpoints, but also in addition more. If you wish to use the API of the dashboard,\nit is possible but not versioned cleanly like the public API.\n\n## Authentication\n\nThe authentication procedure is passwordless and uses an API key in the header. To get\nan API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**\nthen click **Create**. Be sure to copy the key somewhere safe, as you won't be able to\nview it again. If you don't see Developers HQ in the sidebar contact your Customer\nSuccess Manager to enable this for you. You can now set the key directly in request\nheaders. To authenticate using an API key, set the header key `companyapikey` to the\nvalue of your API key.\n\n## Getting Started\n\nRetraced has 2 environments against which you can send your requests and receive the\nexpected response: staging (for development and testing) and production. Your API key\nis scoped for both environments. The staging Base URL is\nhttps://publicapi.staging.retraced.com. Staging copies production data once daily, and\nall changes made on staging will be deleted.\n\nFind detailed guides on how to use the endpoints and how we recommend building an\nintegration given your use case in our\n[guides](https://publicapi.retraced.com/api/v2/guides). A history of public API\nchanges is available in the\n[release notes](https://publicapi.retraced.com/api/v2/release-notes).",
+      "type": "text/plain"
+    }
+  }
+}

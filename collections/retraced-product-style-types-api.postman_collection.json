@@ -1,0 +1,182 @@
+{
+  "item": [
+    {
+      "id": "a39f832c-7c93-4354-867f-d18849b39b31",
+      "name": "Product / Style Types",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "261d241e-3ee8-4482-a3fb-b65e1ee9e56d",
+          "name": "Returns a paginated list of style types configured for the account. Style types define the taxonomy used to classify styles — for example TSHIRTS, JEANS, OUTDOOR_JACKETS — and are organised in a hierarchy via parentId and hierarchyLevel. The id returned for each style type is the value to pass in the styleTypeId field when creating or updating a style via POST /api/v2/styles/. Use this endpoint to discover valid styleTypeId values before creating styles, as passing an unrecognised value will result in an error. Filter by hierarchyLevel to retrieve only top-level categories or leaf nodes, or by parentId to retrieve the children of a specific type.",
+          "request": {
+            "name": "Returns a paginated list of style types configured for the account. Style types define the taxonomy used to classify styles — for example TSHIRTS, JEANS, OUTDOOR_JACKETS — and are organised in a hierarchy via parentId and hierarchyLevel. The id returned for each style type is the value to pass in the styleTypeId field when creating or updating a style via POST /api/v2/styles/. Use this endpoint to discover valid styleTypeId values before creating styles, as passing an unrecognised value will result in an error. Filter by hierarchyLevel to retrieve only top-level categories or leaf nodes, or by parentId to retrieve the children of a specific type.",
+            "description": {
+              "content": "Returns a paginated list of style types configured for the account. Style types define the taxonomy used to classify styles — for example TSHIRTS, JEANS, OUTDOOR_JACKETS — and are organised in a hierarchy via parentId and hierarchyLevel. The id returned for each style type is the value to pass in the styleTypeId field when creating or updating a style via POST /api/v2/styles/. Use this endpoint to discover valid styleTypeId values before creating styles, as passing an unrecognised value will result in an error. Filter by hierarchyLevel to retrieve only top-level categories or leaf nodes, or by parentId to retrieve the children of a specific type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "style-types",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "name"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "asc"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "hierarchyLevel",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "parentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "hasParentId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95d4179d-7c7c-4f91-9378-8fa551983c3f",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "style-types",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "name"
+                    },
+                    {
+                      "key": "order",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hierarchyLevel",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "parentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hasParentId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"parentId\": \"string\",\n      \"quantityUnits\": [\n        \"string\",\n        \"string\"\n      ],\n      \"weightUnits\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isWeightAvailable\": false,\n      \"assetId\": \"string\",\n      \"assetType\": \"string\",\n      \"hierarchyLevel\": 1382.2692011472336,\n      \"createdAt\": \"2022-12-20T02:23:54.299Z\",\n      \"createdByUserId\": \"string\",\n      \"createdByCompanyId\": \"string\",\n      \"updatedAt\": \"1963-02-09T14:03:46.969Z\",\n      \"updatedByUserId\": \"string\",\n      \"updatedByCompanyId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"parentId\": \"string\",\n      \"quantityUnits\": [\n        \"string\",\n        \"string\"\n      ],\n      \"weightUnits\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isWeightAvailable\": true,\n      \"assetId\": \"string\",\n      \"assetType\": \"string\",\n      \"hierarchyLevel\": 1185.6070359917558,\n      \"createdAt\": \"2013-01-02T22:19:55.457Z\",\n      \"createdByUserId\": \"string\",\n      \"createdByCompanyId\": \"string\",\n      \"updatedAt\": \"1966-07-20T00:48:01.321Z\",\n      \"updatedByUserId\": \"string\",\n      \"updatedByCompanyId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "39a39301-fd26-4ffa-acbb-7a231eada231",
+    "name": "Public API Reference Certificates Product / Style Types API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The retraced API comprises all publicly enabled options to make\nmachine-to-machine changes in the retraced platform. The retraced dashboard uses the\nsame endpoints, but also in addition more. If you wish to use the API of the dashboard,\nit is possible but not versioned cleanly like the public API.\n\n## Authentication\n\nThe authentication procedure is passwordless and uses an API key in the header. To get\nan API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**\nthen click **Create**. Be sure to copy the key somewhere safe, as you won't be able to\nview it again. If you don't see Developers HQ in the sidebar contact your Customer\nSuccess Manager to enable this for you. You can now set the key directly in request\nheaders. To authenticate using an API key, set the header key `companyapikey` to the\nvalue of your API key.\n\n## Getting Started\n\nRetraced has 2 environments against which you can send your requests and receive the\nexpected response: staging (for development and testing) and production. Your API key\nis scoped for both environments. The staging Base URL is\nhttps://publicapi.staging.retraced.com. Staging copies production data once daily, and\nall changes made on staging will be deleted.\n\nFind detailed guides on how to use the endpoints and how we recommend building an\nintegration given your use case in our\n[guides](https://publicapi.retraced.com/api/v2/guides). A history of public API\nchanges is available in the\n[release notes](https://publicapi.retraced.com/api/v2/release-notes).",
+      "type": "text/plain"
+    }
+  }
+}

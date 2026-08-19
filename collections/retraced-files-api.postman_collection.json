@@ -1,0 +1,126 @@
+{
+  "item": [
+    {
+      "id": "6897df6c-9f13-447d-a3bd-355d78ad8d5a",
+      "name": "Files",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4af5796d-24a7-4850-8c54-16edf76322b9",
+          "name": "/api/v2/files/",
+          "request": {
+            "name": "/api/v2/files/",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "files",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filename\": \"<string>\",\n  \"fileSize\": \"<number>\",\n  \"fileType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e171e9db-0c3a-4787-a73b-220309a7fda5",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "files",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filename\": \"<string>\",\n  \"fileSize\": \"<number>\",\n  \"fileType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true\n  },\n  \"data\": {\n    \"id\": \"string\",\n    \"bucketName\": \"private\",\n    \"url\": \"string\",\n    \"name\": \"string\",\n    \"fileType\": \"DOCUMENT\",\n    \"contentType\": \"image/gif\",\n    \"fileHash\": \"string\",\n    \"fileSize\": 5243.810568369743,\n    \"isMigrated\": 0,\n    \"isPrivate\": 0,\n    \"createdAt\": \"1980-04-19T13:37:32.700Z\",\n    \"createdBy\": \"string\",\n    \"createdByCompanyId\": \"string\",\n    \"createdByApiKeyId\": \"string\",\n    \"createdByApiKeyLabel\": \"string\",\n    \"createdByImpersonateId\": \"string\",\n    \"createdByImpersonateName\": \"string\",\n    \"createdByUserId\": \"string\",\n    \"updatedAt\": \"1968-06-19T16:56:45.020Z\",\n    \"updatedByApiKeyId\": \"string\",\n    \"updatedByApiKeyLabel\": \"string\",\n    \"updatedByCompanyId\": \"string\",\n    \"updatedByCompanyName\": \"string\",\n    \"updatedByImpersonateId\": \"string\",\n    \"updatedByImpersonateName\": \"string\",\n    \"updatedByUserId\": \"string\",\n    \"updatedByUserName\": \"string\",\n    \"documentText\": \"string\",\n    \"contentMd5Hash\": \"string\",\n    \"uploadUrl\": \"string\",\n    \"originalUrl\": \"string\",\n    \"previewUrl\": \"string\",\n    \"normalizeAttemptedAt\": \"2002-02-20T23:33:36.765Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d008c279-f31d-4f89-bdeb-be23e142feb8",
+    "name": "Public API Reference Certificates Files API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The retraced API comprises all publicly enabled options to make\nmachine-to-machine changes in the retraced platform. The retraced dashboard uses the\nsame endpoints, but also in addition more. If you wish to use the API of the dashboard,\nit is possible but not versioned cleanly like the public API.\n\n## Authentication\n\nThe authentication procedure is passwordless and uses an API key in the header. To get\nan API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**\nthen click **Create**. Be sure to copy the key somewhere safe, as you won't be able to\nview it again. If you don't see Developers HQ in the sidebar contact your Customer\nSuccess Manager to enable this for you. You can now set the key directly in request\nheaders. To authenticate using an API key, set the header key `companyapikey` to the\nvalue of your API key.\n\n## Getting Started\n\nRetraced has 2 environments against which you can send your requests and receive the\nexpected response: staging (for development and testing) and production. Your API key\nis scoped for both environments. The staging Base URL is\nhttps://publicapi.staging.retraced.com. Staging copies production data once daily, and\nall changes made on staging will be deleted.\n\nFind detailed guides on how to use the endpoints and how we recommend building an\nintegration given your use case in our\n[guides](https://publicapi.retraced.com/api/v2/guides). A history of public API\nchanges is available in the\n[release notes](https://publicapi.retraced.com/api/v2/release-notes).",
+      "type": "text/plain"
+    }
+  }
+}

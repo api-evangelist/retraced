@@ -1,0 +1,91 @@
+{
+  "item": [
+    {
+      "id": "bace6b2a-02d1-40b4-82c6-34bffbf8ca76",
+      "name": "Release Notes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d3bbbb54-3cc9-486e-ad8e-007ec574eda4",
+          "name": "/api/v2/release-notes",
+          "request": {
+            "name": "/api/v2/release-notes",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "release-notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0930bb3a-accf-42b2-aae1-a343e4e8bcbf",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "release-notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1471dbce-50f7-47b2-b020-81a25bf3388d",
+    "name": "Public API Reference Certificates Release Notes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The retraced API comprises all publicly enabled options to make\nmachine-to-machine changes in the retraced platform. The retraced dashboard uses the\nsame endpoints, but also in addition more. If you wish to use the API of the dashboard,\nit is possible but not versioned cleanly like the public API.\n\n## Authentication\n\nThe authentication procedure is passwordless and uses an API key in the header. To get\nan API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**\nthen click **Create**. Be sure to copy the key somewhere safe, as you won't be able to\nview it again. If you don't see Developers HQ in the sidebar contact your Customer\nSuccess Manager to enable this for you. You can now set the key directly in request\nheaders. To authenticate using an API key, set the header key `companyapikey` to the\nvalue of your API key.\n\n## Getting Started\n\nRetraced has 2 environments against which you can send your requests and receive the\nexpected response: staging (for development and testing) and production. Your API key\nis scoped for both environments. The staging Base URL is\nhttps://publicapi.staging.retraced.com. Staging copies production data once daily, and\nall changes made on staging will be deleted.\n\nFind detailed guides on how to use the endpoints and how we recommend building an\nintegration given your use case in our\n[guides](https://publicapi.retraced.com/api/v2/guides). A history of public API\nchanges is available in the\n[release notes](https://publicapi.retraced.com/api/v2/release-notes).",
+      "type": "text/plain"
+    }
+  }
+}

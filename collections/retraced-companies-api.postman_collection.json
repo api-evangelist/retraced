@@ -1,0 +1,674 @@
+{
+  "item": [
+    {
+      "id": "225b8d43-f5c2-429f-ad29-697e45b114b9",
+      "name": "Companies",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d1551903-2ef7-4b45-b295-b36619c67f3d",
+          "name": "List companies in your network",
+          "request": {
+            "name": "List companies in your network",
+            "description": {
+              "content": "List companies in your network",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "companies",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "desc"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "name"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "isSupplierNetwork",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "companyIds",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeCompanyIds",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "findSimilar",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeOwnCompany",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "isDropDown",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "hasFeature",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "hasGeojson",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aebe345d-271a-49fe-bd62-3be97a230b70",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "companies",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "name"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isSupplierNetwork",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeCompanyIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "findSimilar",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeOwnCompany",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isDropDown",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hasFeature",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hasGeojson",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"officialName\": \"string\",\n      \"name\": \"string\",\n      \"updatedAt\": \"string\",\n      \"key\": \"string\",\n      \"byCompanyId\": \"string\",\n      \"onBehalfOfCompanyId\": \"string\",\n      \"profileType\": \"string\",\n      \"creationDate\": \"string\",\n      \"connectionDate\": \"string\",\n      \"createdAt\": \"string\",\n      \"createdByImpersonateId\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdByCompanyId\": \"string\",\n      \"createdByApiKeyId\": \"string\",\n      \"updatedByImpersonateId\": \"string\",\n      \"updatedByUserId\": \"string\",\n      \"updatedByCompanyId\": \"string\",\n      \"updatedByApiKeyId\": \"string\",\n      \"facilityProcesses\": \"string\",\n      \"relationshipType\": [\n        {\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"text\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"text\": \"string\"\n        }\n      ],\n      \"imageList\": [\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"fileType\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"fileType\": \"string\"\n        }\n      ],\n      \"connectionType\": \"string\",\n      \"supplyChainTier\": [\n        \"string\",\n        \"string\"\n      ],\n      \"responsiblePerson\": [\n        {\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"text\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"text\": \"string\"\n        }\n      ],\n      \"vendors\": [\n        {\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"text\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"text\": \"string\"\n        }\n      ],\n      \"agents\": [\n        {\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"text\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"text\": \"string\"\n        }\n      ],\n      \"geojson\": \"string\",\n      \"displayName\": \"string\",\n      \"transliteratedDisplayName\": \"string\",\n      \"transliteratedOfficialName\": \"string\",\n      \"description\": \"string\",\n      \"country\": \"string\",\n      \"countryName\": \"string\",\n      \"addressLine1\": \"string\",\n      \"addressLine2\": \"string\",\n      \"county\": \"string\",\n      \"zipCode\": \"string\",\n      \"website\": \"string\",\n      \"phone\": \"string\",\n      \"facEmail\": \"string\",\n      \"companySize\": \"string\",\n      \"companyType\": \"string\",\n      \"founded\": \"string\",\n      \"videoFile\": \"string\",\n      \"collaborationStatus\": \"string\",\n      \"collaborationStartDate\": \"string\",\n      \"city\": \"string\",\n      \"collaborationEndDate\": \"string\",\n      \"internalCompanyCode\": \"string\",\n      \"totalUsersCount\": 6136.049112839132,\n      \"activeUsersCount\": 9456.244294487615,\n      \"invitedUsersCount\": 3403.7732278109866,\n      \"originalVideoFileUrl\": \"string\",\n      \"connectionTypeId\": \"string\",\n      \"count\": 367.5317408927958,\n      \"retracedRiskScore\": \"string\",\n      \"featuredImageFileUrl\": \"string\",\n      \"originalFeaturedImageFileUrl\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"officialName\": \"string\",\n      \"name\": \"string\",\n      \"updatedAt\": \"string\",\n      \"key\": \"string\",\n      \"byCompanyId\": \"string\",\n      \"onBehalfOfCompanyId\": \"string\",\n      \"profileType\": \"string\",\n      \"creationDate\": \"string\",\n      \"connectionDate\": \"string\",\n      \"createdAt\": \"string\",\n      \"createdByImpersonateId\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdByCompanyId\": \"string\",\n      \"createdByApiKeyId\": \"string\",\n      \"updatedByImpersonateId\": \"string\",\n      \"updatedByUserId\": \"string\",\n      \"updatedByCompanyId\": \"string\",\n      \"updatedByApiKeyId\": \"string\",\n      \"facilityProcesses\": \"string\",\n      \"relationshipType\": [\n        {\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"text\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"text\": \"string\"\n        }\n      ],\n      \"imageList\": [\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"fileType\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"fileType\": \"string\"\n        }\n      ],\n      \"connectionType\": \"string\",\n      \"supplyChainTier\": [\n        \"string\",\n        \"string\"\n      ],\n      \"responsiblePerson\": [\n        {\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"text\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"text\": \"string\"\n        }\n      ],\n      \"vendors\": [\n        {\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"text\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"text\": \"string\"\n        }\n      ],\n      \"agents\": [\n        {\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"text\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"text\": \"string\"\n        }\n      ],\n      \"geojson\": \"string\",\n      \"displayName\": \"string\",\n      \"transliteratedDisplayName\": \"string\",\n      \"transliteratedOfficialName\": \"string\",\n      \"description\": \"string\",\n      \"country\": \"string\",\n      \"countryName\": \"string\",\n      \"addressLine1\": \"string\",\n      \"addressLine2\": \"string\",\n      \"county\": \"string\",\n      \"zipCode\": \"string\",\n      \"website\": \"string\",\n      \"phone\": \"string\",\n      \"facEmail\": \"string\",\n      \"companySize\": \"string\",\n      \"companyType\": \"string\",\n      \"founded\": \"string\",\n      \"videoFile\": \"string\",\n      \"collaborationStatus\": \"string\",\n      \"collaborationStartDate\": \"string\",\n      \"city\": \"string\",\n      \"collaborationEndDate\": \"string\",\n      \"internalCompanyCode\": \"string\",\n      \"totalUsersCount\": 8328.852503405797,\n      \"activeUsersCount\": 8687.352637177213,\n      \"invitedUsersCount\": 1271.519974239056,\n      \"originalVideoFileUrl\": \"string\",\n      \"connectionTypeId\": \"string\",\n      \"count\": 8584.738312812551,\n      \"retracedRiskScore\": \"string\",\n      \"featuredImageFileUrl\": \"string\",\n      \"originalFeaturedImageFileUrl\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c0e8379-b501-48ca-8f15-649fb30cda42",
+          "name": "Get company profile by ID. Type can be ABOUT, OTHER_IDS, or OPERATIONAL_METRICS.",
+          "request": {
+            "name": "Get company profile by ID. Type can be ABOUT, OTHER_IDS, or OPERATIONAL_METRICS.",
+            "description": {
+              "content": "Get company profile by ID. Type can be ABOUT, OTHER_IDS, or OPERATIONAL_METRICS.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "companies",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "ABOUT"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f97ad30a-18a4-430d-a718-fd47a5c929f3",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "companies",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "ABOUT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true\n  },\n  \"data\": {\n    \"forCompanyId\": \"string\",\n    \"byCompanyId\": \"string\",\n    \"onBehalfOfCompanyId\": \"string\",\n    \"profileType\": \"string\",\n    \"data\": {\n      \"key_0\": {}\n    },\n    \"isConnected\": false,\n    \"isReverseConnected\": true,\n    \"createdAt\": \"string\",\n    \"createdByImpersonateId\": \"string\",\n    \"createdByUserId\": \"string\",\n    \"createdByCompanyId\": \"string\",\n    \"createdByApiKeyId\": \"string\",\n    \"createdByApiKeyLabel\": \"string\",\n    \"updatedAt\": \"string\",\n    \"updatedByImpersonateId\": \"string\",\n    \"updatedByUserId\": \"string\",\n    \"updatedByCompanyId\": \"string\",\n    \"updatedByApiKeyId\": \"string\",\n    \"updatedByApiKeyLabel\": \"string\",\n    \"templateCompletionPercentage\": 7547.7790648427\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36586b95-9866-4cb1-89f6-61541f1ba48f",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "companies",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "ABOUT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 1442.8799216248133,\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"metadata\": {\n    \"success\": false\n  },\n  \"error\": \"string\",\n  \"expected\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d9cf137-7329-4fbc-a816-7060e26be5df",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "companies",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "ABOUT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 1442.8799216248133,\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"metadata\": {\n    \"success\": false\n  },\n  \"error\": \"string\",\n  \"expected\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d572bdf-543a-4494-bea8-18db19a18631",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "companies",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "ABOUT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 1442.8799216248133,\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"metadata\": {\n    \"success\": false\n  },\n  \"error\": \"string\",\n  \"expected\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3e1cc0a-f71d-47db-a309-fafab43a9710",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "companies",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "ABOUT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 1442.8799216248133,\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"metadata\": {\n    \"success\": false\n  },\n  \"error\": \"string\",\n  \"expected\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e71e47e6-7ef5-470d-a6a6-78e25f5e03a1",
+          "name": "/api/v2/companies/:id/esg/",
+          "request": {
+            "name": "/api/v2/companies/:id/esg/",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "companies",
+                ":id",
+                "esg",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "retracedId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "templateId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "impactArea",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d7e0751b-c07c-4a23-afb8-9565c60017c3",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "companies",
+                    ":id",
+                    "esg",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "retracedId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "templateId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "impactArea",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true\n  },\n  \"data\": {\n    \"companyId\": \"string\",\n    \"environmental\": {\n      \"sectionId\": \"string\",\n      \"name\": \"string\",\n      \"totalDataPoints\": 96.40814881723303,\n      \"answeredDataPoints\": 891.3565829355463,\n      \"dataPoints\": [\n        {\n          \"retracedId\": \"string\",\n          \"name\": \"string\",\n          \"value\": {},\n          \"description\": \"string\",\n          \"impactArea\": \"string\",\n          \"impactAreaId\": \"string\",\n          \"templateId\": \"string\",\n          \"unit\": \"string\",\n          \"year\": \"string\"\n        },\n        {\n          \"retracedId\": \"string\",\n          \"name\": \"string\",\n          \"value\": {},\n          \"description\": \"string\",\n          \"impactArea\": \"string\",\n          \"impactAreaId\": \"string\",\n          \"templateId\": \"string\",\n          \"unit\": \"string\",\n          \"year\": \"string\"\n        }\n      ]\n    },\n    \"social\": {\n      \"sectionId\": \"string\",\n      \"name\": \"string\",\n      \"totalDataPoints\": 8482.12215962889,\n      \"answeredDataPoints\": 2029.079226320447,\n      \"dataPoints\": [\n        {\n          \"retracedId\": \"string\",\n          \"name\": \"string\",\n          \"value\": {},\n          \"description\": \"string\",\n          \"impactArea\": \"string\",\n          \"impactAreaId\": \"string\",\n          \"templateId\": \"string\",\n          \"unit\": \"string\",\n          \"year\": \"string\"\n        },\n        {\n          \"retracedId\": \"string\",\n          \"name\": \"string\",\n          \"value\": {},\n          \"description\": \"string\",\n          \"impactArea\": \"string\",\n          \"impactAreaId\": \"string\",\n          \"templateId\": \"string\",\n          \"unit\": \"string\",\n          \"year\": \"string\"\n        }\n      ]\n    },\n    \"governance\": {\n      \"sectionId\": \"string\",\n      \"name\": \"string\",\n      \"totalDataPoints\": 6005.51050094772,\n      \"answeredDataPoints\": 1914.4270171956668,\n      \"dataPoints\": [\n        {\n          \"retracedId\": \"string\",\n          \"name\": \"string\",\n          \"value\": {},\n          \"description\": \"string\",\n          \"impactArea\": \"string\",\n          \"impactAreaId\": \"string\",\n          \"templateId\": \"string\",\n          \"unit\": \"string\",\n          \"year\": \"string\"\n        },\n        {\n          \"retracedId\": \"string\",\n          \"name\": \"string\",\n          \"value\": {},\n          \"description\": \"string\",\n          \"impactArea\": \"string\",\n          \"impactAreaId\": \"string\",\n          \"templateId\": \"string\",\n          \"unit\": \"string\",\n          \"year\": \"string\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5bf035d0-d6e9-4a34-9d09-cc1a9497ad82",
+    "name": "Public API Reference Certificates Companies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The retraced API comprises all publicly enabled options to make\nmachine-to-machine changes in the retraced platform. The retraced dashboard uses the\nsame endpoints, but also in addition more. If you wish to use the API of the dashboard,\nit is possible but not versioned cleanly like the public API.\n\n## Authentication\n\nThe authentication procedure is passwordless and uses an API key in the header. To get\nan API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**\nthen click **Create**. Be sure to copy the key somewhere safe, as you won't be able to\nview it again. If you don't see Developers HQ in the sidebar contact your Customer\nSuccess Manager to enable this for you. You can now set the key directly in request\nheaders. To authenticate using an API key, set the header key `companyapikey` to the\nvalue of your API key.\n\n## Getting Started\n\nRetraced has 2 environments against which you can send your requests and receive the\nexpected response: staging (for development and testing) and production. Your API key\nis scoped for both environments. The staging Base URL is\nhttps://publicapi.staging.retraced.com. Staging copies production data once daily, and\nall changes made on staging will be deleted.\n\nFind detailed guides on how to use the endpoints and how we recommend building an\nintegration given your use case in our\n[guides](https://publicapi.retraced.com/api/v2/guides). A history of public API\nchanges is available in the\n[release notes](https://publicapi.retraced.com/api/v2/release-notes).",
+      "type": "text/plain"
+    }
+  }
+}

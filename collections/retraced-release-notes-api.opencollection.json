@@ -1,0 +1,28 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Public API Reference Certificates Release Notes API",
+    "version": "2.938.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Release Notes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /api/v2/release-notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/release-notes"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

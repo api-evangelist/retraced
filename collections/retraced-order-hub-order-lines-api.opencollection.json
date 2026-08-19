@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Public API Reference Certificates Order Hub / Order Lines API",
+    "version": "2.938.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Order Hub / Order Lines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /api/v2/order-lines/",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/order-lines/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List order lines, paginated via `page`/`limit`. Provide `orderId` to filter to a single order; omit it to list every line your company owns. Lines of removed or foreign orders are never returned."
+        },
+        {
+          "info": {
+            "name": "GET /api/v2/order-lines/{lineId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/order-lines/:lineId",
+            "params": [
+              {
+                "name": "lineId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a single order line by its id. Returns 404 when the line does not exist or its parent order is removed / belongs to another company."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

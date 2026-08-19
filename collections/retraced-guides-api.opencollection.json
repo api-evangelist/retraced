@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Public API Reference Certificates Guides API",
+    "version": "2.938.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Guides",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /api/v2/guides",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/guides"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /api/v2/guides/products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/guides/products"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /api/v2/guides/lca-provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/guides/lca-provider"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /api/v2/guides/dpp-label-provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/guides/dpp-label-provider"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /api/v2/guides/bom",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/guides/bom"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /api/v2/guides/materials",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/guides/materials"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /api/v2/guides/file-upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/guides/file-upload"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /api/v2/guides/order-hub",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/guides/order-hub"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

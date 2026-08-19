@@ -1,0 +1,169 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Public API Reference Certificates Order Hub / Orders API",
+    "version": "2.938.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Order Hub / Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /api/v2/orders/",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/orders/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "supplier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "buyer",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "isArchived",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updatedAfterUnixMs",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updatedBeforeUnixMs",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List the current company's orders. Supports filtering by type, supplier, buyer, status, tag, orderNumber, archived flag and updated-time range, plus pagination and sorting. Soft-removed orders are always excluded."
+        },
+        {
+          "info": {
+            "name": "POST /api/v2/orders/",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/orders/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an order for the current company, optionally with nested order lines (created atomically with the order). The order number must be unique within the company for the same order type — a duplicate returns 400 (order_number_already_existing)."
+        },
+        {
+          "info": {
+            "name": "GET /api/v2/orders/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a single order by id. Returns 404 when the order is removed or belongs to another company."
+        },
+        {
+          "info": {
+            "name": "PATCH /api/v2/orders/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v2/orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially update an order owned by the current company."
+        },
+        {
+          "info": {
+            "name": "DELETE /api/v2/orders/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Hard-delete an order and all of its lines. Returns 404 when the order does not exist or belongs to another company."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,161 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Public API Reference Certificates Companies API",
+    "version": "2.938.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Companies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /api/v2/companies/",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/companies/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "isSupplierNetwork",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "companyIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "excludeCompanyIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "findSimilar",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "includeOwnCompany",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "isDropDown",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasFeature",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasGeojson",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List companies in your network"
+        },
+        {
+          "info": {
+            "name": "GET /api/v2/companies/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/companies/:id",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get company profile by ID. Type can be ABOUT, OTHER_IDS, or OPERATIONAL_METRICS."
+        },
+        {
+          "info": {
+            "name": "GET /api/v2/companies/{id}/esg/",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/companies/:id/esg/",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "retracedId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "impactArea",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

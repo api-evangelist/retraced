@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Public API Reference Certificates Product / Style Properties API",
+    "version": "2.938.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product / Style Properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Style Properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/style-properties/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of style properties for the authenticated company. Style properties are the predefined lookup values used to populate the brands, seasons, collections, and departments fields on a style. Use the category query parameter to filter by a specific type. The id returned for each property is what must be passed when creating or updating styles."
+        },
+        {
+          "info": {
+            "name": "Create a Style Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/style-properties/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new style property for the authenticated company. Style properties are predefined values for the brands, seasons, collections, and departments fields. A property must be created here before its id can be referenced on a style. The category field determines which field the property applies to."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

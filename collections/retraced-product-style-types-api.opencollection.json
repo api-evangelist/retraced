@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Public API Reference Certificates Product / Style Types API",
+    "version": "2.938.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product / Style Types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /api/v2/style-types/",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/style-types/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hierarchyLevel",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "parentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasParentId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of style types configured for the account. Style types define the taxonomy used to classify styles — for example TSHIRTS, JEANS, OUTDOOR_JACKETS — and are organised in a hierarchy via parentId and hierarchyLevel. The id returned for each style type is the value to pass in the styleTypeId field when creating or updating a style via POST /api/v2/styles/. Use this endpoint to discover valid styleTypeId values before creating styles, as passing an unrecognised value will res"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

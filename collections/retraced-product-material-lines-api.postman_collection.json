@@ -1,0 +1,486 @@
+{
+  "item": [
+    {
+      "id": "becb1dd4-0d2d-43f2-82b6-a1ccbd9f0444",
+      "name": "Product / Material Lines",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7037575a-ee42-4bdc-9af2-7b743d3ee990",
+          "name": "/api/v2/material-lines/",
+          "request": {
+            "name": "/api/v2/material-lines/",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "material-lines",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"styleId\": \"<string>\",\n  \"materialHeaderId\": \"<string>\",\n  \"parentId\": \"<string>\",\n  \"percentage\": \"<number>\",\n  \"rawMaterialId\": \"<string>\",\n  \"weights\": \"<number>\",\n  \"weightUnit\": \"<string>\",\n  \"level\": \"<integer>\",\n  \"position\": \"<integer>\",\n  \"countriesOfOrigin\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"forCompanyId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "83104b91-59a8-42c2-82d4-2404f9745b44",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "material-lines",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"styleId\": \"<string>\",\n  \"materialHeaderId\": \"<string>\",\n  \"parentId\": \"<string>\",\n  \"percentage\": \"<number>\",\n  \"rawMaterialId\": \"<string>\",\n  \"weights\": \"<number>\",\n  \"weightUnit\": \"<string>\",\n  \"level\": \"<integer>\",\n  \"position\": \"<integer>\",\n  \"countriesOfOrigin\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"forCompanyId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": {\n    \"id\": \"string\",\n    \"materialHeaderId\": \"string\",\n    \"rawMaterialId\": \"string\",\n    \"percentage\": 5730.824856801463,\n    \"weights\": 6420.763039707937,\n    \"weightUnit\": \"string\",\n    \"parentId\": \"string\",\n    \"hierarchy\": 7186.152643338357,\n    \"position\": 195.44777669293967,\n    \"countriesOfOrigin\": [\n      \"string\",\n      \"string\"\n    ],\n    \"createdAt\": \"2025-09-05T14:24:46.088Z\",\n    \"createdByUserId\": \"string\",\n    \"createdByCompanyId\": \"string\",\n    \"updatedAt\": \"1964-02-04T04:27:35.723Z\",\n    \"updatedByUserId\": \"string\",\n    \"updatedByCompanyId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "769246f2-c273-4c7f-8e02-010b7f51c450",
+          "name": "/api/v2/material-lines/",
+          "request": {
+            "name": "/api/v2/material-lines/",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "material-lines",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "desc"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "materialHeaderId"
+                },
+                {
+                  "disabled": false,
+                  "key": "materialHeaderId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "rawMaterialId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "parentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "countriesOfOrigin",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "53f1886a-14d9-40f4-94e6-315a71e82861",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "material-lines",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "materialHeaderId"
+                    },
+                    {
+                      "key": "materialHeaderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rawMaterialId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countriesOfOrigin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"materialHeaderId\": \"string\",\n      \"rawMaterialId\": \"string\",\n      \"percentage\": 8722.844692828894,\n      \"weights\": 8641.269948420635,\n      \"weightUnit\": \"string\",\n      \"parentId\": \"string\",\n      \"hierarchy\": 5985.287979286596,\n      \"position\": 423.73264909074004,\n      \"countriesOfOrigin\": [\n        \"string\",\n        \"string\"\n      ],\n      \"createdAt\": \"1957-01-26T21:21:25.800Z\",\n      \"createdByUserId\": \"string\",\n      \"createdByCompanyId\": \"string\",\n      \"updatedAt\": \"1982-02-22T20:20:41.363Z\",\n      \"updatedByUserId\": \"string\",\n      \"updatedByCompanyId\": \"string\",\n      \"rawMaterial\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"category\": \"string\",\n        \"isRecycled\": true,\n        \"isSynthetic\": true\n      },\n      \"countries\": [\n        {\n          \"countryCode\": \"string\",\n          \"countryName\": \"string\",\n          \"countryNameLocale\": \"string\",\n          \"region\": \"string\",\n          \"currencyCode\": \"string\",\n          \"currencyName\": \"string\"\n        },\n        {\n          \"countryCode\": \"string\",\n          \"countryName\": \"string\",\n          \"countryNameLocale\": \"string\",\n          \"region\": \"string\",\n          \"currencyCode\": \"string\",\n          \"currencyName\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"materialHeaderId\": \"string\",\n      \"rawMaterialId\": \"string\",\n      \"percentage\": 1605.5323777913832,\n      \"weights\": 5546.991420797572,\n      \"weightUnit\": \"string\",\n      \"parentId\": \"string\",\n      \"hierarchy\": 5677.3174512755795,\n      \"position\": 2674.440116993612,\n      \"countriesOfOrigin\": [\n        \"string\",\n        \"string\"\n      ],\n      \"createdAt\": \"1992-02-05T12:08:39.909Z\",\n      \"createdByUserId\": \"string\",\n      \"createdByCompanyId\": \"string\",\n      \"updatedAt\": \"1978-12-24T15:22:57.061Z\",\n      \"updatedByUserId\": \"string\",\n      \"updatedByCompanyId\": \"string\",\n      \"rawMaterial\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"category\": \"string\",\n        \"isRecycled\": true,\n        \"isSynthetic\": false\n      },\n      \"countries\": [\n        {\n          \"countryCode\": \"string\",\n          \"countryName\": \"string\",\n          \"countryNameLocale\": \"string\",\n          \"region\": \"string\",\n          \"currencyCode\": \"string\",\n          \"currencyName\": \"string\"\n        },\n        {\n          \"countryCode\": \"string\",\n          \"countryName\": \"string\",\n          \"countryNameLocale\": \"string\",\n          \"region\": \"string\",\n          \"currencyCode\": \"string\",\n          \"currencyName\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f09c3603-dd35-4dd2-a42b-7bde757adc3d",
+          "name": "/api/v2/material-lines/delete",
+          "request": {
+            "name": "/api/v2/material-lines/delete",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "material-lines",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"materialLineIds\": [\n    \"<string>\"\n  ],\n  \"styleId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4c57c61f-a721-412d-8f45-50a39f3429f0",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "material-lines",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"materialLineIds\": [\n    \"<string>\"\n  ],\n  \"styleId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": {\n    \"deletedLines\": [\n      \"string\",\n      \"string\"\n    ],\n    \"duplicatedHeaders\": [\n      {\n        \"originalHeaderId\": \"string\",\n        \"newHeaderId\": \"string\",\n        \"forEntityId\": \"string\",\n        \"entityType\": \"variant\"\n      },\n      {\n        \"originalHeaderId\": \"string\",\n        \"newHeaderId\": \"string\",\n        \"forEntityId\": \"string\",\n        \"entityType\": \"variant\"\n      }\n    ],\n    \"orphanedHeaders\": [\n      \"string\",\n      \"string\"\n    ],\n    \"errors\": [\n      {\n        \"materialLineId\": \"string\",\n        \"message\": \"string\"\n      },\n      {\n        \"materialLineId\": \"string\",\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ad98525-d1f7-48f3-8cb2-1c73fc29dee7",
+          "name": "/api/v2/material-lines/:id",
+          "request": {
+            "name": "/api/v2/material-lines/:id",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "material-lines",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"styleId\": \"<string>\",\n  \"materialHeaderId\": \"<string>\",\n  \"percentage\": \"<number>\",\n  \"rawMaterialId\": \"<string>\",\n  \"parentId\": \"<string>\",\n  \"weights\": \"<number>\",\n  \"weightUnit\": \"<string>\",\n  \"level\": \"<integer>\",\n  \"position\": \"<integer>\",\n  \"countriesOfOrigin\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "713ce405-854f-4d1a-adc0-5d767e5b04f6",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "material-lines",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"styleId\": \"<string>\",\n  \"materialHeaderId\": \"<string>\",\n  \"percentage\": \"<number>\",\n  \"rawMaterialId\": \"<string>\",\n  \"parentId\": \"<string>\",\n  \"weights\": \"<number>\",\n  \"weightUnit\": \"<string>\",\n  \"level\": \"<integer>\",\n  \"position\": \"<integer>\",\n  \"countriesOfOrigin\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": {\n    \"id\": \"string\",\n    \"materialHeaderId\": \"string\",\n    \"rawMaterialId\": \"string\",\n    \"percentage\": 5730.824856801463,\n    \"weights\": 6420.763039707937,\n    \"weightUnit\": \"string\",\n    \"parentId\": \"string\",\n    \"hierarchy\": 7186.152643338357,\n    \"position\": 195.44777669293967,\n    \"countriesOfOrigin\": [\n      \"string\",\n      \"string\"\n    ],\n    \"createdAt\": \"2025-09-05T14:24:46.088Z\",\n    \"createdByUserId\": \"string\",\n    \"createdByCompanyId\": \"string\",\n    \"updatedAt\": \"1964-02-04T04:27:35.723Z\",\n    \"updatedByUserId\": \"string\",\n    \"updatedByCompanyId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a19c7398-3d0d-4a10-a883-a33eef5cf85c",
+    "name": "Public API Reference Certificates Product / Material Lines API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The retraced API comprises all publicly enabled options to make\nmachine-to-machine changes in the retraced platform. The retraced dashboard uses the\nsame endpoints, but also in addition more. If you wish to use the API of the dashboard,\nit is possible but not versioned cleanly like the public API.\n\n## Authentication\n\nThe authentication procedure is passwordless and uses an API key in the header. To get\nan API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**\nthen click **Create**. Be sure to copy the key somewhere safe, as you won't be able to\nview it again. If you don't see Developers HQ in the sidebar contact your Customer\nSuccess Manager to enable this for you. You can now set the key directly in request\nheaders. To authenticate using an API key, set the header key `companyapikey` to the\nvalue of your API key.\n\n## Getting Started\n\nRetraced has 2 environments against which you can send your requests and receive the\nexpected response: staging (for development and testing) and production. Your API key\nis scoped for both environments. The staging Base URL is\nhttps://publicapi.staging.retraced.com. Staging copies production data once daily, and\nall changes made on staging will be deleted.\n\nFind detailed guides on how to use the endpoints and how we recommend building an\nintegration given your use case in our\n[guides](https://publicapi.retraced.com/api/v2/guides). A history of public API\nchanges is available in the\n[release notes](https://publicapi.retraced.com/api/v2/release-notes).",
+      "type": "text/plain"
+    }
+  }
+}

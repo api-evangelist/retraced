@@ -1,0 +1,944 @@
+{
+  "item": [
+    {
+      "id": "5e032fc2-6acd-45be-9e08-a263fdbb1eae",
+      "name": "Product / Styles",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c7782892-1ef7-44e2-ba56-94a2c88e49f7",
+          "name": "Create a style, variant, or SKU. Omit parentId to create a top-level style. Set parentId to a style ID to create a variant, or to a variant ID to create a SKU. styleTypeId and isComponent are required when creating a top-level style.",
+          "request": {
+            "name": "Create a style, variant, or SKU. Omit parentId to create a top-level style. Set parentId to a style ID to create a variant, or to a variant ID to create a SKU. styleTypeId and isComponent are required when creating a top-level style.",
+            "description": {
+              "content": "Create a style, variant, or SKU. Omit parentId to create a top-level style. Set parentId to a style ID to create a variant, or to a variant ID to create a SKU. styleTypeId and isComponent are required when creating a top-level style.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "styles",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"codes\": [\n    {\n      \"codeId\": \"<string>\",\n      \"codeValue\": \"<string>\"\n    }\n  ],\n  \"parentId\": \"<string>\",\n  \"forCompanyId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"styleTypeId\": \"<string>\",\n  \"color\": \"<string>\",\n  \"dimension\": \"<string>\",\n  \"isComponent\": \"<boolean>\",\n  \"isStoryActive\": \"<boolean>\",\n  \"brands\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"departments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"seasons\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"collections\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"claimIntentions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customProperties\": \"<string>\",\n  \"suppliers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mainSupplier\": \"<string>\",\n  \"vendors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"imagesFileIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ecoFootPrint\": {\n    \"hazardousMaterials\": [\n      {\n        \"idx\": \"<number>\",\n        \"name\": \"<string>\",\n        \"percentage\": \"<number>\"\n      },\n      {\n        \"idx\": \"<number>\",\n        \"name\": \"<string>\",\n        \"percentage\": \"<number>\"\n      }\n    ],\n    \"recyclabilityAbsenceDisruptor\": \"<boolean>\",\n    \"recyclabilityCanBeSorted\": \"<boolean>\",\n    \"recyclabilityCanCollectAtScale\": \"<boolean>\",\n    \"recyclabilityIndustrialScale\": \"<boolean>\",\n    \"recyclabilityRate\": \"<number>\"\n  },\n  \"weight\": {\n    \"unit\": \"<string>\",\n    \"value\": \"<number>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e779b967-7d30-4cd7-bb1d-bd1893e6f5d4",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "styles",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Geraldine Organic Cotton T-shirt\",\n  \"forCompanyId\": \"M4MRIN4A9JQ\",\n  \"codes\": [\n    {\n      \"codeId\": \"OTHER_ID\",\n      \"codeValue\": \"221739\"\n    }\n  ],\n  \"description\": \"Organic cotton T-shirt from the Collectif mon Amour collection.\",\n  \"gender\": \"FEMALE\",\n  \"styleTypeId\": \"TSHIRTS\",\n  \"isComponent\": false,\n  \"isStoryActive\": true,\n  \"brands\": [\n    \"stp_01KM2X04A6KXM1YZ0XFQ633BH1\"\n  ],\n  \"departments\": [\n    \"AWU28X9KFYL\"\n  ],\n  \"seasons\": [\n    \"stp_01KM2WY63RHNQXB3JRCF4VBBAY\"\n  ],\n  \"collections\": [\n    \"stp_01KM2WYM0P1M5EGDQYCYR74B34\"\n  ],\n  \"claimIntentions\": [],\n  \"suppliers\": [\n    \"KFIXXMKJT3G\",\n    \"DCX5B2I5RM8\"\n  ],\n  \"mainSupplier\": \"KFIXXMKJT3G\",\n  \"vendors\": [\n    \"KDYV8NRUGQY\"\n  ],\n  \"ecoFootPrint\": {\n    \"hazardousMaterials\": null,\n    \"recyclabilityAbsenceDisruptor\": false,\n    \"recyclabilityCanBeSorted\": false,\n    \"recyclabilityCanCollectAtScale\": false,\n    \"recyclabilityIndustrialScale\": false,\n    \"recyclabilityRate\": 0\n  },\n  \"weight\": {\n    \"unit\": \"GRAM\",\n    \"value\": 180\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true\n  },\n  \"data\": {\n    \"key_0\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc455fa6-2ff2-481a-9db5-9fc3bd1220a4",
+          "name": "GET /styles serves all three tiers of the product hierarchy from a single endpoint, controlled by the required `level` query parameter. At `level=style` the endpoint returns top-level products and accepts optional filters (nameOrCode, updatedAfterUnixMs, page, pageSize). At `level=variant` a `styleId` is required and results are scoped to colour/variant children of that style. At `level=sku` a `variantId` is required and results are scoped to size/SKU children of that variant. Paginate using the `page` and `pageSize` params; check `metadata.pagination.totalPages` in the response to determine whether additional pages exist.",
+          "request": {
+            "name": "GET /styles serves all three tiers of the product hierarchy from a single endpoint, controlled by the required `level` query parameter. At `level=style` the endpoint returns top-level products and accepts optional filters (nameOrCode, updatedAfterUnixMs, page, pageSize). At `level=variant` a `styleId` is required and results are scoped to colour/variant children of that style. At `level=sku` a `variantId` is required and results are scoped to size/SKU children of that variant. Paginate using the `page` and `pageSize` params; check `metadata.pagination.totalPages` in the response to determine whether additional pages exist.",
+            "description": {
+              "content": "GET /styles serves all three tiers of the product hierarchy from a single endpoint, controlled by the required `level` query parameter. At `level=style` the endpoint returns top-level products and accepts optional filters (nameOrCode, updatedAfterUnixMs, page, pageSize). At `level=variant` a `styleId` is required and results are scoped to colour/variant children of that style. At `level=sku` a `variantId` is required and results are scoped to size/SKU children of that variant. Paginate using the `page` and `pageSize` params; check `metadata.pagination.totalPages` in the response to determine whether additional pages exist.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "styles",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "level",
+                  "value": "style",
+                  "description": "Controls which tier of the product hierarchy is returned. 'style' = top-level product (no parent ID required). 'variant' = colour or variant (requires styleId). 'sku' = size or SKU (requires variantId). The updatedAfterUnixMs filter is supported at all three levels."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (1-based). Defaults to 1. Check metadata.pagination.totalPages in the response to know if more pages exist."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of results per page (1–100). Defaults to 20. Check metadata.pagination.totalPages in the response to know if more pages exist."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "desc"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "createdAt"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter by product name (partial match)."
+                },
+                {
+                  "disabled": false,
+                  "key": "codeId",
+                  "value": "<string>",
+                  "description": "Filter by code type/ID, e.g. ERP_ID. Combine with codeValue."
+                },
+                {
+                  "disabled": false,
+                  "key": "codeValue",
+                  "value": "<string>",
+                  "description": "Filter by code value, e.g. DRS-001. Combine with codeId."
+                },
+                {
+                  "disabled": false,
+                  "key": "styleTypeId",
+                  "value": "<string>",
+                  "description": "Filter by style type ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "styleLevelId",
+                  "value": "<string>",
+                  "description": "Filter by style level ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "brands",
+                  "value": "<string>",
+                  "description": "Comma-separated list of brand IDs to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "departments",
+                  "value": "<string>",
+                  "description": "Comma-separated list of department IDs to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "seasons",
+                  "value": "<string>",
+                  "description": "Comma-separated list of season IDs to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "collections",
+                  "value": "<string>",
+                  "description": "Comma-separated list of collection IDs to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "suppliers",
+                  "value": "<string>",
+                  "description": "Comma-separated list of supplier IDs to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "vendors",
+                  "value": "<string>",
+                  "description": "Comma-separated list of vendor IDs to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "mainSupplier",
+                  "value": "<string>",
+                  "description": "Filter by main supplier ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "isComponent",
+                  "value": "<boolean>",
+                  "description": "Filter by component / raw material flag. Accepts true or false."
+                },
+                {
+                  "disabled": false,
+                  "key": "isStoryActive",
+                  "value": "<boolean>",
+                  "description": "Filter by traceability page status. Accepts true or false."
+                },
+                {
+                  "disabled": false,
+                  "key": "isArchived",
+                  "value": "<boolean>",
+                  "description": "Filter by archived status. Defaults to false."
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Comma-separated list of related data to include, e.g. 'codes,brands'."
+                },
+                {
+                  "disabled": false,
+                  "key": "nameOrCode",
+                  "value": "<string>",
+                  "description": "Optional. Filter styles by name or external code value (partial match). Use to look up a specific product by its ERP ID, PLM ID, or display name."
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>",
+                  "description": "Filter by description (partial match)."
+                },
+                {
+                  "disabled": false,
+                  "key": "gender",
+                  "value": "<string>",
+                  "description": "Filter by gender (e.g. MALE, FEMALE, UNISEX)."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdForMe",
+                  "value": "<boolean>",
+                  "description": "Filter to products created for your company."
+                },
+                {
+                  "disabled": false,
+                  "key": "isCreatedForNetwork",
+                  "value": "<boolean>",
+                  "description": "Filter to products created for your network."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter by owning company ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "certValidationStandardId",
+                  "value": "<string>",
+                  "description": "Filter by certification validation standard ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "certValidationExpirationDate",
+                  "value": "<string>",
+                  "description": "Filter by certification expiration date."
+                },
+                {
+                  "disabled": false,
+                  "key": "certValidationIssueDate",
+                  "value": "<string>",
+                  "description": "Filter by certification issue date."
+                },
+                {
+                  "disabled": false,
+                  "key": "color",
+                  "value": "<string>",
+                  "description": "Filter variants by color. Only applicable when level=variant."
+                },
+                {
+                  "disabled": false,
+                  "key": "styleId",
+                  "value": "<string>",
+                  "description": "Filter variants by parent style ID. Only applicable when level=variant."
+                },
+                {
+                  "disabled": false,
+                  "key": "variantId",
+                  "value": "<string>",
+                  "description": "Filter SKUs by parent variant ID. Only applicable when level=sku."
+                },
+                {
+                  "disabled": false,
+                  "key": "dimension",
+                  "value": "<string>",
+                  "description": "Filter SKUs by dimension. Only applicable when level=sku."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAfterUnixMs",
+                  "value": "<number>",
+                  "description": "Optional. Unix timestamp in milliseconds. Returns only styles modified after this point in time. Use for incremental sync — on subsequent calls pass the timestamp of your last successful pull."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedBeforeUnixMs",
+                  "value": "<number>",
+                  "description": "Return products updated before this Unix timestamp (milliseconds)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b39e7916-4624-4327-abe6-67b9de73343b",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "styles",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "level",
+                      "value": "style"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "createdAt"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "codeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "codeValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "styleTypeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "styleLevelId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brands",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "departments",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "seasons",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "collections",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "suppliers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vendors",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mainSupplier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isComponent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "isStoryActive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "isArchived",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nameOrCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gender",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdForMe",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "isCreatedForNetwork",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "certValidationStandardId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "certValidationExpirationDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "certValidationIssueDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "color",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "styleId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "variantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dimension",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updatedAfterUnixMs",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "updatedBeforeUnixMs",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"forCompanyId\": \"string\",\n      \"name\": \"string\",\n      \"codes\": [\n        {\n          \"codeId\": \"string\",\n          \"codeValue\": \"string\"\n        },\n        {\n          \"codeId\": \"string\",\n          \"codeValue\": \"string\"\n        }\n      ],\n      \"styleLevelId\": \"string\",\n      \"styleTypeId\": \"string\",\n      \"isArchived\": true,\n      \"description\": \"string\",\n      \"gender\": \"string\",\n      \"productLevel\": \"string\",\n      \"brands\": [\n        \"string\",\n        \"string\"\n      ],\n      \"departments\": [\n        \"st\",\n        \"string\"\n      ],\n      \"seasons\": [\n        \"string\",\n        \"string\"\n      ],\n      \"collections\": [\n        \"string\",\n        \"string\"\n      ],\n      \"claimIntentions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"customProperties\": \"string\",\n      \"suppliers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"mainSupplier\": \"string\",\n      \"vendors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"imagesFileIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"images\": [\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"previewUrl\": \"string\",\n          \"fileType\": \"string\",\n          \"bucketName\": \"string\",\n          \"name\": \"string\",\n          \"fileSize\": 9982.78093144001,\n          \"contentType\": \"string\",\n          \"fileHash\": \"string\",\n          \"createdAt\": \"1960-12-23T04:16:34.071Z\",\n          \"updatedAt\": \"1953-09-04T22:51:25.756Z\",\n          \"createdBy\": \"string\",\n          \"createdByCompanyId\": \"string\",\n          \"createdByImpersonateId\": \"string\",\n          \"createdByImpersonateName\": \"string\",\n          \"createdByUserId\": \"string\",\n          \"createdByApiKeyId\": \"string\",\n          \"createdByApiKeyLabel\": \"string\",\n          \"updatedByUserId\": \"string\",\n          \"updatedByUserName\": \"string\",\n          \"updatedByCompanyId\": \"string\",\n          \"updatedByCompanyName\": \"string\",\n          \"updatedByImpersonateId\": \"string\",\n          \"updatedByImpersonateName\": \"string\",\n          \"updatedByApiKeyId\": \"string\",\n          \"updatedByApiKeyLabel\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"previewUrl\": \"string\",\n          \"fileType\": \"string\",\n          \"bucketName\": \"string\",\n          \"name\": \"string\",\n          \"fileSize\": 9944.75441948955,\n          \"contentType\": \"string\",\n          \"fileHash\": \"string\",\n          \"createdAt\": \"1959-10-17T09:21:45.762Z\",\n          \"updatedAt\": \"1988-06-28T11:08:06.174Z\",\n          \"createdBy\": \"string\",\n          \"createdByCompanyId\": \"string\",\n          \"createdByImpersonateId\": \"string\",\n          \"createdByImpersonateName\": \"string\",\n          \"createdByUserId\": \"string\",\n          \"createdByApiKeyId\": \"string\",\n          \"createdByApiKeyLabel\": \"string\",\n          \"updatedByUserId\": \"string\",\n          \"updatedByUserName\": \"string\",\n          \"updatedByCompanyId\": \"string\",\n          \"updatedByCompanyName\": \"string\",\n          \"updatedByImpersonateId\": \"string\",\n          \"updatedByImpersonateName\": \"string\",\n          \"updatedByApiKeyId\": \"string\",\n          \"updatedByApiKeyLabel\": \"string\"\n        }\n      ],\n      \"isComponent\": false,\n      \"isStoryActive\": false,\n      \"qrCodeUrl\": \"string\",\n      \"createdAt\": \"2020-10-30T13:08:38.846Z\",\n      \"updatedAt\": \"1986-06-02T03:56:12.021Z\",\n      \"createdByImpersonateId\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdByCompanyId\": \"string\",\n      \"createdByApiKeyId\": \"string\",\n      \"createdByApiKeyLabel\": \"string\",\n      \"updatedByImpersonateId\": \"string\",\n      \"updatedByUserId\": \"string\",\n      \"updatedByCompanyId\": \"string\",\n      \"updatedByApiKeyId\": \"string\",\n      \"updatedByApiKeyLabel\": \"string\",\n      \"ecoFootPrint\": {\n        \"syntheticMaterialPercentage\": 51.71254018871839,\n        \"recycledMaterialPercentage\": 92.82354556515948,\n        \"hazardousMaterials\": [\n          {\n            \"idx\": 8891.655068213418,\n            \"name\": \"string\",\n            \"percentage\": 41.292643971671275\n          },\n          {\n            \"idx\": 9862.974197329806,\n            \"name\": \"string\",\n            \"percentage\": 48.852463784782195\n          }\n        ],\n        \"recyclabilityAbsenceDisruptor\": true,\n        \"recyclabilityCanBeSorted\": true,\n        \"recyclabilityCanCollectAtScale\": false,\n        \"recyclabilityIndustrialScale\": false,\n        \"recyclabilityRate\": 6570.579838135566\n      },\n      \"weight\": {\n        \"unit\": \"string\",\n        \"value\": 364.1131876145187\n      },\n      \"tracingStory\": {\n        \"id\": \"string\",\n        \"tracingType\": \"string\",\n        \"tracingId\": \"string\",\n        \"isActive\": true,\n        \"createdAt\": \"1977-04-21T06:37:49.822Z\",\n        \"updatedAt\": \"2007-10-07T15:11:58.620Z\",\n        \"tracingName\": \"string\"\n      },\n      \"isWeightAvailable\": true,\n      \"featureImageUrl\": \"string\",\n      \"material\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"lines\": [\n          {\n            \"id\": \"string\",\n            \"rawMaterialId\": \"string\",\n            \"rawMaterialName\": \"string\",\n            \"percentage\": 5819.904369938792,\n            \"countriesOfOrigin\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"rawMaterialId\": \"string\",\n            \"rawMaterialName\": \"string\",\n            \"percentage\": 9993.39135714304,\n            \"countriesOfOrigin\": \"string\"\n          }\n        ]\n      },\n      \"bom\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"styleProperties\": {\n        \"brands\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"category\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"category\": \"string\"\n          }\n        ],\n        \"departments\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"category\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"category\": \"string\"\n          }\n        ],\n        \"seasons\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"category\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"category\": \"string\"\n          }\n        ],\n        \"collections\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"category\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"category\": \"string\"\n          }\n        ]\n      },\n      \"type\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"parentId\": \"string\",\n        \"quantityUnits\": [\n          \"string\",\n          \"string\"\n        ],\n        \"weightUnits\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"linkedStyles\": [\n        {\n          \"styleId\": \"string\"\n        },\n        {\n          \"styleId\": \"string\"\n        }\n      ],\n      \"validationResult\": {\n        \"valid\": true,\n        \"selectable\": true,\n        \"description\": [\n          [\n            {\n              \"type\": \"string\",\n              \"text\": \"string\"\n            },\n            {\n              \"type\": \"string\",\n              \"text\": \"string\"\n            }\n          ],\n          [\n            {\n              \"type\": \"string\",\n              \"text\": \"string\"\n            },\n            {\n              \"type\": \"string\",\n              \"text\": \"string\"\n            }\n          ]\n        ],\n        \"certificateDuplications\": [\n          {\n            \"type\": \"string\",\n            \"text\": \"string\",\n            \"claimId\": \"string\"\n          },\n          {\n            \"type\": \"string\",\n            \"text\": \"string\",\n            \"claimId\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"forCompanyId\": \"string\",\n      \"name\": \"string\",\n      \"codes\": [\n        {\n          \"codeId\": \"string\",\n          \"codeValue\": \"string\"\n        },\n        {\n          \"codeId\": \"string\",\n          \"codeValue\": \"string\"\n        }\n      ],\n      \"styleLevelId\": \"string\",\n      \"styleTypeId\": \"string\",\n      \"isArchived\": false,\n      \"description\": \"string\",\n      \"gender\": \"string\",\n      \"productLevel\": \"string\",\n      \"brands\": [\n        \"string\",\n        \"string\"\n      ],\n      \"departments\": [\n        \"string\",\n        \"string\"\n      ],\n      \"seasons\": [\n        \"string\",\n        \"string\"\n      ],\n      \"collections\": [\n        \"string\",\n        \"string\"\n      ],\n      \"claimIntentions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"customProperties\": \"string\",\n      \"suppliers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"mainSupplier\": \"string\",\n      \"vendors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"imagesFileIds\": [\n        \"string\",\n        \"strin\"\n      ],\n      \"images\": [\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"previewUrl\": \"string\",\n          \"fileType\": \"string\",\n          \"bucketName\": \"string\",\n          \"name\": \"string\",\n          \"fileSize\": 6329.068914640989,\n          \"contentType\": \"string\",\n          \"fileHash\": \"string\",\n          \"createdAt\": \"1985-09-28T05:57:27.718Z\",\n          \"updatedAt\": \"1950-01-26T15:57:48.132Z\",\n          \"createdBy\": \"string\",\n          \"createdByCompanyId\": \"string\",\n          \"createdByImpersonateId\": \"string\",\n          \"createdByImpersonateName\": \"string\",\n          \"createdByUserId\": \"string\",\n          \"createdByApiKeyId\": \"string\",\n          \"createdByApiKeyLabel\": \"string\",\n          \"updatedByUserId\": \"string\",\n          \"updatedByUserName\": \"string\",\n          \"updatedByCompanyId\": \"string\",\n          \"updatedByCompanyName\": \"string\",\n          \"updatedByImpersonateId\": \"string\",\n          \"updatedByImpersonateName\": \"string\",\n          \"updatedByApiKeyId\": \"string\",\n          \"updatedByApiKeyLabel\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"previewUrl\": \"string\",\n          \"fileType\": \"string\",\n          \"bucketName\": \"string\",\n          \"name\": \"string\",\n          \"fileSize\": 6682.458675745812,\n          \"contentType\": \"string\",\n          \"fileHash\": \"string\",\n          \"createdAt\": \"1947-03-07T07:52:31.829Z\",\n          \"updatedAt\": \"1954-02-16T00:36:33.189Z\",\n          \"createdBy\": \"string\",\n          \"createdByCompanyId\": \"string\",\n          \"createdByImpersonateId\": \"string\",\n          \"createdByImpersonateName\": \"string\",\n          \"createdByUserId\": \"string\",\n          \"createdByApiKeyId\": \"string\",\n          \"createdByApiKeyLabel\": \"string\",\n          \"updatedByUserId\": \"string\",\n          \"updatedByUserName\": \"string\",\n          \"updatedByCompanyId\": \"string\",\n          \"updatedByCompanyName\": \"string\",\n          \"updatedByImpersonateId\": \"string\",\n          \"updatedByImpersonateName\": \"string\",\n          \"updatedByApiKeyId\": \"string\",\n          \"updatedByApiKeyLabel\": \"string\"\n        }\n      ],\n      \"isComponent\": false,\n      \"isStoryActive\": true,\n      \"qrCodeUrl\": \"string\",\n      \"createdAt\": \"1952-07-13T09:09:13.774Z\",\n      \"updatedAt\": \"1994-10-31T09:18:32.489Z\",\n      \"createdByImpersonateId\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdByCompanyId\": \"string\",\n      \"createdByApiKeyId\": \"string\",\n      \"createdByApiKeyLabel\": \"string\",\n      \"updatedByImpersonateId\": \"string\",\n      \"updatedByUserId\": \"string\",\n      \"updatedByCompanyId\": \"string\",\n      \"updatedByApiKeyId\": \"string\",\n      \"updatedByApiKeyLabel\": \"string\",\n      \"ecoFootPrint\": {\n        \"syntheticMaterialPercentage\": 3.2120370246205066,\n        \"recycledMaterialPercentage\": 26.742266275279235,\n        \"hazardousMaterials\": [\n          {\n            \"idx\": 245.0583515664595,\n            \"name\": \"str\",\n            \"percentage\": 87.17013141503551\n          },\n          {\n            \"idx\": 394.4376846109088,\n            \"name\": \"string\",\n            \"percentage\": 71.528788790927\n          }\n        ],\n        \"recyclabilityAbsenceDisruptor\": false,\n        \"recyclabilityCanBeSorted\": false,\n        \"recyclabilityCanCollectAtScale\": false,\n        \"recyclabilityIndustrialScale\": false,\n        \"recyclabilityRate\": 7020.124284545654\n      },\n      \"weight\": {\n        \"unit\": \"string\",\n        \"value\": 6418.369811316657\n      },\n      \"tracingStory\": {\n        \"id\": \"string\",\n        \"tracingType\": \"string\",\n        \"tracingId\": \"string\",\n        \"isActive\": false,\n        \"createdAt\": \"2025-07-04T22:50:04.749Z\",\n        \"updatedAt\": \"1948-07-14T13:23:10.379Z\",\n        \"tracingName\": \"string\"\n      },\n      \"isWeightAvailable\": false,\n      \"featureImageUrl\": \"string\",\n      \"material\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"lines\": [\n          {\n            \"id\": \"string\",\n            \"rawMaterialId\": \"string\",\n            \"rawMaterialName\": \"string\",\n            \"percentage\": 9975.337186937804,\n            \"countriesOfOrigin\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"rawMaterialId\": \"string\",\n            \"rawMaterialName\": \"string\",\n            \"percentage\": 1524.1019832597292,\n            \"countriesOfOrigin\": \"string\"\n          }\n        ]\n      },\n      \"bom\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"styleProperties\": {\n        \"brands\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"category\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"category\": \"string\"\n          }\n        ],\n        \"departments\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"category\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"category\": \"string\"\n          }\n        ],\n        \"seasons\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"category\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"category\": \"string\"\n          }\n        ],\n        \"collections\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"category\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"category\": \"string\"\n          }\n        ]\n      },\n      \"type\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"parentId\": \"string\",\n        \"quantityUnits\": [\n          \"string\",\n          \"string\"\n        ],\n        \"weightUnits\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"linkedStyles\": [\n        {\n          \"styleId\": \"string\"\n        },\n        {\n          \"styleId\": \"string\"\n        }\n      ],\n      \"validationResult\": {\n        \"valid\": true,\n        \"selectable\": true,\n        \"description\": [\n          [\n            {\n              \"type\": \"string\",\n              \"text\": \"string\"\n            },\n            {\n              \"type\": \"string\",\n              \"text\": \"string\"\n            }\n          ],\n          [\n            {\n              \"type\": \"string\",\n              \"text\": \"string\"\n            },\n            {\n              \"type\": \"string\",\n              \"text\": \"string\"\n            }\n          ]\n        ],\n        \"certificateDuplications\": [\n          {\n            \"type\": \"string\",\n            \"text\": \"string\",\n            \"claimId\": \"string\"\n          },\n          {\n            \"type\": \"string\",\n            \"text\": \"string\",\n            \"claimId\": \"string\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7bc0a1e3-e2c2-4e57-bc94-fdef1f289032",
+          "name": "Update a style, variant, or SKU by ID. The product level is resolved automatically from the ID. All body fields are optional — only provided fields will be updated.",
+          "request": {
+            "name": "Update a style, variant, or SKU by ID. The product level is resolved automatically from the ID. All body fields are optional — only provided fields will be updated.",
+            "description": {
+              "content": "Update a style, variant, or SKU by ID. The product level is resolved automatically from the ID. All body fields are optional — only provided fields will be updated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "styles",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of the style, variant, or SKU."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"codes\": [\n    {\n      \"codeId\": \"<string>\",\n      \"codeValue\": \"<string>\"\n    }\n  ],\n  \"forCompanyId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"styleTypeId\": \"<string>\",\n  \"color\": \"<string>\",\n  \"dimension\": \"<string>\",\n  \"isStoryActive\": \"<boolean>\",\n  \"brands\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"departments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"seasons\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"collections\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"claimIntentions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customProperties\": \"<string>\",\n  \"suppliers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mainSupplier\": \"<string>\",\n  \"vendors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"imagesFileIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ecoFootPrint\": {\n    \"hazardousMaterials\": [\n      {\n        \"idx\": \"<number>\",\n        \"name\": \"<string>\",\n        \"percentage\": \"<number>\"\n      },\n      {\n        \"idx\": \"<number>\",\n        \"name\": \"<string>\",\n        \"percentage\": \"<number>\"\n      }\n    ],\n    \"recyclabilityAbsenceDisruptor\": \"<boolean>\",\n    \"recyclabilityCanBeSorted\": \"<boolean>\",\n    \"recyclabilityCanCollectAtScale\": \"<boolean>\",\n    \"recyclabilityIndustrialScale\": \"<boolean>\",\n    \"recyclabilityRate\": \"<number>\"\n  },\n  \"weight\": {\n    \"unit\": \"<string>\",\n    \"value\": \"<number>\"\n  },\n  \"styleLevelId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "922623d6-61d6-4786-b34f-03a89338160e",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "styles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the style, variant, or SKU."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"codes\": [\n    {\n      \"codeId\": \"<string>\",\n      \"codeValue\": \"<string>\"\n    }\n  ],\n  \"forCompanyId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"styleTypeId\": \"<string>\",\n  \"color\": \"<string>\",\n  \"dimension\": \"<string>\",\n  \"isStoryActive\": \"<boolean>\",\n  \"brands\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"departments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"seasons\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"collections\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"claimIntentions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customProperties\": \"<string>\",\n  \"suppliers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mainSupplier\": \"<string>\",\n  \"vendors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"imagesFileIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ecoFootPrint\": {\n    \"hazardousMaterials\": [\n      {\n        \"idx\": \"<number>\",\n        \"name\": \"<string>\",\n        \"percentage\": \"<number>\"\n      },\n      {\n        \"idx\": \"<number>\",\n        \"name\": \"<string>\",\n        \"percentage\": \"<number>\"\n      }\n    ],\n    \"recyclabilityAbsenceDisruptor\": \"<boolean>\",\n    \"recyclabilityCanBeSorted\": \"<boolean>\",\n    \"recyclabilityCanCollectAtScale\": \"<boolean>\",\n    \"recyclabilityIndustrialScale\": \"<boolean>\",\n    \"recyclabilityRate\": \"<number>\"\n  },\n  \"weight\": {\n    \"unit\": \"<string>\",\n    \"value\": \"<number>\"\n  },\n  \"styleLevelId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true\n  },\n  \"data\": {\n    \"key_0\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6dacb6f6-de16-421d-973a-a9acb00a2cd8",
+          "name": "Retrieve a single style, variant, or SKU by ID. The product level is resolved automatically from the ID.",
+          "request": {
+            "name": "Retrieve a single style, variant, or SKU by ID. The product level is resolved automatically from the ID.",
+            "description": {
+              "content": "Retrieve a single style, variant, or SKU by ID. The product level is resolved automatically from the ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "styles",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of the style, variant, or SKU."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c9f01a1f-23ee-4685-9813-f77c1a950647",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "styles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the style, variant, or SKU."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true\n  },\n  \"data\": {\n    \"id\": \"string\",\n    \"forCompanyId\": \"string\",\n    \"name\": \"string\",\n    \"codes\": [\n      {\n        \"codeId\": \"string\",\n        \"codeValue\": \"string\"\n      },\n      {\n        \"codeId\": \"string\",\n        \"codeValue\": \"string\"\n      }\n    ],\n    \"styleLevelId\": \"string\",\n    \"styleTypeId\": \"string\",\n    \"isArchived\": false,\n    \"description\": \"string\",\n    \"gender\": \"string\",\n    \"productLevel\": \"string\",\n    \"brands\": [\n      \"string\",\n      \"string\"\n    ],\n    \"departments\": [\n      \"string\",\n      \"stri\"\n    ],\n    \"seasons\": [\n      \"string\",\n      \"string\"\n    ],\n    \"collections\": [\n      \"string\",\n      \"string\"\n    ],\n    \"claimIntentions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"customProperties\": \"string\",\n    \"suppliers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"mainSupplier\": \"string\",\n    \"vendors\": [\n      \"string\",\n      \"string\"\n    ],\n    \"imagesFileIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"images\": [\n      {\n        \"id\": \"str\",\n        \"url\": \"string\",\n        \"previewUrl\": \"string\",\n        \"fileType\": \"string\",\n        \"bucketName\": \"string\",\n        \"name\": \"string\",\n        \"fileSize\": 8589.505138514654,\n        \"contentType\": \"string\",\n        \"fileHash\": \"string\",\n        \"createdAt\": \"1964-03-31T06:38:00.080Z\",\n        \"updatedAt\": \"1976-06-19T17:13:48.277Z\",\n        \"createdBy\": \"string\",\n        \"createdByCompanyId\": \"string\",\n        \"createdByImpersonateId\": \"string\",\n        \"createdByImpersonateName\": \"string\",\n        \"createdByUserId\": \"string\",\n        \"createdByApiKeyId\": \"string\",\n        \"createdByApiKeyLabel\": \"string\",\n        \"updatedByUserId\": \"string\",\n        \"updatedByUserName\": \"string\",\n        \"updatedByCompanyId\": \"string\",\n        \"updatedByCompanyName\": \"string\",\n        \"updatedByImpersonateId\": \"string\",\n        \"updatedByImpersonateName\": \"string\",\n        \"updatedByApiKeyId\": \"string\",\n        \"updatedByApiKeyLabel\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"url\": \"string\",\n        \"previewUrl\": \"string\",\n        \"fileType\": \"string\",\n        \"bucketName\": \"string\",\n        \"name\": \"string\",\n        \"fileSize\": 6316.149911569636,\n        \"contentType\": \"string\",\n        \"fileHash\": \"string\",\n        \"createdAt\": \"2007-04-07T04:40:38.140Z\",\n        \"updatedAt\": \"2003-01-26T04:58:02.016Z\",\n        \"createdBy\": \"string\",\n        \"createdByCompanyId\": \"string\",\n        \"createdByImpersonateId\": \"string\",\n        \"createdByImpersonateName\": \"string\",\n        \"createdByUserId\": \"string\",\n        \"createdByApiKeyId\": \"string\",\n        \"createdByApiKeyLabel\": \"string\",\n        \"updatedByUserId\": \"string\",\n        \"updatedByUserName\": \"string\",\n        \"updatedByCompanyId\": \"string\",\n        \"updatedByCompanyName\": \"string\",\n        \"updatedByImpersonateId\": \"string\",\n        \"updatedByImpersonateName\": \"string\",\n        \"updatedByApiKeyId\": \"string\",\n        \"updatedByApiKeyLabel\": \"string\"\n      }\n    ],\n    \"isComponent\": true,\n    \"isStoryActive\": false,\n    \"qrCodeUrl\": \"string\",\n    \"createdAt\": \"2001-10-03T19:35:51.617Z\",\n    \"updatedAt\": \"1960-08-04T18:47:31.849Z\",\n    \"createdByImpersonateId\": \"string\",\n    \"createdByUserId\": \"string\",\n    \"createdByCompanyId\": \"string\",\n    \"createdByApiKeyId\": \"string\",\n    \"createdByApiKeyLabel\": \"string\",\n    \"updatedByImpersonateId\": \"string\",\n    \"updatedByUserId\": \"string\",\n    \"updatedByCompanyId\": \"string\",\n    \"updatedByApiKeyId\": \"string\",\n    \"updatedByApiKeyLabel\": \"string\",\n    \"ecoFootPrint\": {\n      \"syntheticMaterialPercentage\": 29.024002456641952,\n      \"recycledMaterialPercentage\": 58.94253358349937,\n      \"hazardousMaterials\": [\n        {\n          \"idx\": 223.1885615594087,\n          \"name\": \"string\",\n          \"percentage\": 24.013100343105354\n        },\n        {\n          \"idx\": 8365.713509681227,\n          \"name\": \"string\",\n          \"percentage\": 27.172677153433366\n        }\n      ],\n      \"recyclabilityAbsenceDisruptor\": false,\n      \"recyclabilityCanBeSorted\": false,\n      \"recyclabilityCanCollectAtScale\": false,\n      \"recyclabilityIndustrialScale\": true,\n      \"recyclabilityRate\": 4562.902857569706\n    },\n    \"weight\": {\n      \"unit\": \"string\",\n      \"value\": 7244.650249779316\n    },\n    \"tracingStory\": {\n      \"id\": \"string\",\n      \"tracingType\": \"string\",\n      \"tracingId\": \"string\",\n      \"isActive\": true,\n      \"createdAt\": \"2006-10-14T07:53:21.961Z\",\n      \"updatedAt\": \"1956-09-27T23:35:20.071Z\",\n      \"tracingName\": \"string\"\n    },\n    \"isWeightAvailable\": false,\n    \"featureImageUrl\": \"string\",\n    \"material\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"lines\": [\n        {\n          \"id\": \"string\",\n          \"rawMaterialId\": \"string\",\n          \"rawMaterialName\": \"string\",\n          \"percentage\": 7620.213303121243,\n          \"countriesOfOrigin\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"rawMaterialId\": \"string\",\n          \"rawMaterialName\": \"string\",\n          \"percentage\": 2010.5900539951915,\n          \"countriesOfOrigin\": \"string\"\n        }\n      ]\n    },\n    \"bom\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    ],\n    \"styleProperties\": {\n      \"brands\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"category\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"category\": \"string\"\n        }\n      ],\n      \"departments\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"category\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"category\": \"string\"\n        }\n      ],\n      \"seasons\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"category\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"category\": \"string\"\n        }\n      ],\n      \"collections\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"category\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"category\": \"string\"\n        }\n      ]\n    },\n    \"type\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"parentId\": \"string\",\n      \"quantityUnits\": [\n        \"string\",\n        \"string\"\n      ],\n      \"weightUnits\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"linkedStyles\": [\n      {\n        \"styleId\": \"string\"\n      },\n      {\n        \"styleId\": \"string\"\n      }\n    ],\n    \"validationResult\": {\n      \"valid\": false,\n      \"selectable\": true,\n      \"description\": [\n        [\n          {\n            \"type\": \"string\",\n            \"text\": \"string\"\n          },\n          {\n            \"type\": \"string\",\n            \"text\": \"string\"\n          }\n        ],\n        [\n          {\n            \"type\": \"string\",\n            \"text\": \"string\"\n          },\n          {\n            \"type\": \"string\",\n            \"text\": \"string\"\n          }\n        ]\n      ],\n      \"certificateDuplications\": [\n        {\n          \"type\": \"string\",\n          \"text\": \"string\",\n          \"claimId\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"text\": \"string\",\n          \"claimId\": \"string\"\n        }\n      ]\n    },\n    \"dimension\": \"string\",\n    \"color\": \"string\",\n    \"variantId\": \"string\",\n    \"styleId\": \"string\",\n    \"overriddenFlag\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c3da05f-dcf6-4d46-bd28-80b6cf846a77",
+          "name": "Archive one or more styles, variants, or SKUs. All IDs must belong to the same product level. Archiving a style cascades to all its child variants and SKUs.",
+          "request": {
+            "name": "Archive one or more styles, variants, or SKUs. All IDs must belong to the same product level. Archiving a style cascades to all its child variants and SKUs.",
+            "description": {
+              "content": "Archive one or more styles, variants, or SKUs. All IDs must belong to the same product level. Archiving a style cascades to all its child variants and SKUs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "styles",
+                "archive"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<string>\"\n  ],\n  \"shouldUnarchiveChildren\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a01c4d5c-3311-4d98-8694-578076aad599",
+              "name": "No content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "styles",
+                    "archive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<string>\"\n  ],\n  \"shouldUnarchiveChildren\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be93cd17-9577-49df-a0f2-e403e9d24bc1",
+          "name": "Unarchive one or more styles, variants, or SKUs. All IDs must belong to the same product level.",
+          "request": {
+            "name": "Unarchive one or more styles, variants, or SKUs. All IDs must belong to the same product level.",
+            "description": {
+              "content": "Unarchive one or more styles, variants, or SKUs. All IDs must belong to the same product level.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "styles",
+                "unarchive"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<string>\"\n  ],\n  \"shouldUnarchiveChildren\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eee55e10-5292-4748-ba2f-73bccbcffee3",
+              "name": "No content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "styles",
+                    "unarchive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<string>\"\n  ],\n  \"shouldUnarchiveChildren\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0fa1c45b-0f33-465d-8c0a-f7ea4076eaf1",
+    "name": "Public API Reference Certificates Product / Styles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The retraced API comprises all publicly enabled options to make\nmachine-to-machine changes in the retraced platform. The retraced dashboard uses the\nsame endpoints, but also in addition more. If you wish to use the API of the dashboard,\nit is possible but not versioned cleanly like the public API.\n\n## Authentication\n\nThe authentication procedure is passwordless and uses an API key in the header. To get\nan API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**\nthen click **Create**. Be sure to copy the key somewhere safe, as you won't be able to\nview it again. If you don't see Developers HQ in the sidebar contact your Customer\nSuccess Manager to enable this for you. You can now set the key directly in request\nheaders. To authenticate using an API key, set the header key `companyapikey` to the\nvalue of your API key.\n\n## Getting Started\n\nRetraced has 2 environments against which you can send your requests and receive the\nexpected response: staging (for development and testing) and production. Your API key\nis scoped for both environments. The staging Base URL is\nhttps://publicapi.staging.retraced.com. Staging copies production data once daily, and\nall changes made on staging will be deleted.\n\nFind detailed guides on how to use the endpoints and how we recommend building an\nintegration given your use case in our\n[guides](https://publicapi.retraced.com/api/v2/guides). A history of public API\nchanges is available in the\n[release notes](https://publicapi.retraced.com/api/v2/release-notes).",
+      "type": "text/plain"
+    }
+  }
+}

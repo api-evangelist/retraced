@@ -1,0 +1,252 @@
+{
+  "item": [
+    {
+      "id": "ea939309-084e-4966-8836-48be5fc86bd7",
+      "name": "Product / Style Properties",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d7146ba8-f536-41f4-9203-8966afd457dd",
+          "name": "Create a Style Property",
+          "request": {
+            "name": "Create a Style Property",
+            "description": {
+              "content": "Creates a new style property for the authenticated company. Style properties are predefined values for the brands, seasons, collections, and departments fields. A property must be created here before its id can be referenced on a style. The category field determines which field the property applies to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "style-properties",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"<string>\",\n  \"category\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "280d718d-f131-421d-b136-a677c6b8a3ea",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "style-properties",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"<string>\",\n  \"category\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": {\n    \"id\": \"string\",\n    \"forCompanyId\": \"string\",\n    \"value\": \"string\",\n    \"category\": \"seasons\",\n    \"createdAt\": \"1973-10-30T13:47:39.256Z\",\n    \"updatedAt\": \"2002-01-25T15:37:18.283Z\",\n    \"createdByImpersonateId\": \"string\",\n    \"createdByUserId\": \"string\",\n    \"createdByCompanyId\": \"string\",\n    \"createdByApiKeyId\": \"string\",\n    \"createdByApiKeyLabel\": \"string\",\n    \"updatedByImpersonateId\": \"string\",\n    \"updatedByUserId\": \"string\",\n    \"updatedByCompanyId\": \"string\",\n    \"updatedByApiKeyId\": \"string\",\n    \"updatedByApiKeyLabel\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95e34a89-03e4-459a-a883-4e0d21872fab",
+          "name": "List Style Properties",
+          "request": {
+            "name": "List Style Properties",
+            "description": {
+              "content": "Returns a paginated list of style properties for the authenticated company. Style properties are the predefined lookup values used to populate the brands, seasons, collections, and departments fields on a style. Use the category query parameter to filter by a specific type. The id returned for each property is what must be passed when creating or updating styles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "style-properties",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "createdAt"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "desc"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5138231-6372-418f-99ae-a043e2b5826c",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "style-properties",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "createdAt"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"forCompanyId\": \"string\",\n      \"value\": \"string\",\n      \"category\": \"collections\",\n      \"createdAt\": \"2005-12-29T11:16:00.078Z\",\n      \"updatedAt\": \"1997-04-12T18:31:57.807Z\",\n      \"createdByImpersonateId\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdByCompanyId\": \"string\",\n      \"createdByApiKeyId\": \"string\",\n      \"createdByApiKeyLabel\": \"string\",\n      \"updatedByImpersonateId\": \"string\",\n      \"updatedByUserId\": \"string\",\n      \"updatedByCompanyId\": \"string\",\n      \"updatedByApiKeyId\": \"string\",\n      \"updatedByApiKeyLabel\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"forCompanyId\": \"string\",\n      \"value\": \"string\",\n      \"category\": \"departments\",\n      \"createdAt\": \"1990-12-31T15:56:02.573Z\",\n      \"updatedAt\": \"1968-07-07T22:50:19.956Z\",\n      \"createdByImpersonateId\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdByCompanyId\": \"string\",\n      \"createdByApiKeyId\": \"string\",\n      \"createdByApiKeyLabel\": \"string\",\n      \"updatedByImpersonateId\": \"string\",\n      \"updatedByUserId\": \"string\",\n      \"updatedByCompanyId\": \"string\",\n      \"updatedByApiKeyId\": \"string\",\n      \"updatedByApiKeyLabel\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "38ed180a-0ee5-4be8-8fbf-0fed570481e0",
+    "name": "Public API Reference Certificates Product / Style Properties API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The retraced API comprises all publicly enabled options to make\nmachine-to-machine changes in the retraced platform. The retraced dashboard uses the\nsame endpoints, but also in addition more. If you wish to use the API of the dashboard,\nit is possible but not versioned cleanly like the public API.\n\n## Authentication\n\nThe authentication procedure is passwordless and uses an API key in the header. To get\nan API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**\nthen click **Create**. Be sure to copy the key somewhere safe, as you won't be able to\nview it again. If you don't see Developers HQ in the sidebar contact your Customer\nSuccess Manager to enable this for you. You can now set the key directly in request\nheaders. To authenticate using an API key, set the header key `companyapikey` to the\nvalue of your API key.\n\n## Getting Started\n\nRetraced has 2 environments against which you can send your requests and receive the\nexpected response: staging (for development and testing) and production. Your API key\nis scoped for both environments. The staging Base URL is\nhttps://publicapi.staging.retraced.com. Staging copies production data once daily, and\nall changes made on staging will be deleted.\n\nFind detailed guides on how to use the endpoints and how we recommend building an\nintegration given your use case in our\n[guides](https://publicapi.retraced.com/api/v2/guides). A history of public API\nchanges is available in the\n[release notes](https://publicapi.retraced.com/api/v2/release-notes).",
+      "type": "text/plain"
+    }
+  }
+}

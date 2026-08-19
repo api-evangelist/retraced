@@ -1,0 +1,124 @@
+{
+  "item": [
+    {
+      "id": "7f6a9f06-0f53-487e-86c7-c284dd1284e4",
+      "name": "Product / Supply Chains",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "780099d9-e54a-4fdd-9ac8-8b10d352cb4f",
+          "name": "Returns the supply chain data for a product with enriched node information.",
+          "request": {
+            "name": "Returns the supply chain data for a product with enriched node information.",
+            "description": {
+              "content": "Returns the supply chain data for a product with enriched node information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "supply-chains",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The Retraced product ID of the product to fetch the supply chain for (this is a product ID, not a supply chain ID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd106f09-99c8-488b-b797-6dde10a7cf5d",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "supply-chains",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Retraced product ID of the product to fetch the supply chain for (this is a product ID, not a supply chain ID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true\n  },\n  \"data\": {\n    \"productId\": \"string\",\n    \"productName\": \"string\",\n    \"nodesByProductionProcesses\": [\n      {\n        \"productionProcessId\": \"string\",\n        \"productionProcessName\": \"string\",\n        \"tier\": \"string\",\n        \"nodes\": [\n          {\n            \"tier\": \"string\",\n            \"companyId\": \"string\",\n            \"companyName\": \"string\",\n            \"country\": \"string\",\n            \"coordinates\": {\n              \"latitude\": 4676.392181616366,\n              \"longitude\": 8796.351664535616\n            },\n            \"address\": {\n              \"line1\": \"string\",\n              \"line2\": \"string\",\n              \"city\": \"string\",\n              \"zipCode\": \"string\",\n              \"country\": \"string\"\n            },\n            \"facilityProcesses\": [\n              \"string\",\n              \"string\"\n            ],\n            \"productionProcess\": \"string\"\n          },\n          {\n            \"tier\": \"string\",\n            \"companyId\": \"string\",\n            \"companyName\": \"string\",\n            \"country\": \"string\",\n            \"coordinates\": {\n              \"latitude\": 3929.1625086694025,\n              \"longitude\": 7671.192972281629\n            },\n            \"address\": {\n              \"line1\": \"string\",\n              \"line2\": \"string\",\n              \"city\": \"string\",\n              \"zipCode\": \"string\",\n              \"country\": \"string\"\n            },\n            \"facilityProcesses\": [\n              \"string\",\n              \"string\"\n            ],\n            \"productionProcess\": \"string\"\n          }\n        ]\n      },\n      {\n        \"productionProcessId\": \"string\",\n        \"productionProcessName\": \"string\",\n        \"tier\": \"string\",\n        \"nodes\": [\n          {\n            \"tier\": \"string\",\n            \"companyId\": \"string\",\n            \"companyName\": \"string\",\n            \"country\": \"string\",\n            \"coordinates\": {\n              \"latitude\": 7474.46004512401,\n              \"longitude\": 3726.3470145416068\n            },\n            \"address\": {\n              \"line1\": \"string\",\n              \"line2\": \"string\",\n              \"city\": \"string\",\n              \"zipCode\": \"string\",\n              \"country\": \"string\"\n            },\n            \"facilityProcesses\": [\n              \"string\",\n              \"string\"\n            ],\n            \"productionProcess\": \"string\"\n          },\n          {\n            \"tier\": \"string\",\n            \"companyId\": \"string\",\n            \"companyName\": \"string\",\n            \"country\": \"string\",\n            \"coordinates\": {\n              \"latitude\": 3687.000757934257,\n              \"longitude\": 9135.014675166476\n            },\n            \"address\": {\n              \"line1\": \"string\",\n              \"line2\": \"string\",\n              \"city\": \"string\",\n              \"zipCode\": \"string\",\n              \"country\": \"string\"\n            },\n            \"facilityProcesses\": [\n              \"string\",\n              \"string\"\n            ],\n            \"productionProcess\": \"string\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "453d22d4-c3b3-439a-a545-02112984fb79",
+    "name": "Public API Reference Certificates Product / Supply Chains API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The retraced API comprises all publicly enabled options to make\nmachine-to-machine changes in the retraced platform. The retraced dashboard uses the\nsame endpoints, but also in addition more. If you wish to use the API of the dashboard,\nit is possible but not versioned cleanly like the public API.\n\n## Authentication\n\nThe authentication procedure is passwordless and uses an API key in the header. To get\nan API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**\nthen click **Create**. Be sure to copy the key somewhere safe, as you won't be able to\nview it again. If you don't see Developers HQ in the sidebar contact your Customer\nSuccess Manager to enable this for you. You can now set the key directly in request\nheaders. To authenticate using an API key, set the header key `companyapikey` to the\nvalue of your API key.\n\n## Getting Started\n\nRetraced has 2 environments against which you can send your requests and receive the\nexpected response: staging (for development and testing) and production. Your API key\nis scoped for both environments. The staging Base URL is\nhttps://publicapi.staging.retraced.com. Staging copies production data once daily, and\nall changes made on staging will be deleted.\n\nFind detailed guides on how to use the endpoints and how we recommend building an\nintegration given your use case in our\n[guides](https://publicapi.retraced.com/api/v2/guides). A history of public API\nchanges is available in the\n[release notes](https://publicapi.retraced.com/api/v2/release-notes).",
+      "type": "text/plain"
+    }
+  }
+}

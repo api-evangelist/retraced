@@ -1,0 +1,495 @@
+{
+  "item": [
+    {
+      "id": "a330a6bb-88a5-4590-b703-030579015832",
+      "name": "Product / BOM Lines",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6ad195ae-2381-45c0-82fd-5c7a7612b6f1",
+          "name": "/api/v2/bom-lines/",
+          "request": {
+            "name": "/api/v2/bom-lines/",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "bom-lines",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bomHeaderId\": \"<string>\",\n  \"entity\": {\n    \"styleId\": \"<string>\"\n  },\n  \"component\": {\n    \"styleId\": \"<string>\"\n  },\n  \"placementId\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"quantityUnit\": \"<string>\",\n  \"weight\": \"<number>\",\n  \"weightUnit\": \"<string>\",\n  \"countryOfOrigin\": \"<string>\",\n  \"isMainComponent\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c04fec6e-b187-4f50-8356-1d0a03c402d6",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "bom-lines",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bomHeaderId\": \"<string>\",\n  \"entity\": {\n    \"styleId\": \"<string>\"\n  },\n  \"component\": {\n    \"styleId\": \"<string>\"\n  },\n  \"placementId\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"quantityUnit\": \"<string>\",\n  \"weight\": \"<number>\",\n  \"weightUnit\": \"<string>\",\n  \"countryOfOrigin\": \"<string>\",\n  \"isMainComponent\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": {\n    \"id\": \"string\",\n    \"bomHeaderId\": \"string\",\n    \"placementId\": \"string\",\n    \"styleId\": \"string\",\n    \"quantity\": 1132.8523232751975,\n    \"quantityUnit\": \"string\",\n    \"weight\": 4207.831885208828,\n    \"weightUnit\": \"string\",\n    \"countryOfOrigin\": \"string\",\n    \"isMainComponent\": true,\n    \"createdAt\": \"string\",\n    \"createdByUserId\": \"string\",\n    \"createdByCompanyId\": \"string\",\n    \"updatedAt\": \"string\",\n    \"updatedByUserId\": \"string\",\n    \"updatedByCompanyId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ba45b22-2ea5-4cf8-9edd-82e19ac3fa2c",
+          "name": "/api/v2/bom-lines/",
+          "request": {
+            "name": "/api/v2/bom-lines/",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "bom-lines",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "desc"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "createdAt"
+                },
+                {
+                  "disabled": false,
+                  "key": "bomHeaderId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "styleId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "placementId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "countryOfOrigin",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "isMainComponent",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf9e7c80-5015-4552-ba01-8bf720560759",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "bom-lines",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "createdAt"
+                    },
+                    {
+                      "key": "bomHeaderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "styleId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "placementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countryOfOrigin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isMainComponent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"bomHeaderId\": \"string\",\n      \"placementId\": \"string\",\n      \"styleId\": \"string\",\n      \"quantity\": 6101.852080396384,\n      \"quantityUnit\": \"string\",\n      \"weight\": 619.3726643963627,\n      \"weightUnit\": \"string\",\n      \"countryOfOrigin\": \"string\",\n      \"isMainComponent\": true,\n      \"createdAt\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdByCompanyId\": \"string\",\n      \"updatedAt\": \"string\",\n      \"updatedByUserId\": \"string\",\n      \"updatedByCompanyId\": \"string\",\n      \"entity\": {\n        \"id\": \"string\",\n        \"forCompanyId\": \"string\",\n        \"codes\": [\n          {\n            \"codeId\": \"string\",\n            \"codeValue\": \"string\"\n          },\n          {\n            \"codeId\": \"string\",\n            \"codeValue\": \"string\"\n          }\n        ],\n        \"name\": \"string\",\n        \"suppliers\": [\n          \"string\",\n          \"string\"\n        ],\n        \"mainSupplier\": \"string\"\n      },\n      \"placement\": {\n        \"id\": \"string\",\n        \"value\": \"string\",\n        \"forCompanyId\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"bomHeaderId\": \"string\",\n      \"placementId\": \"string\",\n      \"styleId\": \"string\",\n      \"quantity\": 1334.709975240519,\n      \"quantityUnit\": \"string\",\n      \"weight\": 5660.7967964101745,\n      \"weightUnit\": \"string\",\n      \"countryOfOrigin\": \"string\",\n      \"isMainComponent\": true,\n      \"createdAt\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdByCompanyId\": \"string\",\n      \"updatedAt\": \"string\",\n      \"updatedByUserId\": \"string\",\n      \"updatedByCompanyId\": \"string\",\n      \"entity\": {\n        \"id\": \"string\",\n        \"forCompanyId\": \"string\",\n        \"codes\": [\n          {\n            \"codeId\": \"string\",\n            \"codeValue\": \"string\"\n          },\n          {\n            \"codeId\": \"string\",\n            \"codeValue\": \"string\"\n          }\n        ],\n        \"name\": \"string\",\n        \"suppliers\": [\n          \"string\",\n          \"string\"\n        ],\n        \"mainSupplier\": \"string\"\n      },\n      \"placement\": {\n        \"id\": \"string\",\n        \"value\": \"string\",\n        \"forCompanyId\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9390e72a-9b4d-4d7f-a8f2-4ea8cf6cea4b",
+          "name": "/api/v2/bom-lines/delete",
+          "request": {
+            "name": "/api/v2/bom-lines/delete",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "bom-lines",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bomLineIds\": [\n    \"<string>\"\n  ],\n  \"styleId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bbaaf6c9-589f-4441-856b-b5960ca189eb",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "bom-lines",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bomLineIds\": [\n    \"<string>\"\n  ],\n  \"styleId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": {\n    \"deletedLines\": [\n      \"string\",\n      \"string\"\n    ],\n    \"duplicatedHeaders\": [\n      {\n        \"originalHeaderId\": \"string\",\n        \"newHeaderId\": \"string\",\n        \"forEntityId\": \"string\",\n        \"entityType\": \"sku\"\n      },\n      {\n        \"originalHeaderId\": \"string\",\n        \"newHeaderId\": \"string\",\n        \"forEntityId\": \"string\",\n        \"entityType\": \"variant\"\n      }\n    ],\n    \"orphanedHeaders\": [\n      \"string\",\n      \"string\"\n    ],\n    \"errors\": [\n      {\n        \"bomLineId\": \"string\",\n        \"error\": \"string\"\n      },\n      {\n        \"bomLineId\": \"string\",\n        \"error\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f449454-3fca-4285-b1d9-3ac2b9a8aa2a",
+          "name": "/api/v2/bom-lines/:id",
+          "request": {
+            "name": "/api/v2/bom-lines/:id",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "bom-lines",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"entity\": {\n    \"styleId\": \"<string>\"\n  },\n  \"component\": {\n    \"styleId\": \"<string>\"\n  },\n  \"placementId\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"quantityUnit\": \"<string>\",\n  \"weight\": \"<number>\",\n  \"weightUnit\": \"<string>\",\n  \"countryOfOrigin\": \"<string>\",\n  \"isMainComponent\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "61169643-f9e0-49b3-8b18-5b2d89902152",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "bom-lines",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity\": {\n    \"styleId\": \"<string>\"\n  },\n  \"component\": {\n    \"styleId\": \"<string>\"\n  },\n  \"placementId\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"quantityUnit\": \"<string>\",\n  \"weight\": \"<number>\",\n  \"weightUnit\": \"<string>\",\n  \"countryOfOrigin\": \"<string>\",\n  \"isMainComponent\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"success\": true,\n    \"pagination\": {\n      \"page\": 1,\n      \"limit\": 10,\n      \"total\": 0,\n      \"totalPages\": 0\n    }\n  },\n  \"data\": {\n    \"id\": \"string\",\n    \"bomHeaderId\": \"string\",\n    \"placementId\": \"string\",\n    \"styleId\": \"string\",\n    \"quantity\": 1132.8523232751975,\n    \"quantityUnit\": \"string\",\n    \"weight\": 4207.831885208828,\n    \"weightUnit\": \"string\",\n    \"countryOfOrigin\": \"string\",\n    \"isMainComponent\": true,\n    \"createdAt\": \"string\",\n    \"createdByUserId\": \"string\",\n    \"createdByCompanyId\": \"string\",\n    \"updatedAt\": \"string\",\n    \"updatedByUserId\": \"string\",\n    \"updatedByCompanyId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3c702894-43a6-49a8-9a41-653067644cb6",
+    "name": "Public API Reference Certificates Product / BOM Lines API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The retraced API comprises all publicly enabled options to make\nmachine-to-machine changes in the retraced platform. The retraced dashboard uses the\nsame endpoints, but also in addition more. If you wish to use the API of the dashboard,\nit is possible but not versioned cleanly like the public API.\n\n## Authentication\n\nThe authentication procedure is passwordless and uses an API key in the header. To get\nan API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**\nthen click **Create**. Be sure to copy the key somewhere safe, as you won't be able to\nview it again. If you don't see Developers HQ in the sidebar contact your Customer\nSuccess Manager to enable this for you. You can now set the key directly in request\nheaders. To authenticate using an API key, set the header key `companyapikey` to the\nvalue of your API key.\n\n## Getting Started\n\nRetraced has 2 environments against which you can send your requests and receive the\nexpected response: staging (for development and testing) and production. Your API key\nis scoped for both environments. The staging Base URL is\nhttps://publicapi.staging.retraced.com. Staging copies production data once daily, and\nall changes made on staging will be deleted.\n\nFind detailed guides on how to use the endpoints and how we recommend building an\nintegration given your use case in our\n[guides](https://publicapi.retraced.com/api/v2/guides). A history of public API\nchanges is available in the\n[release notes](https://publicapi.retraced.com/api/v2/release-notes).",
+      "type": "text/plain"
+    }
+  }
+}
