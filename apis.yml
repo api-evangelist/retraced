@@ -87,6 +87,8 @@ apis:
   humanURL: https://publicapi.retraced.com/
   baseURL: https://publicapi.retraced.com/api/v2
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
