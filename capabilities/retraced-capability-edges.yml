@@ -1,0 +1,34 @@
+slug: retraced
+provider: Retraced
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Product / BOM Headers
+  spec_file: retraced-product-bom-headers-api-openapi.yml
+  capability_id: BC-820.30
+  capability_id_l1: BC-820
+  capability_name: Product Specification Management
+  confidence: 0.7
+  evidence: 'POST /api/v2/bom-headers/ ; PUT /api/v2/bom-headers/{id} ; vendor: ''material composition'''
+  reason: Create, update, read and delete of bill-of-materials headers for products — Product Specification
+    Management explicitly includes 'BOM definition'. Clear object, though only paths are given rather
+    than summaries, so confidence is 0.7 rather than higher.
+- tag: Product / Styles
+  spec_file: retraced-product-styles-api-openapi.yml
+  capability_id: BC-820
+  capability_id_l1: BC-820
+  capability_name: Product Lifecycle Management
+  confidence: 0.7
+  evidence: POST /api/v2/styles/ , PUT /api/v2/styles/{id} , POST /api/v2/styles/archive , POST /api/v2/styles/unarchive
+  reason: Styles are the product records in a fashion platform; create/update/archive is product record
+    lifecycle management. Archive hints at end-of-life but not clearly enough to fix an L2.
