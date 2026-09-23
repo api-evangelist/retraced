@@ -1,56 +1,9 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Public API Reference Certificates Companies API
+  title: Public API Reference Companies API
   description: 'The retraced API comprises all publicly enabled options to make
 
-    machine-to-machine changes in the retraced platform. The retraced dashboard uses the
-
-    same endpoints, but also in addition more. If you wish to use the API of the dashboard,
-
-    it is possible but not versioned cleanly like the public API.
-
-
-    ## Authentication
-
-
-    The authentication procedure is passwordless and uses an API key in the header. To get
-
-    an API key log into the Retraced Platform and navigate to **Developers HQ > API Keys**
-
-    then click **Create**. Be sure to copy the key somewhere safe, as you won''t be able to
-
-    view it again. If you don''t see Developers HQ in the sidebar contact your Customer
-
-    Success Manager to enable this for you. You can now set the key directly in request
-
-    headers. To authenticate using an API key, set the header key `companyapikey` to the
-
-    value of your API key.
-
-
-    ## Getting Started
-
-
-    Retraced has 2 environments against which you can send your requests and receive the
-
-    expected response: staging (for development and testing) and production. Your API key
-
-    is scoped for both environments. The staging Base URL is
-
-    https://publicapi.staging.retraced.com. Staging copies production data once daily, and
-
-    all changes made on staging will be deleted.
-
-
-    Find detailed guides on how to use the endpoints and how we recommend building an
-
-    integration given your use case in our
-
-    [guides](https://publicapi.retraced.com/api/v2/guides). A history of public API
-
-    changes is available in the
-
-    [release notes](https://publicapi.retraced.com/api/v2/release-notes).'
+    machine-to-machine changes in the retraced platform.'
   version: 2.938.1
 servers: []
 tags:
@@ -677,6 +630,10 @@ paths:
                     featuredImageFileUrl: https://retraced-bucket-production-public.imgix.net/file_JMKNZB1795XQ6.png
                     originalVideoFileUrl: null
                     connectionTypeId: M4MRIN4A9JQ
+      summary: Get api companies
+      x-summary-source: derived
+      operationId: getApiV2Companies
+      x-operation-id-source: derived
   /api/v2/companies/{id}:
     get:
       tags:
@@ -809,7 +766,12 @@ paths:
                       official_name:
                         retracedId: official_name
                         name: Official Name
-                        description: "Official Name is the name on the business license(s) associated with the address indicated below.\r\r\n\r\r\nType Not Applicable if there is no English language business license facility name and complete the other question below:\r\r\n\"Facility Name (in local language as per business license):\""
+                        description: 'Official Name is the name on the business license(s) associated with the address indicated below.
+
+
+                          Type Not Applicable if there is no English language business license facility name and complete the other question below:
+
+                          "Facility Name (in local language as per business license):"'
                         meta: {}
                         fieldTypeId: SHORT_TEXT
                         type: GLOBAL
@@ -907,7 +869,10 @@ paths:
                       official_name_localized:
                         retracedId: official_name_localized
                         name: Official Name Localized
-                        description: "Only applicable if your facility has a name/also has a name in a language other than English.\r\r\n\r\r\nFacility Name is the name on the business license(s) associated with the address indicated below."
+                        description: 'Only applicable if your facility has a name/also has a name in a language other than English.
+
+
+                          Facility Name is the name on the business license(s) associated with the address indicated below.'
                         meta: {}
                         fieldTypeId: SHORT_TEXT
                         type: GLOBAL
@@ -1192,7 +1157,10 @@ paths:
                       county:
                         retracedId: county
                         name: County
-                        description: "Refers to the state or province name of the address on the business license(s) associated with the facility name.\r\r\n\r\r\nIf not applicable enter N/A. "
+                        description: 'Refers to the state or province name of the address on the business license(s) associated with the facility name.
+
+
+                          If not applicable enter N/A. '
                         meta: {}
                         fieldTypeId: SHORT_TEXT
                         type: GLOBAL
@@ -1219,7 +1187,10 @@ paths:
                       zip_code:
                         retracedId: zip_code
                         name: Zip Code
-                        description: "Refers to the zip code or postal code of the address on the business license(s) associated with the facility name.\r\r\n\r\r\nIf not applicable enter N/A. "
+                        description: 'Refers to the zip code or postal code of the address on the business license(s) associated with the facility name.
+
+
+                          If not applicable enter N/A. '
                         meta: {}
                         fieldTypeId: SHORT_TEXT
                         type: GLOBAL
@@ -1246,7 +1217,7 @@ paths:
                       full_address_localize:
                         retracedId: full_address_localize
                         name: 'Full Address (in local language as per business license):'
-                        description: "Only applicable if your facility has an address/also has an address in a language other than English.\r\r\n\r\r\nFacility Address is the address on the business license(s) associated with the facility name. \r\r\n\r\r\nInsert Street, City, State/Province, Zip Code/Postal Code all in one response field. "
+                        description: "Only applicable if your facility has an address/also has an address in a language other than English.\n\nFacility Address is the address on the business license(s) associated with the facility name. \n\nInsert Street, City, State/Province, Zip Code/Postal Code all in one response field. "
                         meta: {}
                         fieldTypeId: LONG_TEXT
                         type: GLOBAL
@@ -2012,6 +1983,10 @@ paths:
                 - code
                 - message
                 additionalProperties: false
+      summary: Get api companies by id
+      x-summary-source: derived
+      operationId: getApiV2CompaniesById
+      x-operation-id-source: derived
   /api/v2/companies/{id}/esg/:
     get:
       tags:
@@ -2261,3 +2236,7 @@ paths:
                 - metadata
                 - data
                 additionalProperties: false
+      summary: Get api companies by id esg
+      x-summary-source: derived
+      operationId: getApiV2CompaniesByIdEsg
+      x-operation-id-source: derived
