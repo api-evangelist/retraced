@@ -3,6 +3,7 @@ provider: Retraced
 generated_by: planning/capability-mapping/scripts/classify_capabilities.py
 model: claude-opus-5
 frame:
+- Electrical Components & Equipment
 - Transportation & Logistics
 min_confidence: 0.7
 capability_model:
@@ -11,18 +12,36 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 2
+edge_count: 4
 edges:
 - tag: Product / BOM Headers
   spec_file: retraced-product-bom-headers-api-openapi.yml
   capability_id: BC-820.30
   capability_id_l1: BC-820
   capability_name: Product Specification Management
+  confidence: 0.8
+  evidence: POST /api/v2/bom-headers/ — "Create api bom headers"
+  reason: Create/read/replace/delete of bill-of-materials header records; BC-820.30 explicitly covers
+    "BOM definition". Some ambiguity remains as to whether the vendor treats BOM as product specification
+    or as traceability data.
+- tag: Product / BOM Lines
+  spec_file: retraced-product-bom-lines-api-openapi.yml
+  capability_id: BC-820.30
+  capability_id_l1: BC-820
+  capability_name: Product Specification Management
+  confidence: 0.8
+  evidence: POST /api/v2/bom-lines/ — "Create api bom lines", PUT /api/v2/bom-lines/{id}
+  reason: Maintenance of bill-of-materials line items under the "Product" tag group, matching BC-820.30
+    "Product specifications, requirements, BOM definition".
+- tag: Product / BOM Placements
+  spec_file: retraced-product-bom-placements-api-openapi.yml
+  capability_id: BC-820.30
+  capability_id_l1: BC-820
+  capability_name: Product Specification Management
   confidence: 0.7
-  evidence: 'POST /api/v2/bom-headers/ ; PUT /api/v2/bom-headers/{id} ; vendor: ''material composition'''
-  reason: Create, update, read and delete of bill-of-materials headers for products — Product Specification
-    Management explicitly includes 'BOM definition'. Clear object, though only paths are given rather
-    than summaries, so confidence is 0.7 rather than higher.
+  evidence: POST /api/v2/bom-placements/ — "Create api bom placements"
+  reason: Placements link BOM components to where they are used on a product, an extension of BOM/product
+    structure definition. No schemas given, so confidence is moderate.
 - tag: Product / Styles
   spec_file: retraced-product-styles-api-openapi.yml
   capability_id: BC-820
